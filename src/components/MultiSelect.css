@@ -1,0 +1,17 @@
+.multi-select .multi-select-option {
+	display: inline-block;
+	width: 42%;
+	line-height: 25px;
+	padding: 12px;
+	margin: 6px;
+	border: 3px solid #1EC3CA;
+	border-radius: 5px;
+	white-space: nowrap;
+	overflow: visible;
+}
+
+.multi-select .multi-select-option.active {
+	color: #FFF;
+	background-color: #1EC3CA;
+	font-weight: bold;
+}
