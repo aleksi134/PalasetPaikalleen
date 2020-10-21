@@ -1,6 +1,11 @@
 # PalasetPaikalleen
 Pelisivusto Karelian-AMK:lle
 
+## tinder-card
+Moduuli ei ole vielä integroitu, mutta testaamista varten luotu div-elementti löytyy Lappeenrannan eteläpuolelta. 
+
+
+## Käyttö
 Aja seuraavat komennot:
 
 ```
