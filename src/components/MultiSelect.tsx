@@ -1,21 +1,22 @@
-import React, { useState } from 'react'
+import React from 'react'
 import './MultiSelect.css'
 
 interface Props {
   options: string[]
+  selection: string[]
+  onChange: (change: string[]) => any 
 }
 
-const MultiSelect: React.FC<Props> = ({ options }) => {
-  const [selection, setSelection] = useState<string[]>([])
+const MultiSelect: React.FC<Props> = ({ options, selection = [], onChange }) => {
 
   const toggleSelection = (s: string) => {
     const found = selection.indexOf(s) > -1
 
-    if (found) {
-      setSelection(selection.filter(e => e !== s))
-    } else {
-      setSelection([...selection, s])
-    }
+    const newSelection = found
+      ? selection.filter(e => e !== s)
+      : [...selection, s]
+
+    onChange(newSelection)
   }
 
   const isSelected = (s: string) => selection.indexOf(s) > -1

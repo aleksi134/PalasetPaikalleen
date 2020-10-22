@@ -1,20 +1,22 @@
 import { IonButton, IonCard, IonCardContent, IonItem, IonLabel } from '@ionic/react'
-import React from 'react'
+import React, { useState } from 'react'
+import { Result } from '../../GameState'
 import MultiSelect from '../MultiSelect'
 import './Minigame.css'
 
 interface Props {
-  // name: string;
-  done: () => void
+  state: Result
+  done: (result: Result) => void
 }
 
 const options = [
   'Mahdollisuus 1', 'Mahdollisuus 2', 'Mahdollisuus 3', 'Mahdollisuus 4', 'Mahdollisuus 5',
 ]
 
-const MiniGame: React.FC<Props> = ({ done }) => {
-  // const [toppings, setToppings] = useState<string[]>([]);
-  // const [pets, setPets] = useState<string[]>(['bird', 'dog']);
+const MiniGame: React.FC<Props> = ({ state, done }) => {
+
+  const [ result, setResult ] = useState<Result>(state)
+  const saveAndClose = () => done(result)
 
   return (
       <div className="container minigame">
@@ -32,9 +34,9 @@ const MiniGame: React.FC<Props> = ({ done }) => {
 
         <video controls src="assets/placeholder-video.mp4"></video>
 
-        <MultiSelect options={options} />
+        <MultiSelect options={options} selection={result} onChange={setResult} />
 
-        <IonButton className="done" onClick={done}>Merkitse suoritetuksi</IonButton>
+        <IonButton className="done" onClick={saveAndClose}>Merkitse suoritetuksi</IonButton>
       </div>
   )
 }
