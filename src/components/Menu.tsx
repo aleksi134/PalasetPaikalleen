@@ -7,11 +7,11 @@ import {
   IonListHeader,
   IonMenu,
   IonMenuToggle
-} from '@ionic/react';
-import { mapOutline } from 'ionicons/icons';
-import React from 'react';
-import { useLocation } from 'react-router-dom';
-import './Menu.css';
+} from '@ionic/react'
+import { flowerOutline, mapOutline } from 'ionicons/icons'
+import React from 'react'
+import { useLocation } from 'react-router-dom'
+import './Menu.css'
 
 
 interface AppPage {
@@ -25,6 +25,11 @@ const appPages: AppPage[] = [
     title: 'Palaset paikalleen',
     url: '/page/Home',
     icon: mapOutline
+  },
+  {
+    title: 'Tulokset',
+    url: '/page/Results',
+    icon: flowerOutline
   },
   // {
   //   title: 'Outbox',
