@@ -1,4 +1,4 @@
-import { IonContent, IonModal } from '@ionic/react'
+import { IonContent, IonModal, useIonViewDidEnter } from '@ionic/react'
 import React, { useRef, useState } from 'react'
 import { MapNode, nodes } from '../GameMap'
 import './Map.css'
@@ -49,7 +49,7 @@ const Home: React.FC<Props> = () => {
         <img className="map" src="assets/finland-map.png" alt="Suomen kartta" />
         <Pawn location={currentNode.location} />
       </div>
-      
+
       <IonModal isOpen={Boolean(showModal)} cssClass='minigame-modal'>
         <IonContent>
           {<currentNode.game done={closeModal} state={gameState.load(currentNode.id)} />}

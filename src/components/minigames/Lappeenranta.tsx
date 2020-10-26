@@ -1,25 +1,37 @@
-import { IonButton, IonCard, IonCardContent, IonCol, IonGrid, IonItem, IonLabel, IonRow } from '@ionic/react'
+import { IonButton, IonCard, IonCardContent, IonCol, IonGrid, IonInput, IonItem, IonLabel, IonList, IonRow } from '@ionic/react'
 import React, { useState } from 'react'
 import { Result } from '../../GameState'
 import MultiSelect from '../MultiSelect'
 import './Minigame.css'
+import { uniq } from 'lodash'
 
 interface Props {
-  state: Result
+  state: string[]
   done: (result: Result) => void
 }
 
-const options = [
+const preDefinedOptions = [
   'Energinen', 'Iloinen', 'Kannustava', 'Vetäytyvä',
   'Puhelias', 'Puhelias 1', 'Puhelias 2', 'Puhelias 3'
 ]
 
 const MiniGame: React.FC<Props> = ({ state, done }) => {
-  const [ result, setResult ] = useState<Result>(state)
+  const uniqueOptions = uniq([...preDefinedOptions, ...state])
+
+  const [ options, setOptions ] = useState<Result>(uniqueOptions)
+  const [ customOption, setCustomOption ] = useState('')
+  const [ result, setResult ] = useState<Result>(uniqueOptions)
+
+  const addCustomOption = () => {
+    setOptions([...options, customOption])
+    setResult([...result, customOption])
+    setCustomOption('')
+  }
+
   const saveAndClose = () => done(result)
 
   return (
-    <div className="container minigame">
+    <div className="container minigame lappeenranta">
 
       <IonCard>
         <IonItem>
@@ -36,6 +48,18 @@ const MiniGame: React.FC<Props> = ({ state, done }) => {
 
       <MultiSelect options={options} selection={result} onChange={setResult} />
 
+      <IonList lines="none" className="ion-margin-vertical">
+        <IonItem>
+          <IonLabel><strong>Kirjoita oma</strong></IonLabel>
+        </IonItem>
+        <IonItem lines="inset">
+          <IonInput
+            value={customOption}
+            onIonChange={e => setCustomOption(e.detail.value!)}
+            placeholder="Esim. Puhelias"> </IonInput>
+          <IonButton size="default" slot="end" onClick={addCustomOption as any}>Lisää</IonButton>
+        </IonItem>
+      </IonList>
 
       <IonGrid>
         <IonRow>
