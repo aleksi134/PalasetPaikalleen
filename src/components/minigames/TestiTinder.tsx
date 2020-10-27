@@ -1,5 +1,5 @@
 import { IonButton, IonCard, IonCardContent, IonItem, IonLabel } from "@ionic/react";
-import React from "react";
+import React, { Children } from "react";
 import "./Minigame.css";
 import TinderModule from "./TinderModule";
 
@@ -26,7 +26,10 @@ const MiniGame: React.FC<Props> = ({ done }) => {
                 </IonCardContent>
             </IonCard>
 
-            <TinderModule />
+            <IonCard>
+                <p> Tähän tulee moduuli </p>
+                <TinderModule swiped={} /> {/** umm what? */}
+            </IonCard>
 
             <IonButton className="done" onClick={done}>
                 Merkitse suoritetuksi

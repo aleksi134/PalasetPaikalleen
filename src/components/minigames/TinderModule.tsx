@@ -1,105 +1,99 @@
-import React, { useState } from 'react';
-import TinderCard from 'react-tinder-card';
-
-// db likely has to differentiate cards between university and polytechinal subjects / occupations
-const db = [
-    {
-        name: "agrologi",
-        url: "./img/agrologi.png",
-        institute: "polytechnical",
-        theme: "maatalous",
-    },
-    {
-        name: "arkeologia",
-        url: "./img/arkeologia.png",
-        institute: "university",
-        theme: "pitkäjänteisyys",
-    },
-    {
-        name: "apuvalineteknikko",
-        url: "./img/apuvlineteknikko.png",
-        institute: "polytechnical",
-        theme: "kädentaidot",
-    },
-    {
-        name: "artenomi",
-        url: "./img/artenomi.png",
-        institute: "polytechnical",
-        theme: "kädentaidot",
-    },
-    {
-        name: "bioanalyytikko",
-        url: "./img/bioanalyytikko.png",
-        institute: "polytechnical",
-        theme: "kädentaidot",
-    },
-    {
-        name: "ensihoitaja",
-        url: "./img/ensihoitaja.png",
-        institute: "polytechnical",
-        theme: "hoiva-ala",
-    },
-];
-
-/*
-interface TinderProps {
-    
-} 
+import React, { useState } from 'react'
+import TinderCard from 'react-tinder-card'
 
 
-type TinderProps = {
-    className?: string,
-    direction: any,
-    swipe: any,
+const db = [ // db likely has to differentiate cards between university and polytechinal subjects / occupations
+    {
+        name: 'agrologi',
+        url: 'assets/tinder-img/agrologi.png',
+        institute: 'polytechnical',
+        theme: 'maatalous', // theme could be also keyword/s, also my thematising is bad
+    },
+    {
+        name: 'arkeologia',
+        url: 'assets/tinder-img/arkeologia.png',
+        institute: 'university',
+        theme: 'pitkäjänteisyys',
+    },
+    {
+        name: 'apuvalineteknikko',
+        url: 'assets/tinder-img/apuvlineteknikko.png',
+        institute: 'polytechnical',
+        theme: 'kädentaidot',
+    },
+    {
+        name: 'artenomi',
+        url: 'assets/tinder-img/artenomi.png',
+        institute: 'polytechnical',
+        theme: 'kädentaidot',
+    },
+    {
+        name: 'bioanalyytikko',
+        url: 'assets/tinder-img/bioanalyytikko.png',
+        institute: 'polytechnical',
+        theme: 'kädentaidot',
+    },
+    {
+        name: 'ensihoitaja',
+        url: 'assets/tinder-img/ensihoitaja.png',
+        institute: 'polytechnical',
+        theme: 'hoiva-ala',
+    },
+]
+
+
+export interface Props {
+    children?: any
+    onSwipe: any
+    onCardLeftScreen: any
+    outOfFrame: (name: string) => void
+    swiped:  (propTypes?: any, contextTypes?: any, defaultProps?: any, displayName?: any) => void // Actually this doesn't even work (TODO fix it)
 }
 
+/* Property 'swiped' is missing in type 
+'{  propTypes?: WeakValidationMap<TinderProps> | undefined; 
+    contextTypes?: ValidationMap<any> | undefined; 
+    defaultProps?: Partial<TinderProps> | undefined; 
+    displayName?: string | undefined; }' 
+    
+    but required in type 'TinderProps'. 
+'*/
 
+const TinderModule: React.FC<Props> = () => {
+    const occupations = db
+    let occupationDir: any[] = [] // this is for saving swiped data
 
-declare module 'react-tinder-card' {
-    // type definitions goes here
-    type TinderCard = {
-        className?: string
+    const [lastDirection, setLastDirection] = useState<string>() // We need directions for user to organize cards in to piles of no / maybe / yes - check instructions in Korkeakoulukortit-2020-2.pdf
+
+    const swiped = (direction: React.SetStateAction<string | undefined>, nameToDelete: string, institute: string, theme: string) => { // these typing are 'quick fix'
+        console.log('You swiped: ' + direction)
+        console.log('removing ' + nameToDelete + ' from ' + institute + ' with theme of ' + theme)
+        occupationDir.push({ dir: direction, name: nameToDelete, institute: institute, theme: theme }) // saving everything just in case calculator needs it
+        console.log(occupationDir)
+        setLastDirection(direction)
     }
-    
-}
-*/
-
-const TinderModule: React.FC<TinderProps> = () => {
-    const occupations = db;
-
-    const [lastDirection, setLastDirection] = useState<string>(); // We need directions for user to organize cards in to piles of no / maybe / yes - check instructions in Korkeakoulukortit-2020-2.pdf
-
-    const swiped = (direction, nameToDelete) => {
-        console.log("You swiped: " + direction);
-        console.log("removing " + nameToDelete);
-        setLastDirection(direction);
-        // argument for saving nameToDelete + direction data for pile ordering and in the end for the calculator to calculate
-    };
 
     const outOfFrame = (name: string) => {
-        console.log(name + " left the screen");
-    }; // TODO maybe remove
+        console.log(name + ' left the screen')
+    } // TODO maybe remove
 
     return (
-        <div className="module">
-            <link href="https://fonts.googleapis.com/css?family=Damion&display=swap" rel="stylesheet" />
-            <link href="https://fonts.googleapis.com/css?family=Alatsi&display=swap" rel="stylesheet" />
-            <div className="cardContainer">
+        <div className='module'>
+            <div className='cardContainer'>
                 {occupations.map((occupation) => (
                     <TinderCard
-                        className="swipe"
+                        className='swipe'
                         key={occupation.name}
-                        onSwipe={(dir) => swiped(dir, occupation.name)}
+                        onSwipe={(dir: React.SetStateAction<string | undefined>) => swiped(dir, occupation.name, occupation.institute, occupation.theme)}
                         onCardLeftScreen={() => outOfFrame(occupation.name)}
                     >
-                        <div style={{ backgroundImage: "url(" + occupation.url + ")" }} className="card"></div>
+                        <div style={{ backgroundImage: 'url(' + occupation.url + ')' }} className='card'></div>
                     </TinderCard>
                 ))}
-            </div>
-            {/* eslint-disable-next-line */}
-            {lastDirection ? <h2 className="infoText">You swiped {lastDirection}</h2> : <h2 className="infoText" />}
+            </div>{" "}
+            {lastDirection ? <h2 className='infoText'>You swiped {lastDirection}</h2> : <h2 className='infoText' />}
         </div>
-    );
+    )
 }
 
-export default TinderModule;
+export default TinderModule
