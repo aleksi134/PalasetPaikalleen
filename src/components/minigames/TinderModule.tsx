@@ -43,21 +43,18 @@ const db = [ // db likely has to differentiate cards between university and poly
 
 
 export interface Props {
+    propTypes?: any
+    contextTypes?: any
+    defaultProps?: any 
+    displayName?: any
     children?: any
+    /*
     onSwipe: any
     onCardLeftScreen: any
     outOfFrame: (name: string) => void
-    swiped:  (propTypes?: any, contextTypes?: any, defaultProps?: any, displayName?: any) => void // Actually this doesn't even work (TODO fix it)
+    swiped:  (direction: React.SetStateAction<string | undefined>, nameToDelete: string, institute: string, theme: string) => void // Actually this doesn't even work (TODO fix it)
+    */
 }
-
-/* Property 'swiped' is missing in type 
-'{  propTypes?: WeakValidationMap<TinderProps> | undefined; 
-    contextTypes?: ValidationMap<any> | undefined; 
-    defaultProps?: Partial<TinderProps> | undefined; 
-    displayName?: string | undefined; }' 
-    
-    but required in type 'TinderProps'. 
-'*/
 
 const TinderModule: React.FC<Props> = () => {
     const occupations = db
