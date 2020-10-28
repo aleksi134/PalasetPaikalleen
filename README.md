@@ -1,6 +1,14 @@
 # PalasetPaikalleen
 Pelisivusto Karelian-AMK:lle
 
+## onboarding
+Sapluuna onboarding slaideille, joiden rumuutta pääsee ihastelemaan painamalla menu-valikosta kohtaa "Onboarding".
+
+* src/pages/OnboardTest.tsx on testicontainer slaideille
+
+* src/components/Onboarding.tsx sisältää toiminnallisuuden
+
+## Käyttö
 Aja seuraavat komennot:
 
 ```
