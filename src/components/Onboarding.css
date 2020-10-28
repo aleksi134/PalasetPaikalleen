@@ -1,0 +1,72 @@
+.onboarding {
+    /* This is a bad name by the way */
+    display: flex;
+    flex-flow: column wrap;
+    background-color: #efefef !important;
+    font-family: 'Raleway' !important;
+    --ion-color-primary: #C400FF;
+    --background: none;
+    --color: none;
+    --padding-top: 0px;
+    --padding-bottom: 0px;
+    --padding-start: 0px;
+    --padding-end: 0px;
+    --keyboard-offset: 0px;
+    --offset-top: 0px;
+    --offset-bottom: 0px;
+    --overflow: auto;
+  }
+
+.parentSlides {
+    display: flex;
+    flex: 1 100%;
+}
+
+/*
+.parentSlides > * {
+
+}
+*/
+
+.diag {
+  background-image: url('/public/assets/onboarding-img/whitebg.svg') !important;
+  /* position: absolute !important; */
+  z-index: 1 !important;
+  width: 100% !important;
+  top: 0 !important;
+  height: 66% !important;
+}
+
+.diag ion-icon {
+  margin-top: 40% !important;
+  font-size: 7em !important;
+}
+
+.onboardingHeader {
+  font-weight: bold !important;
+  font-size: 1em !important;
+}
+
+.onboardingParagraph {
+  display: block !important;
+  margin: 0 auto !important;
+  font-size: 0.9em !important;
+}
+
+.diag .swiper-pagination-bullet-active {
+  background: #c400ff !important;
+}
+
+.diag .swiper-pagination {
+  bottom: 12% !important;
+}
+
+#skip {
+  position: absolute !important;
+  bottom: 20px !important;
+  width: 100% !important;
+  background: none !important;
+  text-align: center !important;
+  cursor: pointer !important;
+  z-index: 5 !important;
+}
