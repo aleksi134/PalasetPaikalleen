@@ -1,7 +1,7 @@
 .onboarding {
     /* This is a bad name by the way */
     display: flex;
-    flex-flow: column wrap;
+    flex-direction: column;
     background-color: #efefef !important;
     font-family: 'Raleway' !important;
     --ion-color-primary: #C400FF;
@@ -18,15 +18,16 @@
   }
 
 .parentSlides {
-    display: flex;
+    display: flex !important;
     flex: 1 100%;
 }
 
-/*
-.parentSlides > * {
 
+.childrenSlide {
+  display: flex;
+  flex-flow: column wrap;
 }
-*/
+
 
 .diag {
   background-image: url('/public/assets/onboarding-img/whitebg.svg') !important;
@@ -38,8 +39,7 @@
 }
 
 .diag ion-icon {
-  margin-top: 40% !important;
-  font-size: 7em !important;
+  font-size: 7em;
 }
 
 .onboardingHeader {
@@ -62,9 +62,8 @@
 }
 
 #skip {
-  position: absolute !important;
-  bottom: 20px !important;
-  width: 100% !important;
+
+  width: 30% !important;
   background: none !important;
   text-align: center !important;
   cursor: pointer !important;
