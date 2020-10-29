@@ -1,5 +1,5 @@
 import { IonContent, IonModal } from '@ionic/react'
-import React, { FC, useCallback, useEffect, useRef, useState } from 'react'
+import React, { FC, useCallback, useRef, useState } from 'react'
 import { MapNode, nodes } from '../GameData'
 import gameState from '../GameState'
 import { CITIES, CityRecord, Location } from '../Types'
@@ -34,9 +34,10 @@ const Home: React.FC<Props> = () => {
   const [showModal, setShowModal] = useState(false)
   const [currentNode, setCurrentNode] = useState<MapNode>(gameState.currentNode)
   const [circleLocations, setCircleLocations] = useState<CityRecord<Location>>()
-  const [pawnLocation, setPawnLocation] = useState<Location | null>(null)
+  const pawnLocation = circleLocations?.[currentNode.id] || null
 
   const timeout = useRef<NodeJS.Timeout>()
+  const CurrentGameComponent = cityGameMap[currentNode.id]
 
   const closeModal = (result: any) => {
     setShowModal(false)
@@ -57,14 +58,7 @@ const Home: React.FC<Props> = () => {
   }
 
   const svgRefCallback = useCallback((node: SVGSVGElement) =>
-    setCircleLocations(findCircleLocations(node, CITIES)) , [])
-
-  useEffect(() => {
-    if (circleLocations) setPawnLocation(circleLocations[currentNode.id])
-  }, [circleLocations, currentNode.id])
-
-  // useIonViewDidEnter(() => setShowModal('lappeenranta'))
-  const CurrentGameComponent = cityGameMap[currentNode.id]
+    setCircleLocations(findCircleLocations(CITIES, node)) , [])
 
   return (
     <div className="container ion-padding">

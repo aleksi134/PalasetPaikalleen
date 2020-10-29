@@ -58,7 +58,7 @@ const MiniGame: React.FC<Props> = ({ state = [], done }) => {
             value={customOption}
             onIonChange={e => setCustomOption(e.detail.value!)}
             placeholder="Esim. Puhelias"> </IonInput>
-          <IonButton size="default" slot="end" onClick={addCustomOption as any}>Lisää</IonButton>
+          <IonButton disabled={customOption.length <= 3} size="default" slot="end" onClick={addCustomOption as any}>Lisää</IonButton>
         </IonItem>
       </IonList>
 
