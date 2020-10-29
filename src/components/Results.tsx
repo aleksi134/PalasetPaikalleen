@@ -2,6 +2,7 @@ import { IonButton } from '@ionic/react'
 import * as htmlToImage from 'html-to-image'
 import React, { CSSProperties, useRef } from 'react'
 import gameState from '../GameState'
+import ProgressMeter from './ProgressMeter'
 
 interface Props { }
 
@@ -35,6 +36,10 @@ const Home: React.FC<Props> = () => {
       </p>
 
       <div ref={resultsRef} style={resultsStyle}>
+        <div className="ion-padding">
+          <ProgressMeter />
+        </div>
+
         <pre>
           {JSON.stringify(gameState.progress, null, '  ')}
         </pre>

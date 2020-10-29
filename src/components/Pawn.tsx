@@ -1,17 +1,21 @@
-import React from 'react'
+import React, { CSSProperties } from 'react'
+import { Location } from '../Types'
 
 interface Props {
-  location: { x: number, y: number }
+  location: Location | null
 }
 
-const Pawn: React.FC<Props> = ({ location: { x, y } }) => {
+const Pawn: React.FC<Props> = ({ location }) => {
+
+  const style: CSSProperties = location
+    ? { top: `${location.y}%`, left: `${location.x}%` }
+    : { display: 'none' }
 
   return (
-    <div className="pawn" style={{ top: `${y}%`, left: `${x}%` }}>
+    <div className="pawn" style={style}>
       <img src="assets/perusversio.png" alt="pelinappula" />
     </div>
   )
 }
 
 export default Pawn
-

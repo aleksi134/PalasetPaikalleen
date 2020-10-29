@@ -4,6 +4,7 @@ import { Result } from '../../GameState'
 import MultiSelect from '../MultiSelect'
 import './Minigame.css'
 import { uniq } from 'lodash'
+import ProgressMeter from '../ProgressMeter'
 
 interface Props {
   state: string[]
@@ -15,12 +16,12 @@ const preDefinedOptions = [
   'Puhelias', 'Puhelias 1', 'Puhelias 2', 'Puhelias 3'
 ]
 
-const MiniGame: React.FC<Props> = ({ state, done }) => {
+const MiniGame: React.FC<Props> = ({ state = [], done }) => {
   const uniqueOptions = uniq([...preDefinedOptions, ...state])
 
   const [ options, setOptions ] = useState<Result>(uniqueOptions)
   const [ customOption, setCustomOption ] = useState('')
-  const [ result, setResult ] = useState<Result>(uniqueOptions)
+  const [ result, setResult ] = useState<Result>(state)
 
   const addCustomOption = () => {
     setOptions([...options, customOption])
@@ -64,7 +65,8 @@ const MiniGame: React.FC<Props> = ({ state, done }) => {
       <IonGrid>
         <IonRow>
           <IonCol>
-            <img style={{ width: '100%' }} src="assets/edistymispalkki.png" alt="edistymispalkki" />
+            <ProgressMeter />
+            {/* <img style={{ width: '100%' }} src="assets/edistymispalkki.png" alt="edistymispalkki" /> */}
           </IonCol>
           <IonCol>
             <img style={{ width: '50%', marginTop: '20px' }} src="assets/perusversio.png" alt="kuunteleva" />

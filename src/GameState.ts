@@ -1,5 +1,5 @@
-import { MapNode, nodes } from './GameMap'
-import { City } from './Types'
+import { MapNode, nodes } from './GameData'
+import { City, CityRecord } from './Types'
 import { keyBy } from 'lodash'
 
 // Localstorage game state key
@@ -8,36 +8,56 @@ const STARTING_LOCATION: City = 'kuopio'
 
 export type Result = any
 
-type State = {
+export type State = {
   currentLocation: City
-  progress: { [key in City]?: any }
+  progress: CityRecord<any>
 }
+
+type Subscription = (state: State) => void
 
 class GameState {
   state: State
   nodes: Record<City, MapNode>
 
+  subscriptions: Subscription[] = []
+
   constructor(nodes: MapNode[]) {
     this.state = this.loadState()
-    this.nodes = keyBy(nodes, n => n.id) as any
+    this.nodes = keyBy(nodes, (n) => n.id) as any
   }
 
   get progress() {
     return this.state.progress
-  } 
+  }
 
-  get currentLocation() {
+  get currentLocation(): City {
     return this.state.currentLocation
+  }
+
+  get currentNode(): MapNode {
+    return this.nodes[this.currentLocation]
+  }
+
+  subscribe(fn: Subscription): void {
+    this.subscriptions.push(fn)
+    fn(this.state)
+  }
+
+  unsubscribe(fn: Subscription) {
+    const index = this.subscriptions.indexOf(fn)
+    if (index > -1) {
+      this.subscriptions.slice(index, 1)
+    }
   }
 
   move(node: MapNode) {
     this.state.currentLocation = node.id
-    this.persistState()
+    this.stateChanged()
   }
 
   save(key: City, result: Result): Result {
     this.progress[key] = result
-    this.persistState()
+    this.stateChanged()
     return result
   }
 
@@ -50,17 +70,20 @@ class GameState {
   }
 
   canAdvance(node: MapNode): boolean {
-    if (node.id === this.currentLocation) {
-      return true 
-    }
+    if (node.id === this.currentLocation)
+      return true
 
-    const ret = this.nodes[node.id].adj
+    if (node.isBonus)
+      return Object.values(this.nodes)
+        .filter(n => !n.isBonus)
+        .every(node => Boolean(this.progress[node.id]))
+
+    return this.nodes[node.id].adj
       .some(city => Boolean(this.progress[city]))
-
-    return ret
   }
 
-  private persistState(): void {
+  private stateChanged(): void {
+    this.subscriptions.forEach(sub => sub(this.state))
     localStorage.setItem(STATE_KEY, JSON.stringify(this.state))
   }
 

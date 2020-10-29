@@ -1,6 +1,6 @@
 import { IonButtons, IonContent, IonHeader, IonMenuButton, IonPage, IonTitle, IonToolbar } from '@ionic/react'
 import React from 'react'
-import Map from '../components/Map'
+import GameMap from '../components/GameMap'
 import './Page.css'
 
 const Page: React.FC = () => {
@@ -25,7 +25,7 @@ const Page: React.FC = () => {
             <IonTitle size="large">{name}</IonTitle>
           </IonToolbar>
         </IonHeader>
-        <Map name={name} />
+        <GameMap name={name} />
       </IonContent>
     </IonPage>
   );
