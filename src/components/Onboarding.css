@@ -1,43 +1,3 @@
-.onboarding {
-    /* This is a bad name by the way */
-    display: flex;
-    flex-direction: column;
-    background-color: #efefef !important;
-    font-family: 'Raleway' !important;
-    --ion-color-primary: #C400FF;
-    --background: none;
-    --color: none;
-    --padding-top: 0px;
-    --padding-bottom: 0px;
-    --padding-start: 0px;
-    --padding-end: 0px;
-    --keyboard-offset: 0px;
-    --offset-top: 0px;
-    --offset-bottom: 0px;
-    --overflow: auto;
-  }
-
-.parentSlides {
-    display: flex !important;
-    flex: 1 100%;
-}
-
-
-.childrenSlide {
-  display: flex;
-  flex-flow: column wrap;
-}
-
-
-.diag {
-  background-image: url('/public/assets/onboarding-img/whitebg.svg') !important;
-  /* position: absolute !important; */
-  z-index: 1 !important;
-  width: 100% !important;
-  top: 0 !important;
-  height: 66% !important;
-}
-
 .diag ion-icon {
   font-size: 7em;
 }
@@ -53,16 +13,8 @@
   font-size: 0.9em !important;
 }
 
-.diag .swiper-pagination-bullet-active {
-  background: #c400ff !important;
-}
-
-.diag .swiper-pagination {
-  bottom: 12% !important;
-}
-
 #skip {
-
+  
   width: 30% !important;
   background: none !important;
   text-align: center !important;
