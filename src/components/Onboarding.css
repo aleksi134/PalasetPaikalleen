@@ -1,3 +1,7 @@
+.onBoarding {
+  display: flex;
+}
+
 .diag ion-icon {
   font-size: 7em;
 }
@@ -14,10 +18,10 @@
 }
 
 #skip {
-  
-  width: 30% !important;
+  /* width: 30% !important; */
   background: none !important;
   text-align: center !important;
   cursor: pointer !important;
   z-index: 5 !important;
+  float: right;
 }
