@@ -2,7 +2,7 @@
 Pelisivusto Karelian-AMK:lle
 
 ## onboarding
-Sapluuna onboarding slaideille, joiden rumuutta pääsee ihastelemaan painamalla menu-valikosta kohtaa "Onboarding".
+Sapluuna onboarding slaideille, joita pääsee ihastelemaan painamalla menu-valikosta kohtaa "Onboarding".
 
 * src/pages/OnboardTest.tsx on testicontainer slaideille
 
