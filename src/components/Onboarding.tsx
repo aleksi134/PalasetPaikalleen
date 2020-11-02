@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import {
   IonButton,
   IonCard,
@@ -6,6 +6,7 @@ import {
   IonCol,
   IonGrid,
   IonIcon,
+  IonModal,
   IonSlide,
   IonSlides,
 } from '@ionic/react'
@@ -15,17 +16,32 @@ import './Onboarding.css'
 // import '@ionic/react/css/flex-utils.css'
 
 const Onboarding: React.FC = () => {
-  let [showSkip, setSkip] = React.useState(true)
+  const [showSkip, setSkip] = useState(true)
+
+  const [showModal, setShowModal] = useState(true)
 
   const ionSlideChanged = (e: CustomEvent) => {
     const target: any = e.target
     setSkip(!target.swiper.isEnd)
   }
 
+  const closeModal = () => {
+    setShowModal(false)
+  }
+
+  /** 
+<IonModal isOpen={Boolean(showModal)} cssClass='minigame-modal'>
+        <IonContent>
+          {<CurrentGameComponent done={closeModal} state={gameState.load(currentNode.id)} />}
+        </IonContent>
+</IonModal>
+*/
+
   return (
     <IonContent>
-      <IonGrid>
-        <IonCard className="ion-padding">
+      <IonModal isOpen={Boolean(showModal)}>
+      <IonCard className="ion-padding">
+        <IonGrid>
           <IonSlides pager onIonSlideDidChange={ionSlideChanged}>
             <IonSlide>
               <IonGrid class="ion-justify-content-center">
@@ -75,12 +91,14 @@ const Onboarding: React.FC = () => {
             id="skip"
             className="ion-padding"
             routerLink="/page/home" // is this ok? TODO check out
+            onClick={closeModal}
           >
             {showSkip ? 'Skip this!' : 'Alright'}
           </IonButton>
           {/** TODO skip-function here */}
-        </IonCard>
-      </IonGrid>
+        </IonGrid>
+      </IonCard>
+      </IonModal>
     </IonContent>
   )
 }
