@@ -17,19 +17,12 @@ const Onboarding: React.FC = () => {
   const [showSkip, setSkip] = useState(true)
   const [showModal, setShowModal] = useState(true)
 
-  /*
-  const toggleVisibility = useCallback(
-    () => setIsVisible(!isVisible),
-    [setIsVisible, isVisible]
-  );
-  */
-
   useEffect(() => {
     if (localStorage.getItem('onboarding')) {
       setShowModal(!showModal)
     }
   }, [])
-  
+
   const ionSlideChanged = (e: CustomEvent) => {
     const target: any = e.target
     setSkip(!target.swiper.isEnd)
