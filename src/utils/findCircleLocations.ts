@@ -1,6 +1,6 @@
 import { City, CityRecord, Location } from '../Types'
 
-export default function (node: SVGSVGElement, cities: readonly City[]): CityRecord<Location> {
+export default function (cities: readonly City[], node: SVGSVGElement): CityRecord<Location> {
   const [, , width, height] = node.getAttribute('viewBox')!.split(' ').map(parseFloat)
 
   return cities.reduce<any>((acc, city) => {
