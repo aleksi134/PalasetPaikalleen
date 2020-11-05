@@ -27,9 +27,7 @@ const MiniGame: React.FC<Props> = ({ state = initialState, done }) => {
     text3: '',
     text4: '',
   })
-  const [number, setNumber] = useState({
-    number1: Number,
-  })
+  const [number, setNumber] = useState<number>(state.number)
 
   const saveAndClose = () => done({ text, number })
 
@@ -37,7 +35,7 @@ const MiniGame: React.FC<Props> = ({ state = initialState, done }) => {
 
   const onInputChange = () => {
     let copyFormData = [...formData] as any
-    copyFormData.push({ 'text from field': text, 'numbers from field': number })
+    copyFormData.push({ 'text from field': text, 'numbers': number })
     console.log(copyFormData)
     setFormData(copyFormData)
   }
@@ -112,10 +110,10 @@ const MiniGame: React.FC<Props> = ({ state = initialState, done }) => {
         <IonItemDivider>Number type input</IonItemDivider>
         <IonItem>
           <IonInput
-            value={number.number1}
+            value={number}
             type="number"
             placeholder="Enter Number"
-          onIonChange={(e) => setNumber(parseInt(e.detail.value!, 10))}
+          onIonChange={e => setNumber(parseInt(e.detail.value!, 10))}
           ></IonInput>
         </IonItem>
       </IonList>
