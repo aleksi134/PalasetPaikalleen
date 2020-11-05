@@ -113,7 +113,8 @@ const MiniGame: React.FC<Props> = ({ state = initialState, done }) => {
             value={number}
             type="number"
             placeholder="Enter Number"
-          onIonChange={e => setNumber(parseInt(e.detail.value!, 10))}
+            onIonChange={e => setNumber(parseInt(e.detail.value!, 10))}
+            required
           ></IonInput>
         </IonItem>
       </IonList>
