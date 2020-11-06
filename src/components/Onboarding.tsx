@@ -1,8 +1,6 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import {
   IonButton,
-  IonCard,
-  IonContent,
   IonCol,
   IonGrid,
   IonIcon,
@@ -17,26 +15,19 @@ const Onboarding: React.FC = () => {
   const [showSkip, setSkip] = useState(true)
   const [showModal, setShowModal] = useState(true)
 
-  useEffect(() => {
-    if (localStorage.getItem('onboarding')) {
-      setShowModal(!showModal)
-    }
-  }, [])
-
   const ionSlideChanged = (e: CustomEvent) => {
     const target: any = e.target
     setSkip(!target.swiper.isEnd)
   }
 
   const closeModal = () => {
-    localStorage.setItem('onboarding', 'done')
-    setShowModal(!showModal)
+  localStorage.setItem('onboarding', 'done')
+  setShowModal(!showModal)
   }
 
   return (
-    <IonContent>
-      <IonModal isOpen={Boolean(showModal)}>
-        <IonCard className="ion-padding">
+      <IonModal isOpen={Boolean(showModal)} onDidDismiss={() => setShowModal(false)}>
+        <div>
           <IonGrid>
             <IonSlides pager onIonSlideDidChange={ionSlideChanged}>
               <IonSlide>
@@ -92,9 +83,8 @@ const Onboarding: React.FC = () => {
               {showSkip ? 'Skip this!' : 'Alright'}
             </IonButton>
           </IonGrid>
-        </IonCard>
+          </div>
       </IonModal>
-    </IonContent>
   )
 }
 

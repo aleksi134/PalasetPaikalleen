@@ -32,11 +32,6 @@ const appPages: AppPage[] = [
     url: '/page/Results',
     icon: flowerOutline
   },
-  {
-    title: 'Onboarding',
-    url: '/page/Onboarding',
-    icon: boatOutline
-  },
 
   // {
   //   title: 'Outbox',
