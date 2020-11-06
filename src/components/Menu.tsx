@@ -8,7 +8,7 @@ import {
   IonMenu,
   IonMenuToggle
 } from '@ionic/react'
-import { flowerOutline, mapOutline, boatOutline } from 'ionicons/icons'
+import { flowerOutline, mapOutline } from 'ionicons/icons'
 import React from 'react'
 import { useLocation } from 'react-router-dom'
 import './Menu.css'
@@ -32,7 +32,6 @@ const appPages: AppPage[] = [
     url: '/page/Results',
     icon: flowerOutline
   },
-
   // {
   //   title: 'Outbox',
   //   url: '/page/Outbox',
