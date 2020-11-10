@@ -5,6 +5,9 @@ export type MapNode = {
   adj: City[] // list of adjacent nodes
   theme: Theme,
   isBonus?: boolean
+
+  // result type
+  // isdone fn checker
 }
 
 export const nodes: MapNode[] = [
@@ -21,48 +24,48 @@ export const nodes: MapNode[] = [
   {
     id: 'kuopio',
     adj: ['joensuu', 'jyvaskyla'],
-    theme: 'itsetuntemus',
+    theme: 'tyoelamatietous',
   },
 
   {
     id: 'joensuu',
     adj: ['kuopio'],
-    theme: 'itsetuntemus',
+    theme: 'tyoelamatietous',
   },
   {
     id: 'lappeenranta',
     adj: ['helsinki'],
-    theme: 'itsetuntemus',
+    theme: 'tietojaopiskelusta',
   },
   {
     id: 'jyvaskyla',
     adj: ['tampere', 'kuopio', 'vaasa'],
-    theme: 'itsetuntemus',
+    theme: 'tietojaopiskelusta',
   },
   {
     id: 'tampere',
     adj: ['jyvaskyla', 'turku'],
-    theme: 'itsetuntemus',
+    theme: 'elamantilanne',
   },
   {
     id: 'vaasa',
     adj: ['jyvaskyla'],
-    theme: 'itsetuntemus',
+    theme: 'elamantilanne',
   },
   {
     id: 'turku',
     adj: ['helsinki', 'tampere'],
-    theme: 'itsetuntemus',
+    theme: 'valintojentekeminen',
   },
   {
     id: 'helsinki',
     adj: ['lappeenranta', 'turku'],
-    theme: 'itsetuntemus',
+    theme: 'valintojentekeminen',
   },
   {
     id: 'maarianhamina',
     adj: [],
-    theme: 'itsetuntemus',
+    theme: 'bonus',
     isBonus: true
   }
 ]

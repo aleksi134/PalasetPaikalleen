@@ -4,27 +4,12 @@ import { MapNode, nodes } from '../GameData'
 import gameState from '../GameState'
 import { CITIES, CityRecord, Location } from '../Types'
 import findCircleLocations from '../utils/findCircleLocations'
-import './GameMap.css'
+import './GameMap.scss'
 import MapSvg from './MapSvg'
-import Helsinki from './minigames/Helsinki'
-import Kuopio from './minigames/Kuopio'
-import Lappeenranta from './minigames/Lappeenranta'
+import MiniGame from './minigames/MiniGame'
 import Node from './Node'
 import Pawn from './Pawn'
-
-const cityGameMap: CityRecord<FC<any>> = {
-  rovaniemi: Lappeenranta,
-  oulu: Lappeenranta,
-  kuopio: Kuopio,
-  joensuu: Lappeenranta,
-  lappeenranta: Lappeenranta,
-  jyvaskyla: Lappeenranta,
-  tampere: Lappeenranta,
-  vaasa: Lappeenranta,
-  turku: Lappeenranta,
-  helsinki: Helsinki,
-  maarianhamina: Helsinki,
-}
+import ProgressMeter from './ProgressMeter'
 
 interface Props {
   name: string
@@ -37,11 +22,10 @@ const Home: React.FC<Props> = () => {
   const pawnLocation = circleLocations?.[currentNode.id] || null
 
   const timeout = useRef<NodeJS.Timeout>()
-  const CurrentGameComponent = cityGameMap[currentNode.id]
 
   const closeModal = (result: any) => {
     setShowModal(false)
-    console.log({result})
+    console.log({ result })
     gameState.save(currentNode.id, result)
   }
 
@@ -66,17 +50,19 @@ const Home: React.FC<Props> = () => {
         Klikkaa kartan palloja avataksesi tehtävän
       </p>
 
+
       <div className="map-container">
         {circleLocations && nodes.map(node =>
           <Node key={node.id} node={node} location={circleLocations[node.id]} onClick={onClickNode} />)}
 
         <MapSvg svgRefCallback={svgRefCallback} />
         <Pawn location={pawnLocation} />
+        <ProgressMeter />
       </div>
 
       <IonModal isOpen={Boolean(showModal)} cssClass='minigame-modal'>
         <IonContent>
-          {<CurrentGameComponent done={closeModal} state={gameState.load(currentNode.id)} />}
+          <MiniGame node={currentNode} done={closeModal} />
         </IonContent>
       </IonModal>
     </div>

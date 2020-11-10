@@ -2,7 +2,7 @@ import { IonButton, IonCard, IonCardContent, IonItem, IonLabel } from '@ionic/re
 import React, { useState } from 'react'
 import { Result } from '../../GameState'
 import MultiSelect from '../MultiSelect'
-import './Minigame.css'
+// import './Minigame.css'
 
 interface Props {
   state: Result
@@ -19,8 +19,7 @@ const MiniGame: React.FC<Props> = ({ state, done }) => {
   const saveAndClose = () => done(result)
 
   return (
-      <div className="container minigame">
-
+      <div>
         <IonCard>
           <IonItem>
             <img style={{ width: '60px' }} src="assets/kuunteleva.png" alt="kuunteleva" slot="start" />

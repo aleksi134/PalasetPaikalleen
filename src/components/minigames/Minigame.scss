@@ -1,0 +1,24 @@
+.minigame.container {
+	ion-label {
+		text-overflow: unset;
+		white-space: pre-wrap;
+	}
+
+  video {
+		margin-bottom: 1rem;
+		width: 100%;
+	}
+
+ .button.done {
+		margin-top: 2rem;
+		width: 75%;
+		font-weight: bold;
+	}
+
+	.theme {
+		text-align: left;
+		padding: 0.8rem;
+		color: #FFF;
+		font-weight: bolder;
+	}
+}

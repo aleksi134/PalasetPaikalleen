@@ -2,7 +2,7 @@ import { IonButton, IonCard, IonCardContent, IonCol, IonGrid, IonInput, IonItem,
 import React, { useState } from 'react'
 import { Result } from '../../GameState'
 import MultiSelect from '../MultiSelect'
-import './Minigame.css'
+// import './Minigame.css'
 import { uniq } from 'lodash'
 import ProgressMeter from '../ProgressMeter'
 
@@ -32,7 +32,7 @@ const MiniGame: React.FC<Props> = ({ state = [], done }) => {
   const saveAndClose = () => done(result)
 
   return (
-    <div className="container minigame lappeenranta">
+    <div>
 
       <IonCard>
         <IonItem>

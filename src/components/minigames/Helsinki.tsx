@@ -1,7 +1,7 @@
 import { IonButton, IonCard, IonCardContent, IonInput, IonItem, IonItemDivider, IonLabel, IonList } from '@ionic/react'
 import React, { useState } from 'react'
 import { Result } from '../../GameState'
-import './Minigame.css'
+// import './Minigame.css'
 
 interface Props {
   state: Result
@@ -17,7 +17,7 @@ const MiniGame: React.FC<Props> = ({ state = initialState, done }) => {
   const saveAndClose = () => done({text, number})
 
   return (
-      <div className="container minigame">
+      <div>
 
         <IonCard>
           <IonItem>
