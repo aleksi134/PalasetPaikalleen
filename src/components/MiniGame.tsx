@@ -1,25 +1,26 @@
 import React, { CSSProperties, FC } from 'react'
-import { MapNode } from '../../GameData'
-import { Result } from '../../GameState'
-import { CityRecord, THEME_COLORS, THEME_NAMES } from '../../Types'
-import Helsinki from './Helsinki'
-import Kuopio from './Kuopio'
-import Lappeenranta from './Lappeenranta'
+import { MapNode } from '../GameData'
+import { Result } from '../GameState'
+import { CityRecord, THEME_COLORS, THEME_NAMES } from '../Types'
+import Helsinki from './assignments/Helsinki'
+import Kuopio from './assignments/Kuopio'
+import Lappeenranta from './assignments/Lappeenranta'
+import Template from './assignments/Template'
 import './Minigame.scss'
-import gameState from '../../GameState'
+import gameState from '../GameState'
 
 const cityGameMap: CityRecord<FC<any>> = {
-  rovaniemi: Lappeenranta,
-  oulu: Lappeenranta,
+  rovaniemi: Template,
+  oulu: Template,
   kuopio: Kuopio,
-  joensuu: Lappeenranta,
+  joensuu: Template,
   lappeenranta: Lappeenranta,
-  jyvaskyla: Lappeenranta,
-  tampere: Lappeenranta,
-  vaasa: Lappeenranta,
-  turku: Lappeenranta,
+  jyvaskyla: Template,
+  tampere: Template,
+  vaasa: Template,
+  turku: Template,
   helsinki: Helsinki,
-  maarianhamina: Helsinki,
+  maarianhamina: Template,
 }
 
 type Done = (result: Result) => void
@@ -43,7 +44,7 @@ const MiniGame: React.FC<Props> = ({ node, done }) => {
 
   return (
     <div className={classes.join(' ')}>
-      <div className="theme" style={themeStyle}>{themeName}</div>
+      <div className="theme-bar" style={themeStyle}>{themeName}</div>
       <CurrentGameComponent state={state} done={done} />
     </div>
   )

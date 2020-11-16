@@ -1,6 +1,7 @@
 import { IonButton, IonCard, IonCardContent, IonInput, IonItem, IonItemDivider, IonLabel, IonList } from '@ionic/react'
 import React, { useState } from 'react'
 import { Result } from '../../GameState'
+import AssignmentInstructions from '../AssignmentInstructions'
 // import './Minigame.css'
 
 interface Props {
@@ -19,18 +20,12 @@ const MiniGame: React.FC<Props> = ({ state = initialState, done }) => {
   return (
       <div>
 
-        <IonCard>
-          <IonItem>
-            <img style={{ width: '60px' }} src="assets/kuunteleva.png" alt="kuunteleva" slot="start" />
-            <IonLabel>Formeja alla</IonLabel>
-          </IonItem>
+        <AssignmentInstructions
+          title='Formeja alla'
+          description='Alta löytyy täytettäviä formeja'
+        />
 
-          <IonCardContent>
-            <p>Alta löytyy täytettäviä formeja.</p>
-          </IonCardContent>
-        </IonCard>
-
-        <IonList>
+      <IonList>
           <IonItemDivider>Default Input with Placeholder</IonItemDivider>
           <IonItem>
             <IonInput value={text} placeholder="Enter Input" onIonChange={e => setText(e.detail.value!)}></IonInput>

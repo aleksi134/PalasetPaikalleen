@@ -23,11 +23,11 @@ export const THEMES = [
 ]
 
 export const THEME_COLORS: Record<Theme, string> = {
-  itsetuntemus: '#2686EC',
-  tyoelamatietous: '#179976',
-  tietojaopiskelusta: '#683E8B',
-  elamantilanne: '#F36916',
-  valintojentekeminen: '#79CAF2'
+  itsetuntemus: '#4A69CF',
+  tyoelamatietous: '#3AB844',
+  tietojaopiskelusta: '#D03A5D',
+  elamantilanne: '#D0D341',
+  valintojentekeminen: '#A342C9'
 }
 
 export const THEME_COLOR_INACTIVE = '#E3E3E3'

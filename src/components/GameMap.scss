@@ -49,18 +49,19 @@
 }
 
 .map-container .dot {
-  width: 14%;
-  height: 7%;
-  background-color: gray;
+  width: 13%;
+  height: 6.5%;
+  background-color: #979797;
   border-radius: 100%;
-  border: 7px solid #1d7f87;
+  border: 5px solid #1d7f87;
   position: absolute;
   transform: translate(-50%, -50%);
   transform-origin: 0 0;
 }
 
 .map-container .dot.available {
-  background-color: #0c3bff;
+  // background-color: #0c3bff;
+  background-color: #FFF;
   border-radius: 100%;
   position: absolute;
   animation: dot-pulse 2s infinite;
@@ -111,6 +112,10 @@
   transform-origin: 0 0;
 
   animation: pop-in-delay 1.5s;
+
+  div[title="pawn"] {
+    transform: scale(1.4) translateY(-5%);
+  }
 }
 
 .map-container .pawn img {
@@ -121,5 +126,5 @@
 .map-container .progress-meter {
   position: absolute;
   left: 0;
-  top: 37.5%;
+  top: 38.5%;
 }

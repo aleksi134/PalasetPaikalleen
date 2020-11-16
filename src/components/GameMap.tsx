@@ -1,4 +1,4 @@
-import { IonContent, IonModal } from '@ionic/react'
+import { IonContent, IonModal, useIonViewDidEnter } from '@ionic/react'
 import React, { FC, useCallback, useRef, useState } from 'react'
 import { MapNode, nodes } from '../GameData'
 import gameState from '../GameState'
@@ -6,7 +6,7 @@ import { CITIES, CityRecord, Location } from '../Types'
 import findCircleLocations from '../utils/findCircleLocations'
 import './GameMap.scss'
 import MapSvg from './MapSvg'
-import MiniGame from './minigames/MiniGame'
+import MiniGame from './MiniGame'
 import Node from './Node'
 import Pawn from './Pawn'
 import ProgressMeter from './ProgressMeter'
@@ -43,6 +43,8 @@ const Home: React.FC<Props> = () => {
 
   const svgRefCallback = useCallback((node: SVGSVGElement) =>
     setCircleLocations(findCircleLocations(CITIES, node)) , [])
+
+  // useIonViewDidEnter(() => setShowModal(true))
 
   return (
     <div className="container ion-padding">

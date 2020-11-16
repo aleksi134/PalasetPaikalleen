@@ -5,6 +5,7 @@ import MultiSelect from '../MultiSelect'
 // import './Minigame.css'
 import { uniq } from 'lodash'
 import ProgressMeter from '../ProgressMeter'
+import AssignmentInstructions from '../AssignmentInstructions'
 
 interface Props {
   state: string[]
@@ -34,18 +35,11 @@ const MiniGame: React.FC<Props> = ({ state = [], done }) => {
   return (
     <div>
 
-      <IonCard>
-        <IonItem>
-          <img style={{ width: '60px' }} src="assets/kuunteleva.png" alt="kuunteleva" slot="start" />
-          <IonLabel>Vahvuudet</IonLabel>
-        </IonItem>
-
-        <IonCardContent>
-          <p> Meillä on kaikilla erilaisia vahvuuksia ja ne ovat hyödyksi urapolkusi mietinnässä. Mitkä ovat juuri sinun vahvuuksiasi?</p>
-          <br />
-          <p>Valitse oman persoonallisuutesi vahvimpia piirteitä. Sen jälkeen mieti, missä tilanteessa pystyt käyttämään niitä. Oletko sinä esimerkiksi hiljainen tarkkailija, jonka keskittymiskyky on auttanu opintojen tekemisessä? Vai oletko energinen tekijä, joka saa tehtävät tehtyä, vaikke niistä juuri välittäisi?</p>
-        </IonCardContent>
-      </IonCard>
+      <AssignmentInstructions title='Vahvuudet'>
+        <p> Meillä on kaikilla erilaisia vahvuuksia ja ne ovat hyödyksi urapolkusi mietinnässä. Mitkä ovat juuri sinun vahvuuksiasi?</p>
+        <br />
+        <p>Valitse oman persoonallisuutesi vahvimpia piirteitä. Sen jälkeen mieti, missä tilanteessa pystyt käyttämään niitä. Oletko sinä esimerkiksi hiljainen tarkkailija, jonka keskittymiskyky on auttanu opintojen tekemisessä? Vai oletko energinen tekijä, joka saa tehtävät tehtyä, vaikke niistä juuri välittäisi?</p>
+      </AssignmentInstructions>
 
       <MultiSelect options={options} selection={result} onChange={setResult} />
 
