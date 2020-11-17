@@ -33,7 +33,7 @@ const MiniGame: React.FC<Props> = ({ state = initialState, done }) => {
 
   const [formData, setFormData] = useState([])
 
-  const onInputChange = () => {
+  const inputSave = () => {
     let copyFormData = [...formData] as any
     copyFormData.push({ 'text from field': text, 'numbers': number })
     console.log(copyFormData)
@@ -41,7 +41,7 @@ const MiniGame: React.FC<Props> = ({ state = initialState, done }) => {
   }
 
   const saveOnClick = () => {
-    onInputChange()
+    inputSave()
     saveAndClose()
   }
 
@@ -70,7 +70,6 @@ const MiniGame: React.FC<Props> = ({ state = initialState, done }) => {
             placeholder="Enter Input"
             onIonChange={(e) => setText((prev) => ({ ...prev, text1: e.detail.value! }))}
             clearInput
-            required
           ></IonInput>
         </IonItem>
 
@@ -81,7 +80,6 @@ const MiniGame: React.FC<Props> = ({ state = initialState, done }) => {
             placeholder="Enter Input"
             onIonChange={(e) => setText((prev) => ({ ...prev, text2: e.detail.value! }))}
             clearInput
-            required
           ></IonInput>
         </IonItem>
 
@@ -92,7 +90,6 @@ const MiniGame: React.FC<Props> = ({ state = initialState, done }) => {
             placeholder="Enter Input"
             onIonChange={(e) => setText((prev) => ({ ...prev, text3: e.detail.value! }))}
             clearInput
-            required
           ></IonInput>
         </IonItem>
 
@@ -103,7 +100,6 @@ const MiniGame: React.FC<Props> = ({ state = initialState, done }) => {
             placeholder="Enter Input"
             onIonChange={(e) => setText((prev) => ({ ...prev, text4: e.detail.value! }))}
             clearInput
-            required
           ></IonInput>
         </IonItem>
 
@@ -114,7 +110,6 @@ const MiniGame: React.FC<Props> = ({ state = initialState, done }) => {
             type="number"
             placeholder="Enter Number"
             onIonChange={e => setNumber(parseInt(e.detail.value!, 10))}
-            required
           ></IonInput>
         </IonItem>
       </IonList>
