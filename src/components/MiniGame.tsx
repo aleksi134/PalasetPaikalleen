@@ -16,6 +16,7 @@ import Tyoelamatietous21 from './assignments/Tyoelamatietous-2.1'
 import Tyoelamatietous22 from './assignments/Tyoelamatietous-2.2'
 import Valintojentekeminen51 from './assignments/Valintojentekeminen-5.1'
 import Valintojentekeminen52 from './assignments/Valintojentekeminen-5.2'
+import TinderModule from './assignments/TinderModule'
 import './Minigame.scss'
 
 const cityGameMap: CityRecord<FC<any>[]> = {
@@ -27,7 +28,7 @@ const cityGameMap: CityRecord<FC<any>[]> = {
   turku: [Elamantilanne41],
   helsinki: [Elamantilanne42],
   lappeenranta: [Valintojentekeminen51],
-  tampere: [Template],
+  tampere: [TinderModule],
   rovaniemi: [Valintojentekeminen52],
   maarianhamina: [Lisatehtava13, Lisatehtava33],
 }

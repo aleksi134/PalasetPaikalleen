@@ -13,12 +13,17 @@ import {
   IonCardContent,
   IonItem,
   IonLabel,
+  IonList,
+  IonListHeader,
+  IonSelect,
+  IonSelectOption,
+  IonItemDivider,
 } from '@ionic/react'
-import TinderCard from 'react-tinder-card'
 import { pin, heart, closeCircle, close } from 'ionicons/icons'
+import TinderCard from 'react-tinder-card'
+import AssignmentInstructions from '../AssignmentInstructions'
 import { Result } from '../../GameState'
-// import TinderModule from './TinderModule';
-import './Minigame.scss'
+// import './Minigame.scss'
 
 interface Props {
   state: Result
@@ -31,91 +36,96 @@ const db = [
     name: 'agrologi',
     url: 'assets/tinder-img/agrologi.png',
     institute: 'polytechnical',
-    theme: 'maatalous', // theme could be also keyword/s, also my thematising is bad
+    field: 'Maa- ja metsätalous', // is there better synonym?
   },
   {
     name: 'arkeologia',
     url: 'assets/tinder-img/arkeologia.png',
     institute: 'university',
-    theme: 'pitkäjänteisyys',
+    field: 'Humanistiset alat ja teologia',
   },
   {
     name: 'apuvalineteknikko',
     url: 'assets/tinder-img/apuvlineteknikko.png',
     institute: 'polytechnical',
-    theme: 'kädentaidot',
+    field: 'Terveys ja hyvinvointi',
   },
   {
     name: 'artenomi',
     url: 'assets/tinder-img/artenomi.png',
     institute: 'polytechnical',
-    theme: 'kädentaidot',
+    field: 'Taiteet ja kulttuuri',
   },
   {
     name: 'bioanalyytikko',
     url: 'assets/tinder-img/bioanalyytikko.png',
     institute: 'polytechnical',
-    theme: 'kädentaidot',
+    field: 'Terveys ja hyvinvointi',
   },
   {
     name: 'ensihoitaja',
     url: 'assets/tinder-img/ensihoitaja.png',
     institute: 'polytechnical',
-    theme: 'hoiva-ala',
+    field: 'Terveys ja hyvinvointi',
   },
 ]
 
 const MiniGame: React.FC<Props> = ({ state, done }) => {
   const occupations = db
-  let occupationDir: any[] = [] // this is for saving swiped data
+  let occupationDir: any[] = [] // this is for saving swiped data, though might be obsolete (TODO remove)
 
   const [lastDirection, setLastDirection] = useState<string>() // We need directions for user to organize cards in to piles of no / maybe / yes - check instructions in Korkeakoulukortit-2020-2.pdf
   const [result, setResult] = useState<Result>(state)
   const saveAndClose = () => done(result)
+  // const [chips, setChips] = useState('')  // TODO make chips happen
 
   const swiped = (
     direction: React.SetStateAction<string | undefined>,
     nameToDelete: string,
     institute: string,
-    theme: string
+    field: string
   ) => {
     // these typing are 'quick fix'
     console.log('You swiped: ' + direction)
-    console.log('removing ' + nameToDelete + ' from ' + institute + ' with theme of ' + theme)
-    occupationDir.push({ dir: direction, name: nameToDelete, institute: institute, theme: theme }) // saving everything just in case calculator needs it
+    console.log('removing ' + nameToDelete + ' from ' + institute + ' with field of ' + field)
+    occupationDir.push({ dir: direction, name: nameToDelete, institute: institute, field: field }) // saving everything just in case calculator needs it
     console.log(occupationDir)
     setResult(occupationDir) // ???
-    setLastDirection(direction)
+    setLastDirection(direction) // direction latDirection might be obsolete TODO maybe remove
   }
 
   const outOfFrame = (name: string) => {
     console.log(name + ' left the screen')
-  } // TODO maybe remove
+  } // Likely this isn't needed (TODO maybe remove)
 
   return (
-    <div className="container minigame">
-      <IonCard>
-        <IonItem>
-          <img
-            style={{ width: '60px' }}
-            src="assets/kuunteleva.png"
-            alt="kuunteleva"
-            slot="start"
-          />
-          <IonLabel>Kohti korkeakoulua!</IonLabel>
-        </IonItem>
+    <div className="assignment">
+      <AssignmentInstructions
+        title="3.2 KOULUTUSALAT"
+        description="Polut työelämään ja unelmien ammattiin voivat olla hyvin monenlaiset. Kuinka hyvin tunnet korkeakouluissa opiskeltavat alat? Mitä kaikkia sinua kiinnostavaan alaan liittyviä opiskeluvaihtoehtoja Suomesta löytyy? Tutustu Korkeakoulukorttien avulla eri aloihin, niihin liittyviin ammatteihin, työtehtäviin, vaatimuksiin sekä taitoihin. Valitse itsellesi korteista vähintään kolme tai enintään kuusi kiinnostavaa alaa ja tutustu niiden sisältöihin tarkemmin."
+      />
 
+      {/* Insert swiping tutorial somewhere TODO
+      <p> 
+        Tässä on ammattikorkeakoulujen ja yliopistojen koulutusalat esittelyssä. Käy kortteja
+        läpi laittaen ne kolmeen korttipinoon (kyllä, ei ja ehkä -pinot) swaippaamalla. Swaippaa
+        oikealle kiinnostavat, ylös tai alas ehkä kiinnostavat ja vasemmalle ei kiinnostavat
+        kortit.
+      </p> */}
+
+      <IonCard>
         <IonCardContent>
-          <p>
-            Tässä on ammattikorkeakoulujen ja yliopistojen koulutusalat esittelyssä. Käy kortteja
-            läpi laittaen ne kolmeen korttipinoon (kyllä, ei ja ehkä -pinot) swaippaamalla. Swaippaa
-            oikealle kiinnostavat, ylös tai alas ehkä kiinnostavat ja vasemmalle ei kiinnostavat
-            kortit.
-          </p>
+          {/* TODO insert ion-select */}
+          <IonItem>
+          <IonLabel>Valitse ala</IonLabel>
+          <IonSelect interface="alert" multiple> 
+            {occupations.map((occupation) => ( /* just testing if this works TODO make sure this works */
+                <IonSelectOption key={occupation.name} value={occupation.field}>{occupation.field}</IonSelectOption>
+            ))}
+            <IonSelectOption value="merkkijono">Testimerkkijono</IonSelectOption> {/* TODO remove because this are obsolete */}
+          </IonSelect>
+        </IonItem>
         </IonCardContent>
-      </IonCard>
-
-      <IonCard>
         <div className="module">
           <div className="cardContainer">
             {occupations.map((occupation) => (
@@ -123,7 +133,7 @@ const MiniGame: React.FC<Props> = ({ state, done }) => {
                 className="swipe"
                 key={occupation.name}
                 onSwipe={(dir: React.SetStateAction<string | undefined>) =>
-                  swiped(dir, occupation.name, occupation.institute, occupation.theme)
+                  swiped(dir, occupation.name, occupation.institute, occupation.field)
                 }
                 onCardLeftScreen={() => outOfFrame(occupation.name)}
               >
@@ -143,45 +153,9 @@ const MiniGame: React.FC<Props> = ({ state, done }) => {
         </div>
         {/* ' Add "swipe to direction X" buttons?' */}
         <IonCardContent>
-          {/* <IonChip>
-          <IonLabel>Default</IonLabel>
-        </IonChip>
-
-        <IonChip>
-          <IonLabel color="secondary">Secondary Label</IonLabel>
-        </IonChip>
-
-        <IonChip color="secondary">
-          <IonLabel color="dark">Secondary w/ Dark label</IonLabel>
-        </IonChip>
-
-        <IonChip>
-          <IonIcon icon={pin} />
-          <IonLabel>Default</IonLabel>
-        </IonChip>
-
-        <IonChip>
-          <IonIcon icon={heart} color="dark" />
-          <IonLabel>Default</IonLabel>
-        </IonChip> */}
-
           <IonChip>
-            <IonLabel>Button Chip</IonLabel> {/* Label comes from state (e.g. swipedRight, setSwipedRight) */}
-            <IonIcon icon={closeCircle} />
-          </IonChip>
-
-          {/*
-        <IonChip>
-          <IonIcon icon={pin} color="primary" />
-          <IonLabel>Icon Chip</IonLabel>
-          <IonIcon icon={close} />
-        </IonChip> */}
-
-          <IonChip>
-            <IonAvatar>
-              <img src="https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y" /> {/* Palaset paikalleen asset tähän? */}
-            </IonAvatar>
-            <IonLabel>Avatar Chip</IonLabel> {/* Label comes from state (e.g. swipedRight, setSwipedRight) */}
+            <IonLabel>Button Chip</IonLabel>{' '}
+            {/* Label comes from state (e.g. swipedRight, setSwipedRight) */}
             <IonIcon icon={closeCircle} />
           </IonChip>
         </IonCardContent>
