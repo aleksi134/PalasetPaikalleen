@@ -32,33 +32,7 @@ const MiniGame: React.FC<Props> = ({ state = initialState, done }) => {
 
   const saveAndClose = () => done({ text, number })
 
-<<<<<<< HEAD:src/components/minigames/Helsinki.tsx
   const [formData, setFormData] = useState([])
-=======
-  return (
-      <div>
-
-        <AssignmentInstructions
-          title='Formeja alla'
-          description='Alta löytyy täytettäviä formeja'
-        />
-
-      <IonList>
-          <IonItemDivider>Default Input with Placeholder</IonItemDivider>
-          <IonItem>
-            <IonInput value={text} placeholder="Enter Input" onIonChange={e => setText(e.detail.value!)}></IonInput>
-          </IonItem>
-
-          <IonItemDivider>Input with clear button when there is a value</IonItemDivider>
-          <IonItem>
-            <IonInput value={text} placeholder="Enter Input" onIonChange={e => setText(e.detail.value!)} clearInput></IonInput>
-          </IonItem>
-
-          <IonItemDivider>Number type input</IonItemDivider>
-          <IonItem>
-            <IonInput type="number" value={number} placeholder="Enter Number" onIonChange={e => setNumber(parseInt(e.detail.value!, 10))}></IonInput>
-          </IonItem>
->>>>>>> 0d316f4a58f3c814c1e4aaa0f52f6a48bd40b49b:src/components/assignments/Helsinki.tsx
 
   const inputSave = () => {
     let copyFormData = [...formData] as any
@@ -73,22 +47,13 @@ const MiniGame: React.FC<Props> = ({ state = initialState, done }) => {
   }
 
   return (
-    <div className="container minigame">
-      <IonCard>
-        <IonItem>
-          <img
-            style={{ width: '60px' }}
-            src="assets/kuunteleva.png"
-            alt="kuunteleva"
-            slot="start"
-          />
-          <IonLabel>Formeja alla</IonLabel>
-        </IonItem>
+    <div>
 
-        <IonCardContent>
-          <p>Alta löytyy täytettäviä formeja.</p>
-        </IonCardContent>
-      </IonCard>
+      <AssignmentInstructions
+          title='Formeja alla'
+          description='Alta löytyy täytettäviä formeja'
+        />
+
       <IonList>
         <IonItemDivider>Input with clear button when there is a value</IonItemDivider>
         <IonItem>
