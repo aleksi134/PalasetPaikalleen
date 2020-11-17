@@ -5,6 +5,7 @@ import { CityRecord, THEME_COLORS, THEME_NAMES } from '../Types'
 import Helsinki from './assignments/Helsinki'
 import Kuopio from './assignments/Kuopio'
 import Itsetuntemus11 from './assignments/Itsetuntemus-1.1'
+import Itsetuntemus12 from './assignments/Itsetuntemus-1.2'
 import Template from './assignments/Template'
 import './Minigame.scss'
 import gameState from '../GameState'
@@ -12,10 +13,10 @@ import { IonButton, IonIcon } from '@ionic/react'
 import { close } from 'ionicons/icons'
 
 const cityGameMap: CityRecord<FC<any>> = {
+  kuopio: Itsetuntemus11,
+  joensuu: Itsetuntemus12,
   rovaniemi: Template,
   oulu: Template,
-  kuopio: Itsetuntemus11,
-  joensuu: Template,
   lappeenranta: Template,
   jyvaskyla: Template,
   tampere: Template,
@@ -47,7 +48,8 @@ const MiniGame: React.FC<Props> = ({ node, done, cancel }) => {
 
   return (
     <div className={classes.join(' ')}>
-      <div className="theme-bar" style={themeStyle}>{themeName}
+      <div className="theme-bar" style={themeStyle}>
+        {themeName}
         <IonButton className="cancel" onClick={cancel} color="dark" shape="round" size="small">
           <IonIcon slot="icon-only" icon={close} />
         </IonButton>
