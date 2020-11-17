@@ -22,24 +22,24 @@ export const nodes: MapNode[] = [
     theme: 'itsetuntemus',
   },
   {
-    id: 'rovaniemi',
-    adj: ['oulu'],
-    theme: 'itsetuntemus',
-  },
-  {
     id: 'oulu',
     adj: ['rovaniemi', 'kuopio'],
-    theme: 'tietojaopiskelusta',
-  },
-  {
-    id: 'lappeenranta',
-    adj: ['helsinki'],
     theme: 'tyoelamatietous',
   },
   {
     id: 'jyvaskyla',
     adj: ['tampere', 'kuopio', 'vaasa'],
-    theme: 'tietojaopiskelusta',
+    theme: 'tyoelamatietous',
+  },
+  {
+    id: 'rovaniemi',
+    adj: ['oulu'],
+    theme: 'itsetuntemus',
+  },
+  {
+    id: 'lappeenranta',
+    adj: ['helsinki'],
+    theme: 'tyoelamatietous',
   },
   {
     id: 'tampere',

@@ -6,6 +6,7 @@ import Helsinki from './assignments/Helsinki'
 import Kuopio from './assignments/Kuopio'
 import Itsetuntemus11 from './assignments/Itsetuntemus-1.1'
 import Itsetuntemus12 from './assignments/Itsetuntemus-1.2'
+import Tyoelamatietous21 from './assignments/Tyoelamatietous-2.1'
 import Template from './assignments/Template'
 import './Minigame.scss'
 import gameState from '../GameState'
@@ -15,10 +16,10 @@ import { close } from 'ionicons/icons'
 const cityGameMap: CityRecord<FC<any>> = {
   kuopio: Itsetuntemus11,
   joensuu: Itsetuntemus12,
-  rovaniemi: Template,
   oulu: Template,
+  jyvaskyla: Tyoelamatietous21,
+  rovaniemi: Template,
   lappeenranta: Template,
-  jyvaskyla: Template,
   tampere: Template,
   vaasa: Template,
   turku: Template,
