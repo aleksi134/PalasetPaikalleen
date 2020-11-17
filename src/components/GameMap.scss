@@ -1,0 +1,130 @@
+.container {
+  text-align: center;
+  /* position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);  */
+
+  strong {
+    font-size: 20px;
+    line-height: 26px;
+  }
+
+  p {
+    font-size: 16px;
+    line-height: 22px;
+    color: #8c8c8c;
+    margin: 0;
+  }
+
+  a {
+    text-decoration: none;
+  }
+
+  .instructions {
+    padding: 1rem 0;
+  }
+}
+
+.map-container {
+  position: relative;
+}
+
+@keyframes dot-pulse {
+  0% {
+    transform: scale(0.95) translate(-50%, -50%);
+    box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.5);
+  }
+
+  70% {
+    transform: scale(1) translate(-50%, -50%);
+    box-shadow: 0 0 0 10px rgba(0, 0, 0, 0);
+  }
+
+  100% {
+    transform: scale(0.95) translate(-50%, -50%);
+    box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+  }
+}
+
+.map-container .dot {
+  width: 13%;
+  height: 6.5%;
+  background-color: #979797;
+  border-radius: 100%;
+  border: 5px solid #1d7f87;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  transform-origin: 0 0;
+}
+
+.map-container .dot.available {
+  // background-color: #0c3bff;
+  background-color: #FFF;
+  border-radius: 100%;
+  position: absolute;
+  animation: dot-pulse 2s infinite;
+}
+
+.map-container .dot.completed {
+  background-color: #54c14f;
+  border-radius: 100%;
+  position: absolute;
+  animation: none;
+}
+
+.container .instructions {
+  margin-bottom: 30px;
+}
+
+@keyframes pop-in-delay {
+  0% {
+    opacity: 0;
+    transform: scale(0.5) translate(-50%, -50%);
+  }
+  60% {
+    opacity: 0;
+    transform: scale(0.5) translate(-50%, -50%);
+  }
+  80% {
+    opacity: 1;
+    transform: scale(1.3) translate(-50%, -50%);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translate(-50%, -50%);
+  }
+}
+
+.map-container .pawn {
+  position: absolute;
+  width: 60px;
+  height: 60px;
+  border-radius: 100%;
+  padding: 10px;
+  background: #fff;
+  border: 3px solid #2bb6c5;
+  pointer-events: none;
+
+  transition: top 1.5s, left 1.5s;
+  transform: translate(-50%, -50%);
+  transform-origin: 0 0;
+
+  animation: pop-in-delay 1.5s;
+
+  div[title="pawn"] {
+    transform: scale(1.4) translateY(-5%);
+  }
+}
+
+.map-container .pawn img {
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.map-container .progress-meter {
+  position: absolute;
+  left: 0;
+  top: 38.5%;
+}

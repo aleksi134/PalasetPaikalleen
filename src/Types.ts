@@ -14,16 +14,34 @@ export const CITIES = [
 ] as const
 
 export const THEMES = [
-	  'itsetuntemus',
-	  'tyoelamatietous',
-	  'tietojaopiskelusta',
-	  'elamantilanne',
-	  'valintojentekeminen'
+  'itsetuntemus',
+  'tyoelamatietous',
+  'tietojaopiskelusta',
+  'elamantilanne',
+	'valintojentekeminen',
+	'bonus'
 ]
+
+export const THEME_COLORS: Record<Theme, string> = {
+  itsetuntemus: '#4A69CF',
+  tyoelamatietous: '#3AB844',
+  tietojaopiskelusta: '#D03A5D',
+  elamantilanne: '#D0D341',
+  valintojentekeminen: '#A342C9'
+}
+
+export const THEME_COLOR_INACTIVE = '#E3E3E3'
+
+export const THEME_NAMES: Record<Theme, string> = {
+  itsetuntemus: 'Itsetuntemus',
+  tyoelamatietous: 'Työelämätietous',
+  tietojaopiskelusta: 'Tietoja opiskelusta',
+  elamantilanne: 'Elämäntilanne',
+  valintojentekeminen: 'Valintojen tekeminene',
+}
 
 export type City = typeof CITIES[number]
 export type Theme = typeof THEMES[number]
 
 export type Location = { x: number; y: number }
-
 export type CityRecord<T> = { [key in City]: T }

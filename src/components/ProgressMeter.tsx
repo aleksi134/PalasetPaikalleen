@@ -1,132 +1,105 @@
-import React, { useEffect, useRef } from 'react'
-import { useGameState } from '../hooks/UseGameState'
+import React, { MouseEventHandler, RefObject, useEffect, useRef } from 'react'
+import { RouteComponentProps, withRouter } from 'react-router'
+import gameState from '../GameState'
+import { Theme, THEME_COLORS, THEME_COLOR_INACTIVE } from '../Types'
 import './ProgressMeter.scss'
 
-interface Props {}
+interface Props extends RouteComponentProps<any> {
+  // onClick: Function
+}
 
-// const themes = {
-//   itsetuntemus: {},
-//   tyoelamatietous: {},
-//   tietojaopiskelusta: {},
-//   elamantilanne: {},
-//   valintojentekeminen: {}
-// }
+const ProgressMeter: React.FC<Props> = ({ history }) => {
+  // const { progress } = useGameState()
 
-const ProgressMeter: React.FC<Props> = () => {
-  const { progress } = useGameState()
-  const chartRef = useRef<HTMLCanvasElement>(null)
+  const svgRef = useRef<SVGSVGElement>(null)
 
-  const oneDone = Boolean(progress.helsinki)
+  const refs: Record<Theme, RefObject<SVGPathElement>[]> = {
+    itsetuntemus: [useRef(null), useRef(null)],
+    tyoelamatietous: [useRef(null), useRef(null)],
+    tietojaopiskelusta: [useRef(null), useRef(null)],
+    elamantilanne: [useRef(null), useRef(null)],
+    valintojentekeminen: [useRef(null), useRef(null)]
+  }
 
+  // TODO: optimization
   useEffect(() => {
-    const canvas = chartRef.current!
-    const ctx = canvas.getContext('2d')!
+    const progress = gameState.themeProgress
 
-    const segments = 5
-    const centerX = canvas.width / 2
-    const centerY = canvas.height / 2
-    const padding = canvas.height / 100
-    const outerSegmentRadius = centerX - padding
-    const innerSegmentRadius = centerX / 1.4
-    const innerCircleRadius = centerX / 2.1
-    const fullCirceRad = Math.PI * 2
-    const segmentSize = fullCirceRad * (1 / segments)
+    for (const key in refs) {
+      const [innerSector, outerSector] = refs[key].map(r => r.current)
+      const themeProgress = progress[key]
+      const color = THEME_COLORS[key]
 
-    const defaultSegmentColor = '#E2E2E2'
-    const innerCircleColor = '#28ABC0'
-    const strokeColor = '#303030'
+      if (!innerSector || !outerSector) return
 
-    drawOuterSegments()
-    drawInnerSegments()
-    drawDividers()
-    drawInnerCircle()
-    drawText()
-    hideBorder()
-
-    function drawOuterSegments() {
-      let lastEnd = 0
-      for (let i = 0; i < segments; i++) {
-        drawSegment(lastEnd, lastEnd + segmentSize, outerSegmentRadius, defaultSegmentColor)
-        lastEnd += segmentSize
+      if (themeProgress === 0) {
+        innerSector.style.fill = THEME_COLOR_INACTIVE
+        outerSector.style.fill = THEME_COLOR_INACTIVE
       }
-    }
 
-    function drawInnerSegments() {
-      let lastEnd = 0
-      for (let i = 0; i < segments; i++) {
-        const segmentColor = oneDone && i === 2 ? '#179976' : defaultSegmentColor
-        // const segmentColor = defaultSegmentColor
-        drawSegment(lastEnd, lastEnd + segmentSize, innerSegmentRadius, segmentColor)
-        lastEnd += segmentSize
-      }
-    }
+      if (themeProgress >= 1)
+        innerSector.style.fill = color
 
-    function drawDividers() {
-      let lastEnd = 0
-      for (let i = 0; i < segments; i++) {
-        drawDivider(lastEnd, lastEnd + segmentSize, strokeColor)
-        lastEnd += segmentSize
-      }
-    }
-
-    function drawInnerCircle() {
-      ctx.fillStyle = innerCircleColor
-      ctx.strokeStyle = strokeColor
-      ctx.moveTo(centerX, centerY)
-      ctx.beginPath()
-      ctx.arc(centerX, centerY, innerCircleRadius, 0, fullCirceRad, false)
-      ctx.fill()
-      ctx.stroke()
-    }
-
-    function drawText() {
-      ctx.fillStyle = '#FFF'
-      ctx.font = 'bold 9px sans-serif'
-      ctx.textAlign = 'center'
-      ctx.fillText('UNELMIEN', canvas.width / 2, canvas.height / 2.1)
-      ctx.fillText('OPISKELUPAIKKA', canvas.width / 2, canvas.height / 1.85)
-    }
-
-    // TODO: hack
-    function hideBorder() {
-      ctx.strokeStyle = '#FFF'
-      ctx.lineWidth = 2
-      ctx.moveTo(centerX, centerY)
-      ctx.beginPath()
-      ctx.arc(centerX, centerY, outerSegmentRadius, 0, fullCirceRad, false)
-      ctx.stroke()
-    }
-
-    function drawSegment (start: number, stop: number, radius: number, color: string) {
-      ctx.fillStyle = color
-      ctx.beginPath()
-      ctx.moveTo(centerX, centerY)
-      ctx.arc(centerX, centerY, radius, start, stop, false)
-      ctx.lineTo(centerX, centerY)
-      ctx.fill()
-    }
-
-    function drawDivider (start: number, stop: number, color: string) {
-      ctx.lineWidth = 0.5
-      ctx.strokeStyle = color
-      ctx.beginPath()
-      ctx.moveTo(centerX, centerY)
-      ctx.arc(centerX, centerY, outerSegmentRadius, start, stop, false)
-      ctx.lineTo(centerX, centerY)
-      ctx.stroke()
+      if (themeProgress >= 2)
+        outerSector.style.fill = color
     }
 
   })
 
+  // useEffect(() => {
+  //   svgRef.current?.animate([
+  //     { transform: 'scale(1)' },
+  //     { transform: 'scale(1.5)' },
+  //     { transform: 'scale(1)' }
+  //   ], {
+  //     duration: 1000,
+  //     iterations: 1,
+  //     delay: 1000,
+  //     easing: 'ease'
+  //   });
+  // }, [])
+
+  const navigateToResults: MouseEventHandler = (e) => {
+    e.preventDefault()
+    history.push('/page/Results')
+  }
+
   return (
-    <div className="progress-meter">
-      <canvas width="200" height="200" ref={chartRef}></canvas>
-      {/* <div className="text-wrapper">
-        <span className="text">Unelmien <br /> opiskelupaikka</span>
-      </div> */}
+    <div onClick={navigateToResults} className="progress-meter">
+
+      <svg ref={svgRef} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 271 271">
+        <defs>
+          <style>{`.cls-1{fill:#e8e8e8;stroke:#d3d3d3;}.cls-1,.cls-2{stroke - miterlimit:10;}.cls-2{fill:#2bb9cc;stroke:#000;}`}</style>
+        </defs>
+        <g id="Layer_2" data-name="Layer 2">
+          <g id="progress">
+            <path ref={refs.itsetuntemus[1]} className="cls-1" d="M135,37a98,98,0,0,1,58,18.91l21.61-29.78a135,135,0,0,0-158.82.39L77.12,55.8A98.06,98.06,0,0,1,135,37Z" />
+            <path ref={refs.itsetuntemus[0]} className="cls-1" d="M77.12,55.8l58,79.75.13,0L193,55.91A98.5,98.5,0,0,0,77.12,55.8Z" />
+
+            <path ref={refs.tyoelamatietous[1]} className="cls-1" d="M36.5,135.5A98.36,98.36,0,0,1,77.12,55.8L55.82,26.52A135.13,135.13,0,0,0,7.1,177.28l34.26-11.17A98.3,98.3,0,0,1,36.5,135.5Z" />
+            <path ref={refs.tyoelamatietous[0]} className="cls-1" d="M135,135.5v.11l.17-.06-58-79.75A98.58,98.58,0,0,0,41.36,166.11L135,135.61Z" />
+
+            <path ref={refs.tietojaopiskelusta[1]} className="cls-1" d="M41.36,166.11,7.1,177.28A135,135,0,0,0,135,270.49V234A98.53,98.53,0,0,1,41.36,166.11Z" />
+            <path ref={refs.tietojaopiskelusta[0]} className="cls-1" d="M134.94,136l.06-.08v-.31l-93.64,30.5A98.53,98.53,0,0,0,135,234V135.92Z" />
+
+            <path ref={refs.elamantilanne[1]} className="cls-1" d="M214.64,26.13,193,55.91a98.59,98.59,0,0,1,35.74,109.81L264,177.12a135.12,135.12,0,0,0-49.31-151Z" />
+            <path ref={refs.elamantilanne[0]} className="cls-1" d="M135.93,135.19l-.09,0-.19.26,93.68,30.4a98.55,98.55,0,0,0-35.81-110l-57.68,79.32Z" />
+
+            <path ref={refs.valintojentekeminen[1]} className="cls-1" d="M135,234v36.49h.5A135.06,135.06,0,0,0,264,177.12l-35.18-11.4A98.53,98.53,0,0,1,135,234Z" />
+            <path ref={refs.valintojentekeminen[0]} className="cls-1" d="M136.15,135.38l-.06-.08-.3-.1-.2,98.49a98.54,98.54,0,0,0,93.69-67.82L136.09,135.3Z" />
+
+            <circle className="cls-2" cx="133" cy="135.5" r="61.5" />
+          </g>
+        </g>
+      </svg>
+
+
+      <div className="text-wrapper">
+        <span className="text">Unelmien<br />opiskelupaikka</span>
+      </div>
     </div>
   )
 }
 
-export default ProgressMeter
+export default withRouter(ProgressMeter)
 

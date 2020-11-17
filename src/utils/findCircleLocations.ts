@@ -5,6 +5,7 @@ export default function (cities: readonly City[], node: SVGSVGElement): CityReco
 
   return cities.reduce<any>((acc, city) => {
     const cityNode = node.querySelector(`.${city}`)!
+
     const cx = cityNode.getAttribute('cx')!
     const cy = cityNode.getAttribute('cy')!
 

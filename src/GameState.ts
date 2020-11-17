@@ -1,5 +1,5 @@
 import { MapNode, nodes } from './GameData'
-import { City, CityRecord } from './Types'
+import { City, CityRecord, Theme, THEMES } from './Types'
 import { keyBy } from 'lodash'
 
 // Localstorage game state key
@@ -38,6 +38,15 @@ class GameState {
     return this.nodes[this.currentLocation]
   }
 
+  get themeProgress(): Record<Theme, number> {
+    const nodes = Object.values(this.nodes)
+
+    return THEMES.reduce((acc, theme) => {
+      const count = nodes.filter((n) => n.theme === theme && this.isCompleted(n)).length
+      return { ...acc, [theme]: count }
+    }, {})
+  }
+
   subscribe(fn: Subscription): void {
     this.subscriptions.push(fn)
     fn(this.state)
@@ -70,20 +79,18 @@ class GameState {
   }
 
   canAdvance(node: MapNode): boolean {
-    if (node.id === this.currentLocation)
-      return true
+    if (node.id === this.currentLocation) return true
 
     if (node.isBonus)
       return Object.values(this.nodes)
-        .filter(n => !n.isBonus)
-        .every(node => Boolean(this.progress[node.id]))
+        .filter((n) => !n.isBonus)
+        .every((node) => Boolean(this.progress[node.id]))
 
-    return this.nodes[node.id].adj
-      .some(city => Boolean(this.progress[city]))
+    return this.nodes[node.id].adj.some((city) => Boolean(this.progress[city]))
   }
 
   private stateChanged(): void {
-    this.subscriptions.forEach(sub => sub(this.state))
+    this.subscriptions.forEach((sub) => sub(this.state))
     localStorage.setItem(STATE_KEY, JSON.stringify(this.state))
   }
 

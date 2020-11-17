@@ -1,33 +1,61 @@
+@keyframes sector-pulse {
+  0% {
+    transform: scale(1);
+    // box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.5);
+  }
+
+  50% {
+    transform: scale(1.2);
+    // box-shadow: 0 0 0 10px rgba(0, 0, 0, 0);
+  }
+
+  100% {
+    transform: scale(1);
+    // box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+  }
+}
+
+
+
 .progress-meter {
-  $width: 200px;
-  $height: 200px;
+  $size: 135px;
 
-  // position: relative;
-  width: $width;
-  height: $height;
-
-  // canvas {
-  //   position: absolute;
-  //   top: 0;
-  //   left: 0;
+  // svg.active {
+  //   animation: sector-pulse 2s;
   // }
 
-  // .text-wrapper {
-  //   position: absolute;
-  //   top: 88px;
-  //   left: 0;
-  //   width: $width;
+  path {
+    transition: fill 1.5s;
+    transition-delay: 0.5s;
+    // &.active {
+    //   animation: sector-pulse 2s infinite;
+    //   transform-origin: ;
+    // }
+  }
 
-  //   .text {
-  //     display: inline-block;
-  //     text-transform: uppercase;
-  //     color: #FFF;
-  //     font-size: 8px;
-  //     font-weight: bold;
-  //     text-align: center;
-  //     vertical-align: middle;
-  //   }
-  // }
+
+  position: relative;
+  width: $size;
+  height: $size;
+
+  .text-wrapper {
+    position: absolute;
+    top: 42%;
+    left: 0;
+    width: 100%;
+
+    .text {
+      width: 100%;
+      display: inline-block;
+      text-transform: uppercase;
+      color: #FFF;
+      font-size: 5.5px;
+      // font-size: 10%;
+      font-weight: bold;
+      text-align: center;
+      vertical-align: middle;
+    }
+  }
 
 }
 

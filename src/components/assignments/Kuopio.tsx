@@ -1,8 +1,9 @@
 import { IonButton, IonCard, IonCardContent, IonItem, IonLabel } from '@ionic/react'
 import React, { useState } from 'react'
 import { Result } from '../../GameState'
+import AssignmentInstructions from '../AssignmentInstructions'
 import MultiSelect from '../MultiSelect'
-import './Minigame.css'
+// import './Minigame.css'
 
 interface Props {
   state: Result
@@ -19,18 +20,12 @@ const MiniGame: React.FC<Props> = ({ state, done }) => {
   const saveAndClose = () => done(result)
 
   return (
-      <div className="container minigame">
+      <div className="assignment">
 
-        <IonCard>
-          <IonItem>
-            <img style={{ width: '60px' }} src="assets/kuunteleva.png" alt="kuunteleva" slot="start" />
-            <IonLabel>Mahdollisuuksien maailma</IonLabel>
-          </IonItem>
-
-          <IonCardContent>
-            <p>Katso video. Tiesitkö näistä videolla kerrotuista mahdollisuuksista? Rastita.</p>
-          </IonCardContent>
-        </IonCard>
+        <AssignmentInstructions
+          title='Mahdollisuuksien maailma'
+          description='Katso video. Tiesitkö näistä videolla kerrotuista mahdollisuuksista? Rastita.'
+        />
 
         <video controls src="assets/placeholder-video.mp4"></video>
 
