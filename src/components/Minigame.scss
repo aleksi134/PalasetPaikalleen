@@ -1,24 +1,42 @@
 .minigame.container {
-	ion-label {
-		text-overflow: unset;
-		white-space: pre-wrap;
-	}
+  ion-label {
+    text-overflow: unset;
+    white-space: pre-wrap;
+  }
 
   video {
-		margin-bottom: 1rem;
-		width: 100%;
-	}
+    margin-bottom: 1rem;
+    width: 100%;
+  }
 
- .button.done {
-		margin-top: 2rem;
-		width: 75%;
-		font-weight: bold;
-	}
+  .button.done {
+    margin-top: 2rem;
+    width: 75%;
+    font-weight: bold;
+  }
 
-	.theme-bar {
-		text-align: left;
-		padding: 0.8rem;
-		color: #FFF;
+  .theme-bar {
+    text-align: left;
+    padding: 0.8rem;
+    color: #fff;
 		font-weight: bolder;
-	}
+
+		.button.cancel {
+			position: absolute;
+			right: 3px;
+			top: 3px;
+		}
+  }
+
+  .instructions {
+    p {
+      margin-bottom: 1rem;
+    }
+  }
+
+  .footer {
+    .progress-meter {
+      display: inline-block;
+    }
+  }
 }

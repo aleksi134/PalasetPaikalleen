@@ -21,7 +21,7 @@ const AssignmentInstructions: React.FC<Props> = ({ title, description, children 
   }]
 
   return (
-    <IonCard>
+    <IonCard className="instructions">
       <IonItem>
         <Lottie
           options={{ animationData: animation }}

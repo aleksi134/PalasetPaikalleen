@@ -4,6 +4,8 @@ import gameState from '../GameState'
 import { Theme, THEME_COLORS, THEME_COLOR_INACTIVE } from '../Types'
 import './ProgressMeter.scss'
 
+type ProgressTheme = Exclude<Theme, 'bonus'>
+
 interface Props extends RouteComponentProps<any> {
   // onClick: Function
 }
@@ -13,7 +15,7 @@ const ProgressMeter: React.FC<Props> = ({ history }) => {
 
   const svgRef = useRef<SVGSVGElement>(null)
 
-  const refs: Record<Theme, RefObject<SVGPathElement>[]> = {
+  const refs: Record<ProgressTheme, RefObject<SVGPathElement>[]> = {
     itsetuntemus: [useRef(null), useRef(null)],
     tyoelamatietous: [useRef(null), useRef(null)],
     tietojaopiskelusta: [useRef(null), useRef(null)],
@@ -23,12 +25,12 @@ const ProgressMeter: React.FC<Props> = ({ history }) => {
 
   // TODO: optimization
   useEffect(() => {
-    const progress = gameState.themeProgress
+    const { bonus, ...progress } = gameState.themeProgress
 
     for (const key in refs) {
-      const [innerSector, outerSector] = refs[key].map(r => r.current)
-      const themeProgress = progress[key]
-      const color = THEME_COLORS[key]
+      const [innerSector, outerSector] = refs[key as ProgressTheme].map(r => r.current)
+      const themeProgress = progress[key as ProgressTheme]
+      const color = THEME_COLORS[key as ProgressTheme]
 
       if (!innerSector || !outerSector) return
 
