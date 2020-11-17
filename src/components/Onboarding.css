@@ -1,0 +1,27 @@
+.onBoarding {
+  display: flex;
+}
+
+.diag ion-icon {
+  font-size: 7em;
+}
+
+.onboardingHeader {
+  font-weight: bold !important;
+  font-size: 1em !important;
+}
+
+.onboardingParagraph {
+  display: block !important;
+  margin: 0 auto !important;
+  font-size: 0.9em !important;
+}
+
+#skip {
+  /* width: 30% !important; */
+  background: none !important;
+  text-align: center !important;
+  cursor: pointer !important;
+  z-index: 5 !important;
+  float: right;
+}
