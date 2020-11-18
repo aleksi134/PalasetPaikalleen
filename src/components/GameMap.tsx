@@ -23,10 +23,14 @@ const Home: React.FC<Props> = () => {
 
   const timeout = useRef<NodeJS.Timeout>()
 
-  const closeModal = (result: any) => {
+  const done = (result: any) => {
     setShowModal(false)
     console.log({ result })
     gameState.save(currentNode.id, result)
+  }
+
+  const cancel = () => {
+    setShowModal(false)
   }
 
   const onClickNode = (node: MapNode) => {
@@ -44,7 +48,7 @@ const Home: React.FC<Props> = () => {
   const svgRefCallback = useCallback((node: SVGSVGElement) =>
     setCircleLocations(findCircleLocations(CITIES, node)) , [])
 
-  // useIonViewDidEnter(() => setShowModal(true))
+  useIonViewDidEnter(() => setShowModal(true))
 
   return (
     <div className="container ion-padding">
@@ -64,7 +68,7 @@ const Home: React.FC<Props> = () => {
 
       <IonModal isOpen={Boolean(showModal)} cssClass='minigame-modal'>
         <IonContent>
-          <MiniGame node={currentNode} done={closeModal} />
+          <MiniGame node={currentNode} done={done} cancel={cancel} />
         </IonContent>
       </IonModal>
     </div>

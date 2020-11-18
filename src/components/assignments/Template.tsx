@@ -8,9 +8,10 @@ interface Result { }
 interface Props {
   state: Result
   done: (result: Result) => void
+  cancel: VoidFunction
 }
 
-const Assignment: React.FC<Props> = ({ state, done }) => {
+const Assignment: React.FC<Props> = ({ state, done, cancel }) => {
   const saveAndClose = () => done(state || 'todo')
 
   return (

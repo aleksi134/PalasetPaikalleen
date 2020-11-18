@@ -1,0 +1,26 @@
+.multi-select {
+  .multi-select-option {
+    display: inline-block;
+    width: 42%;
+    line-height: 25px;
+    padding: 12px;
+    margin: 6px;
+    border: 3px solid #1ec3ca;
+    border-radius: 5px;
+    white-space: nowrap;
+    overflow: visible;
+  }
+
+  .multi-select-option.active {
+    color: #fff;
+    background-color: #1ec3ca;
+    font-weight: bold;
+  }
+
+  &.full-width {
+    .multi-select-option {
+			width: 90%;
+			white-space: pre-wrap;
+    }
+  }
+}

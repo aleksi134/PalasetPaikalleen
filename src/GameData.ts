@@ -12,35 +12,34 @@ export type MapNode = {
 
 export const nodes: MapNode[] = [
   {
-    id: 'rovaniemi',
-    adj: ['oulu'],
+    id: 'kuopio',
+    adj: ['joensuu', 'jyvaskyla'],
+    theme: 'itsetuntemus',
+  },
+  {
+    id: 'joensuu',
+    adj: ['kuopio'],
     theme: 'itsetuntemus',
   },
   {
     id: 'oulu',
     adj: ['rovaniemi', 'kuopio'],
-    theme: 'itsetuntemus',
-  },
-  {
-    id: 'kuopio',
-    adj: ['joensuu', 'jyvaskyla'],
     theme: 'tyoelamatietous',
-  },
-
-  {
-    id: 'joensuu',
-    adj: ['kuopio'],
-    theme: 'tyoelamatietous',
-  },
-  {
-    id: 'lappeenranta',
-    adj: ['helsinki'],
-    theme: 'tietojaopiskelusta',
   },
   {
     id: 'jyvaskyla',
     adj: ['tampere', 'kuopio', 'vaasa'],
-    theme: 'tietojaopiskelusta',
+    theme: 'tyoelamatietous',
+  },
+  {
+    id: 'rovaniemi',
+    adj: ['oulu'],
+    theme: 'itsetuntemus',
+  },
+  {
+    id: 'lappeenranta',
+    adj: ['helsinki'],
+    theme: 'tyoelamatietous',
   },
   {
     id: 'tampere',

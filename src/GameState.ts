@@ -44,7 +44,7 @@ class GameState {
     return THEMES.reduce((acc, theme) => {
       const count = nodes.filter((n) => n.theme === theme && this.isCompleted(n)).length
       return { ...acc, [theme]: count }
-    }, {})
+    }, {}) as any
   }
 
   subscribe(fn: Subscription): void {

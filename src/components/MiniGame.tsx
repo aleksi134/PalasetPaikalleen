@@ -4,18 +4,22 @@ import { Result } from '../GameState'
 import { CityRecord, THEME_COLORS, THEME_NAMES } from '../Types'
 import Helsinki from './assignments/Helsinki'
 import Kuopio from './assignments/Kuopio'
-import Lappeenranta from './assignments/Lappeenranta'
+import Itsetuntemus11 from './assignments/Itsetuntemus-1.1'
+import Itsetuntemus12 from './assignments/Itsetuntemus-1.2'
+import Tyoelamatietous21 from './assignments/Tyoelamatietous-2.1'
 import Template from './assignments/Template'
 import './Minigame.scss'
 import gameState from '../GameState'
+import { IonButton, IonIcon } from '@ionic/react'
+import { close } from 'ionicons/icons'
 
 const cityGameMap: CityRecord<FC<any>> = {
-  rovaniemi: Template,
+  kuopio: Itsetuntemus11,
+  joensuu: Itsetuntemus12,
   oulu: Template,
-  kuopio: Kuopio,
-  joensuu: Template,
-  lappeenranta: Lappeenranta,
-  jyvaskyla: Template,
+  jyvaskyla: Tyoelamatietous21,
+  rovaniemi: Template,
+  lappeenranta: Template,
   tampere: Template,
   vaasa: Template,
   turku: Template,
@@ -28,9 +32,10 @@ type Done = (result: Result) => void
 interface Props {
   node: MapNode
   done: Done
+  cancel: VoidFunction
 }
 
-const MiniGame: React.FC<Props> = ({ node, done }) => {
+const MiniGame: React.FC<Props> = ({ node, done, cancel }) => {
   const CurrentGameComponent = cityGameMap[node.id]
   const state = gameState.load(node.id)
   const classes = ['container', 'minigame', node.id]
@@ -44,8 +49,13 @@ const MiniGame: React.FC<Props> = ({ node, done }) => {
 
   return (
     <div className={classes.join(' ')}>
-      <div className="theme-bar" style={themeStyle}>{themeName}</div>
-      <CurrentGameComponent state={state} done={done} />
+      <div className="theme-bar" style={themeStyle}>
+        {themeName}
+        <IonButton className="cancel" onClick={cancel} color="dark" shape="round" size="small">
+          <IonIcon slot="icon-only" icon={close} />
+        </IonButton>
+      </div>
+      <CurrentGameComponent state={state} done={done} cancel={cancel} />
     </div>
   )
 }
