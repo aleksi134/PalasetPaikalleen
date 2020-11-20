@@ -47,3 +47,5 @@ export type Theme = typeof THEMES[number]
 
 export type Location = { x: number; y: number }
 export type CityRecord<T> = { [key in City]: T }
+
+export type Claim = { title: string, explanation: string, isCorrect: boolean }

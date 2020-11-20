@@ -1,0 +1,40 @@
+.claims {
+  ion-card.claim {
+    text-align: left;
+
+    ion-card-title {
+      font-size: 1rem;
+      color: gray;
+    }
+  }
+
+  .results {
+    ion-card-title {
+      font-size: 1.5rem;
+    }
+    .result {
+      margin-bottom: 1rem;
+    }
+  }
+
+  .buttons {
+    text-align: center;
+    ion-button {
+      margin: 0.8rem;
+    }
+  }
+
+  .explanation {
+    margin-top: 1rem;
+    border-radius: 10px;
+
+    &.correct {
+      border: 1px solid green;
+      padding: 1rem;
+    }
+    &.incorrect {
+      border: 1px solid red;
+      padding: 1rem;
+    }
+  }
+}
