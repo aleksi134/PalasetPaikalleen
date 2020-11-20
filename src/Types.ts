@@ -38,7 +38,7 @@ export const THEME_NAMES: Record<Theme, string> = {
   tyoelamatietous: 'Työelämätietous',
   tietojaopiskelusta: 'Tietoja opiskelusta',
   elamantilanne: 'Elämäntilanne',
-  valintojentekeminen: 'Valintojen tekeminene',
+  valintojentekeminen: 'Valintojen tekeminen',
   bonus: 'Bonus'
 }
 

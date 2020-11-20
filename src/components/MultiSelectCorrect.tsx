@@ -1,7 +1,7 @@
 import React from 'react'
 import './MultiSelect.scss'
 
-type Option = { title: string, correct: boolean }
+type Option = { title: string, isCorrect: boolean }
 
 interface Props {
   options: Option[]
@@ -29,7 +29,7 @@ const MultiSelect: React.FC<Props> = ({ options, selection = [], onChange, colum
   return (
     <div className={classes}>
       { options.map((option, index) => <div
-        className={`multi-select-option ${isSelected(option) && 'active'} ${!option.correct && 'incorrect'}`}
+        className={`multi-select-option ${isSelected(option) && 'active'} ${!option.isCorrect && 'incorrect'}`}
         key={option.title + index}
         onClick={() => toggleSelection(option)}> {option.title} </div>) }
     </div>

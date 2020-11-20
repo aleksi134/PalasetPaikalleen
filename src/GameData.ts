@@ -37,6 +37,11 @@ export const nodes: MapNode[] = [
     theme: 'tietojaopiskelusta',
   },
   {
+    id: 'turku',
+    adj: ['helsinki', 'tampere'],
+    theme: 'elamantilanne',
+  },
+  {
     id: 'rovaniemi',
     adj: ['oulu'],
     theme: 'itsetuntemus',
@@ -50,11 +55,6 @@ export const nodes: MapNode[] = [
     id: 'tampere',
     adj: ['jyvaskyla', 'turku'],
     theme: 'elamantilanne',
-  },
-  {
-    id: 'turku',
-    adj: ['helsinki', 'tampere'],
-    theme: 'valintojentekeminen',
   },
   {
     id: 'helsinki',

@@ -5,7 +5,7 @@ import AssignmentInstructions from '../AssignmentInstructions'
 import MultiSelectCorrect from '../MultiSelectCorrect'
 import VideoSlides from '../VideoSlides'
 
-type State = { title: string, correct: boolean }[]
+type State = { title: string, isCorrect: boolean }[]
 
 interface Props {
   state: State
@@ -14,19 +14,19 @@ interface Props {
 }
 
 const options = [
-  { title: 'elinikäinen oppiminen', correct: true },
-  { title: 'koulutuksen hyödyt opiskellusta alasta riippumatta', correct: true },
-  { title: 'kansainvälisen osaamisen tärkeys', correct: false },
-  { title: 'työntekijän kyky itseohjautuvaan työskentelyyn', correct: false },
-  { title: 'harrastuksen kautta oman alan löytäminen', correct: true },
-  { title: 'uudenlaiset taidot kuten digitaalisuus-, viestintä- ja vastuullisuusosaaminen', correct: true },
-  { title: 'korkeakoulutuksen antama suunta työelämään', correct: true },
-  { title: 'verkostoitumisosaamisen korostuminen', correct: false },
-  { title: 'johonkin tiettyyn osaamisalueeseen keskittyminen opinnoissa', correct: true },
-  { title: 'työntekijöiden ja työnantajan arvojen yhteensopivuus', correct: true },
-  { title: 'innokkuus uuden oppimiseen keskeisen tärkeää', correct: true },
-  { title: 'uudelleenkouluttautumisen tarve', correct: false },
-  { title: 'rohkeus ryhtyä yrittäjäksi', correct: false }
+  { title: 'elinikäinen oppiminen', isCorrect: true },
+  { title: 'koulutuksen hyödyt opiskellusta alasta riippumatta', isCorrect: true },
+  { title: 'kansainvälisen osaamisen tärkeys', isCorrect: false },
+  { title: 'työntekijän kyky itseohjautuvaan työskentelyyn', isCorrect: false },
+  { title: 'harrastuksen kautta oman alan löytäminen', isCorrect: true },
+  { title: 'uudenlaiset taidot kuten digitaalisuus-, viestintä- ja vastuullisuusosaaminen', isCorrect: true },
+  { title: 'korkeakoulutuksen antama suunta työelämään', isCorrect: true },
+  { title: 'verkostoitumisosaamisen korostuminen', isCorrect: false },
+  { title: 'johonkin tiettyyn osaamisalueeseen keskittyminen opinnoissa', isCorrect: true },
+  { title: 'työntekijöiden ja työnantajan arvojen yhteensopivuus', isCorrect: true },
+  { title: 'innokkuus uuden oppimiseen keskeisen tärkeää', isCorrect: true },
+  { title: 'uudelleenkouluttautumisen tarve', isCorrect: false },
+  { title: 'rohkeus ryhtyä yrittäjäksi', isCorrect: false }
 ]
 
 const videos = [

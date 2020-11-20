@@ -4,16 +4,18 @@ import { Result } from '../GameState'
 import { CityRecord, THEME_COLORS, THEME_NAMES } from '../Types'
 import Helsinki from './assignments/Helsinki'
 import Kuopio from './assignments/Kuopio'
-import Itsetuntemus11 from './assignments/Itsetuntemus-1.1'
-import Itsetuntemus12 from './assignments/Itsetuntemus-1.2'
-import Tyoelamatietous21 from './assignments/Tyoelamatietous-2.1'
-import Tyoelamatietous22 from './assignments/Tyoelamatietous-2.2'
-import Tietojaopiskelusta31 from './assignments/Tietojaopiskelusta-3.1'
 import Template from './assignments/Template'
 import './Minigame.scss'
 import gameState from '../GameState'
 import { IonButton, IonIcon } from '@ionic/react'
 import { close } from 'ionicons/icons'
+
+import Itsetuntemus11 from './assignments/Itsetuntemus-1.1'
+import Itsetuntemus12 from './assignments/Itsetuntemus-1.2'
+import Tyoelamatietous21 from './assignments/Tyoelamatietous-2.1'
+import Tyoelamatietous22 from './assignments/Tyoelamatietous-2.2'
+import Tietojaopiskelusta31 from './assignments/Tietojaopiskelusta-3.1'
+import Elamantilanne41 from './assignments/Elamantilanne-4.1'
 
 const cityGameMap: CityRecord<FC<any>> = {
   kuopio: Itsetuntemus11,
@@ -21,10 +23,10 @@ const cityGameMap: CityRecord<FC<any>> = {
   oulu: Tyoelamatietous22,
   jyvaskyla: Tyoelamatietous21,
   vaasa: Tietojaopiskelusta31,
+  turku: Elamantilanne41,
   rovaniemi: Template,
   lappeenranta: Template,
   tampere: Template,
-  turku: Template,
   helsinki: Helsinki,
   maarianhamina: Template,
 }
