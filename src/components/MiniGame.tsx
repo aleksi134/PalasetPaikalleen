@@ -2,8 +2,6 @@ import React, { CSSProperties, FC } from 'react'
 import { MapNode } from '../GameData'
 import { Result } from '../GameState'
 import { CityRecord, THEME_COLORS, THEME_NAMES } from '../Types'
-import Helsinki from './assignments/Helsinki'
-import Kuopio from './assignments/Kuopio'
 import Template from './assignments/Template'
 import './Minigame.scss'
 import gameState from '../GameState'
@@ -16,6 +14,8 @@ import Tyoelamatietous21 from './assignments/Tyoelamatietous-2.1'
 import Tyoelamatietous22 from './assignments/Tyoelamatietous-2.2'
 import Tietojaopiskelusta31 from './assignments/Tietojaopiskelusta-3.1'
 import Elamantilanne41 from './assignments/Elamantilanne-4.1'
+import Elamantilanne42 from './assignments/Elamantilanne-4.2'
+import Valintojentekeminen51 from './assignments/Valintojentekeminen-5.1'
 
 const cityGameMap: CityRecord<FC<any>> = {
   kuopio: Itsetuntemus11,
@@ -24,10 +24,10 @@ const cityGameMap: CityRecord<FC<any>> = {
   jyvaskyla: Tyoelamatietous21,
   vaasa: Tietojaopiskelusta31,
   turku: Elamantilanne41,
+  helsinki: Elamantilanne42,
+  lappeenranta: Valintojentekeminen51,
   rovaniemi: Template,
-  lappeenranta: Template,
   tampere: Template,
-  helsinki: Helsinki,
   maarianhamina: Template,
 }
 

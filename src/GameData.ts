@@ -42,24 +42,24 @@ export const nodes: MapNode[] = [
     theme: 'elamantilanne',
   },
   {
+    id: 'helsinki',
+    adj: ['lappeenranta', 'turku'],
+    theme: 'elamantilanne',
+  },
+  {
+    id: 'lappeenranta',
+    adj: ['helsinki'],
+    theme: 'valintojentekeminen',
+  },
+  {
     id: 'rovaniemi',
     adj: ['oulu'],
     theme: 'itsetuntemus',
   },
   {
-    id: 'lappeenranta',
-    adj: ['helsinki'],
-    theme: 'tyoelamatietous',
-  },
-  {
     id: 'tampere',
     adj: ['jyvaskyla', 'turku'],
     theme: 'elamantilanne',
-  },
-  {
-    id: 'helsinki',
-    adj: ['lappeenranta', 'turku'],
-    theme: 'valintojentekeminen',
   },
   {
     id: 'maarianhamina',
