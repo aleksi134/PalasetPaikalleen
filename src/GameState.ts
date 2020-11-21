@@ -89,6 +89,10 @@ class GameState {
     return this.nodes[node.id].adj.some((city) => Boolean(this.progress[city]))
   }
 
+  reset(): void {
+    localStorage.removeItem(STATE_KEY)
+  }
+
   private stateChanged(): void {
     this.subscriptions.forEach((sub) => sub(this.state))
     localStorage.setItem(STATE_KEY, JSON.stringify(this.state))

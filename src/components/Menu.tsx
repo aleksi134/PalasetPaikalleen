@@ -12,6 +12,7 @@ import { flowerOutline, mapOutline } from 'ionicons/icons'
 import React from 'react'
 import { useLocation } from 'react-router-dom'
 import './Menu.css'
+import ResetButton from './ResetButton'
 
 
 
@@ -96,6 +97,7 @@ const Menu: React.FC = () => {
             </IonItem>
           ))}
         </IonList> */}
+        <ResetButton />
       </IonContent>
     </IonMenu>
   );
