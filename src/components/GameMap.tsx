@@ -20,11 +20,13 @@ const Home: React.FC<Props> = () => {
   const [currentNode, setCurrentNode] = useState<MapNode>(gameState.currentNode)
   const [circleLocations, setCircleLocations] = useState<CityRecord<Location>>()
   const pawnLocation = circleLocations?.[currentNode.id] || null
+  const pawnRef = useRef<{ jump: any }>(null)
 
   const timeout = useRef<NodeJS.Timeout>()
 
   const done = (result: any) => {
     setShowModal(false)
+    pawnRef.current?.jump({ timeout: 500 })
     console.log({ result })
     gameState.save(currentNode.id, result)
   }
@@ -38,6 +40,7 @@ const Home: React.FC<Props> = () => {
     const isCurrentNode = currentNode.id === node.id
 
     if (gameState.canAdvance(node)) {
+      pawnRef.current?.jump()
       setCurrentNode(node)
       gameState.move(node)
       const tms = isCurrentNode ? 0 : 1500
@@ -48,7 +51,7 @@ const Home: React.FC<Props> = () => {
   const svgRefCallback = useCallback((node: SVGSVGElement) =>
     setCircleLocations(findCircleLocations(CITIES, node)) , [])
 
-  useIonViewDidEnter(() => setShowModal(true))
+  // useIonViewDidEnter(() => setShowModal(true))
 
   return (
     <div className="container ion-padding">
@@ -62,7 +65,7 @@ const Home: React.FC<Props> = () => {
           <Node key={node.id} node={node} location={circleLocations[node.id]} onClick={onClickNode} />)}
 
         <MapSvg svgRefCallback={svgRefCallback} />
-        <Pawn location={pawnLocation} />
+        <Pawn location={pawnLocation} ref={pawnRef as any} />
         <ProgressMeter />
       </div>
 

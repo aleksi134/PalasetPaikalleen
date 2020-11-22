@@ -1,5 +1,5 @@
 import { IonCard, IonCardContent, IonItem, IonLabel } from '@ionic/react'
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useContext, useState } from 'react'
 import Lottie, { EventListener } from 'react-lottie'
 import { NodeContext } from '../GameData'
 import animationIdle from '../lottie/pollo_idle.json'

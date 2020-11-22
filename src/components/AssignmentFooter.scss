@@ -1,0 +1,18 @@
+.assignment .footer {
+  padding-top: 2rem;
+
+  .progress-meter {
+    // width: 50^;
+  }
+
+  &, ion-row, ion-col, div[title] {
+    overflow: visible !important;
+  }
+
+
+  .pollo {
+    svg {
+      max-width: 80%;
+    }
+  }
+}

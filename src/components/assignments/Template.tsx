@@ -1,5 +1,6 @@
 import { IonButton } from '@ionic/react'
 import React from 'react'
+import AssignmentFooter from '../AssignmentFooter'
 import AssignmentInstructions from '../AssignmentInstructions'
 
 
@@ -21,6 +22,7 @@ const Assignment: React.FC<Props> = ({ state, done, cancel }) => {
         description='Description'
       />
 
+      <AssignmentFooter isDone={true} />
       <IonButton className="done" onClick={saveAndClose}>Merkitse suoritetuksi</IonButton>
     </div>
   )

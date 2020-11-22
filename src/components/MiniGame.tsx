@@ -43,7 +43,7 @@ interface Props {
 const MiniGame: React.FC<Props> = ({ node, done, cancel }) => {
   const CurrentGameComponent = cityGameMap[node.id]
   const state = gameState.load(node.id)
-  const classes = ['container', 'minigame', node.id]
+  const classes = ['container', 'minigame', 'assignment', node.id]
 
   // USE EFFECT SET GAMESTATE?
 
