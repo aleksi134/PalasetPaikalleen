@@ -1,5 +1,5 @@
 import React, { CSSProperties, FC } from 'react'
-import { MapNode } from '../GameData'
+import { MapNode, NodeContext } from '../GameData'
 import { Result } from '../GameState'
 import { CityRecord, THEME_COLORS, THEME_NAMES } from '../Types'
 import Template from './assignments/Template'
@@ -39,6 +39,7 @@ interface Props {
   cancel: VoidFunction
 }
 
+
 const MiniGame: React.FC<Props> = ({ node, done, cancel }) => {
   const CurrentGameComponent = cityGameMap[node.id]
   const state = gameState.load(node.id)
@@ -59,7 +60,10 @@ const MiniGame: React.FC<Props> = ({ node, done, cancel }) => {
           <IonIcon slot="icon-only" icon={close} />
         </IonButton>
       </div>
-      <CurrentGameComponent state={state} done={done} cancel={cancel} />
+
+      <NodeContext.Provider value={node}>
+        <CurrentGameComponent state={state} done={done} cancel={cancel} node={node} />
+      </NodeContext.Provider>
     </div>
   )
 }

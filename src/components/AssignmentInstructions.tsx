@@ -1,9 +1,11 @@
 import { IonCard, IonCardContent, IonItem, IonLabel } from '@ionic/react'
-import React, { useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import Lottie, { EventListener } from 'react-lottie'
+import { NodeContext } from '../GameData'
 import animationIdle from '../lottie/pollo_idle.json'
 import animationJump from '../lottie/pollo_jump.json'
 import { runOnNthCall } from '../utils/runOnNthCall'
+import './AssignmentInstructions.scss'
 
 interface Props {
   title: string
@@ -20,14 +22,19 @@ const AssignmentInstructions: React.FC<Props> = ({ title, description, children 
     callback: runOnNthCall(3, () => setAnimation(animationIdle))
   }]
 
+  const node = useContext(NodeContext)
+
   return (
     <IonCard className="instructions">
-      <IonItem>
-        <Lottie
-          options={{ animationData: animation }}
-          width='25%'
-          eventListeners={listeners}
-        />
+      <IonItem lines="none" className="instructions-header">
+        <div className="animation">
+          <Lottie
+            options={{ animationData: animation }}
+            width='100%'
+            eventListeners={listeners}
+          />
+          <div className="greeting speech-bubble">{node.greeting}</div>
+        </div>
         <IonLabel>{title}</IonLabel>
       </IonItem>
 

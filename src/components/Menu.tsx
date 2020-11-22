@@ -97,10 +97,12 @@ const Menu: React.FC = () => {
             </IonItem>
           ))}
         </IonList> */}
+
         <ResetButton />
+
       </IonContent>
     </IonMenu>
-  );
-};
+  )
+}
 
-export default Menu;
+export default Menu
