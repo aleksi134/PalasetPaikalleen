@@ -1,4 +1,3 @@
-import { IonButton } from '@ionic/react'
 import React from 'react'
 import Collapsible from 'react-collapsible'
 import AssignmentFooter from '../AssignmentFooter'

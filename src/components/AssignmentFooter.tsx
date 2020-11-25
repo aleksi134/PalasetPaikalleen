@@ -1,23 +1,19 @@
-import { IonCol, IonGrid, IonRow } from '@ionic/react'
-import React, { useEffect, useRef, useState } from 'react'
-import Lottie, { Options } from 'react-lottie'
-import animationJump from '../lottie/pipopaa_jump.json'
+import React from 'react'
 import './AssignmentFooter.scss'
-import ProgressMeter from './ProgressMeter'
 
 interface Props {
   isDone: boolean
 }
 
-const animationOpts: Options = {
-  animationData: animationJump,
-  autoplay: false,
-  loop: false
-}
+// const animationOpts: Options = {
+//   animationData: animationJump,
+//   autoplay: false,
+//   loop: false
+// }
 
 const AssignmentFooter: React.FC<Props> = ({ isDone }) => {
   // const [animation, setAnimation] = useState<any>(animationJump)
-  const animationRef = useRef<{ play: VoidFunction }>(null)
+  // const animationRef = useRef<{ play: VoidFunction }>(null)
 
   // const listeners: EventListener[] = [{
   //   eventName: 'loopComplete',
