@@ -20,7 +20,7 @@ const VideoSlides: React.FC<Props> = ({ urls }) => {
     if (ref) {
       const swpr = await ref.getSwiper()
       setSwiper(swpr)
-      swpr.update()
+      setTimeout(() => swpr.update())
     }
   }, [])
 

@@ -1,10 +1,10 @@
 .container {
   text-align: center;
-  /* position: absolute;
-  left: 0;
-  right: 0;
-  top: 50%;
-  transform: translateY(-50%);  */
+  // position: relative;
+  // left: 0;
+  // right: 0;
+  // top: 50%;
+  // transform: translateY(-50%);
 
   strong {
     font-size: 20px;
@@ -29,6 +29,10 @@
 
 .map-container {
   position: relative;
+  max-width: 600px;
+  // position: absolute;
+  // top: 0;
+  // left: 50%;
 }
 
 @keyframes dot-pulse {
@@ -48,7 +52,9 @@
   }
 }
 
-.map-container .dot {
+.map-container {
+
+  .dot {
   width: 13%;
   height: 6.5%;
   background-color: #979797;
@@ -57,26 +63,32 @@
   position: absolute;
   transform: translate(-50%, -50%);
   transform-origin: 0 0;
+  }
 
-  &.rovaniemi {
+  .dot.rovaniemi {
     width: 16%;
     height: 8%;
   }
-}
 
-.map-container .dot.available {
-  // background-color: #0c3bff;
-  background-color: #FFF;
-  border-radius: 100%;
-  position: absolute;
-  animation: dot-pulse 2s infinite;
-}
+  .dot.available {
+    // background-color: #0c3bff;
+    background-color: #fff;
+    border-radius: 100%;
+    position: absolute;
+    animation: dot-pulse 2s infinite;
+  }
 
-.map-container .dot.completed {
-  background-color: #54c14f;
-  border-radius: 100%;
-  position: absolute;
-  animation: none;
+  .dot.completed {
+    background-color: #54c14f;
+    border-radius: 100%;
+    position: absolute;
+    animation: none;
+  }
+
+  .progress-meter {
+    width: 39%;
+    height: 39%;
+  }
 }
 
 .container .instructions {

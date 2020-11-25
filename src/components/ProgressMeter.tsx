@@ -91,14 +91,12 @@ const ProgressMeter: React.FC<Props> = ({ history }) => {
             <path ref={refs.valintojentekeminen[0]} className="cls-1" d="M136.15,135.38l-.06-.08-.3-.1-.2,98.49a98.54,98.54,0,0,0,93.69-67.82L136.09,135.3Z" />
 
             <circle className="cls-2" cx="133" cy="135.5" r="61.5" />
+
+            <text x="100" y="128" fontSize="13" fill="white">UNELMIEN</text>
+            <text x="80" y="148" fontSize="13" fill="white">OPISKELUPAIKKA</text>
           </g>
         </g>
       </svg>
-
-
-      <div className="text-wrapper">
-        <span className="text">Unelmien<br />opiskelupaikka</span>
-      </div>
     </div>
   )
 }
