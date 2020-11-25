@@ -28,12 +28,6 @@ import './theme/variables.css';
 /* Global css */
 import './theme/global.css';
 
-// import 'swiper/swiper.scss'
-// import 'swiper/components/navigation/navigation.scss'
-// import 'swiper/components/pagination/pagination.scss'
-// import SwiperCore, { Pagination } from 'swiper'
-// SwiperCore.use([Pagination])
-
 const App: React.FC = () => {
 
   return (

@@ -51,7 +51,7 @@ const Assignment: React.FC<Props> = ({ state = [], done, cancel }) => {
 
   return (
     <div>
-      <AssignmentInstructions title="Mahdollisuuksien maailma">
+      <AssignmentInstructions title="Mahdollisuuksien maailma" showBubble={false}>
         <p>Onko elämäntilanteesi sellainen, että perinteinen opiskelu ei juuri nyt sovi sinulle? Tai jäitkö ilman opiskelupaikkaa ja pohdit miten hyödyntää välivuotesi niin, että se edesauttaa sinua tulevalla urapolullasi?</p>
         <p>Perinteisen opiskelun lisäksi unelmien ammattiin voi olla muitakin polkuja ja välivuoden voi hyödyntää monella tehokkaalla tavalla. Tutustu Korkeakoulustartin valmennuksissa mukana olleiden Pinjan, Marin ja Tyttilotan erilaisiin tarinoihin korkeakouluun hakemisesta, välivuoden merkityksestä sekä erilaisten opiskelumuotojen mahdollisuuksista.</p>
 

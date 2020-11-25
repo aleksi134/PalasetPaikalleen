@@ -1,6 +1,7 @@
 import { IonButton, IonIcon, IonSlide, IonSlides } from '@ionic/react'
 import { chevronBackOutline, chevronForwardOutline } from 'ionicons/icons'
-import React, { MouseEvent, useCallback, useEffect, useRef, useState } from 'react'
+import React, { useCallback, useRef, useState } from 'react'
+import Swiper from 'swiper'
 import './VideoSlides.scss'
 
 const slideOpts = {
@@ -12,57 +13,67 @@ interface Props {
 }
 
 const VideoSlides: React.FC<Props> = ({ urls }) => {
-  const [swiper, setSwiper] = useState<any>(null)
-  const videoRefs = useRef<HTMLVideoElement[]>([])
+  const [swiper, setSwiper] = useState<Swiper>()
+  const videoRefs = useRef<Record<string, HTMLVideoElement>>({})
 
   const slidesRef = useCallback(async (ref: HTMLIonSlidesElement) => {
     if (ref) {
-      setSwiper(await ref.getSwiper())
-      swiper?.update()
+      const swpr = await ref.getSwiper()
+      setSwiper(swpr)
+      swpr.update()
     }
   }, [])
 
-  const videoRefCb = useCallback((ref) => {
-    videoRefs.current.push(ref)
+  const videoRefCb = useCallback((url: string) => (ref: HTMLVideoElement) => {
+    videoRefs.current[url] = ref
   }, [])
 
-  const next = () => {
-    videoRefs.current.forEach(vid => {
+  const pauseVideos =  () => {
+    Object.values(videoRefs.current).forEach(vid => {
       vid.pause()
       vid.currentTime = 0
     })
-
-    swiper?.slideNext()
-  }
-  const prev = () => {
-    swiper?.slidePrev()
   }
 
-  const onVideoClick = (event: React.MouseEvent<HTMLVideoElement>) => {
-    const vid: HTMLVideoElement = event.target as any
-    console.log('videoclick', vid)
+  const playCurrent = () => {
+    const vids = Object.values(videoRefs.current)
+    vids[swiper?.activeIndex || 0].play()
+  }
+
+  const onVideoClick = (url: string) => {
+    const vid = videoRefs.current[url]
     vid.paused ? vid.play() : vid.pause()
   }
 
   return (
     <div className="video-slides">
 
-      <IonSlides pager={true} options={slideOpts} ref={slidesRef}>
-        {urls.map((url, index) => (
+      <IonSlides
+        pager={true}
+        options={slideOpts}
+        ref={slidesRef}
+        onIonSlideWillChange={pauseVideos}
+        onIonSlideDidChange={playCurrent}
+      >
+
+        {urls.map((url) => (
           <IonSlide key={url} className="video-wrapper">
-            <video onClick={onVideoClick} controls src={url} ref={videoRefCb} />
+            <video onTouchEnd={() => onVideoClick(url)} controls src={url} ref={videoRefCb(url)} />
           </IonSlide>
         ))}
+
       </IonSlides>
 
-      <div className="video-buttons">
-        <IonButton onClick={prev} className="back">
-          <IonIcon slot="icon-only" icon={chevronBackOutline} />
-        </IonButton>
-        <IonButton onClick={next} className="forward">
-          <IonIcon slot="icon-only" icon={chevronForwardOutline} />
-        </IonButton>
-      </div>
+      { swiper &&
+        <div className="video-buttons">
+          <IonButton onClick={() => swiper.slidePrev()} className="back">
+            <IonIcon slot="icon-only" icon={chevronBackOutline} />
+          </IonButton>
+          <IonButton onClick={() => swiper.slideNext()} className="forward">
+            <IonIcon slot="icon-only" icon={chevronForwardOutline} />
+          </IonButton>
+        </div>
+      }
 
     </div>
   )

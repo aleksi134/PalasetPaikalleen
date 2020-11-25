@@ -126,9 +126,9 @@ const Assignment: React.FC<Props> = ({ state = [], done, cancel }) => {
 
       <AssignmentFooter isDone={true} />
 
-      <IonButton disabled={false} className="done" onClick={saveAndClose}>
+      {/* <IonButton disabled={false} className="done" onClick={saveAndClose}>
         Seuraava tehtävä
-      </IonButton>
+      </IonButton> */}
     </div>
   )
 }
