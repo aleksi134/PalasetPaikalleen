@@ -29,7 +29,7 @@
 
 .map-container {
   position: relative;
-  max-width: 600px;
+  max-width: 500px;
   // position: absolute;
   // top: 0;
   // left: 50%;
@@ -53,16 +53,15 @@
 }
 
 .map-container {
-
   .dot {
-  width: 13%;
-  height: 6.5%;
-  background-color: #979797;
-  border-radius: 100%;
-  border: 5px solid #1d7f87;
-  position: absolute;
-  transform: translate(-50%, -50%);
-  transform-origin: 0 0;
+    width: 13%;
+    height: 6.5%;
+    background-color: #979797;
+    border-radius: 100%;
+    border: 5px solid #1d7f87;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    transform-origin: 0 0;
   }
 
   .dot.rovaniemi {
