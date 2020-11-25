@@ -3,6 +3,7 @@ import * as htmlToImage from 'html-to-image'
 import React, { CSSProperties, useRef } from 'react'
 import gameState from '../GameState'
 import ProgressMeter from './ProgressMeter'
+import './Results.scss'
 
 interface Props { }
 
@@ -12,8 +13,13 @@ const Home: React.FC<Props> = () => {
   const createImage = () => {
     const node = resultsRef.current!
 
+    const options: htmlToImage.Options = {
+      quality: 0.95,
+      pixelRatio: 1
+    }
+
     htmlToImage
-      .toJpeg(node, { quality: 0.95 })
+      .toJpeg(node, options)
       .then((dataUrl) => {
         const link = document.createElement('a');
         link.download = 'palaset-paikalleen.jpeg'
@@ -29,13 +35,13 @@ const Home: React.FC<Props> = () => {
   }
 
   return (
-    <div className="container">
+    <div className="container results-container">
 
       <p>
         Tähän tulee tulosten visualisointi ja niiden lataaminen sekä jakaminen.
       </p>
 
-      <div ref={resultsRef} style={resultsStyle}>
+      <div className="results" ref={resultsRef} style={resultsStyle}>
         <div className="ion-padding">
           <ProgressMeter />
         </div>
