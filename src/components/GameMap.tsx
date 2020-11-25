@@ -9,6 +9,7 @@ import MapSvg from './MapSvg'
 import MiniGame from './MiniGame'
 import Node from './Node'
 import Pawn from './Pawn'
+import Flag from './Flag'
 import ProgressMeter from './ProgressMeter'
 
 interface Props {
@@ -25,15 +26,12 @@ const Home: React.FC<Props> = () => {
   const timeout = useRef<NodeJS.Timeout>()
 
   const done = (result: any) => {
-    setShowModal(false)
     pawnRef.current?.jump({ timeout: 500 })
     console.log({ result })
     gameState.save(currentNode.id, result)
   }
 
-  const cancel = () => {
-    setShowModal(false)
-  }
+  const closeModal = () => setShowModal(false)
 
   const onClickNode = (node: MapNode) => {
     if (timeout.current) clearTimeout(timeout.current)
@@ -51,7 +49,7 @@ const Home: React.FC<Props> = () => {
   const svgRefCallback = useCallback((node: SVGSVGElement) =>
     setCircleLocations(findCircleLocations(CITIES, node)) , [])
 
-  // useIonViewDidEnter(() => setShowModal(true))
+  useIonViewDidEnter(() => setTimeout(() => setShowModal(true)))
 
   return (
     <div className="container ion-padding">
@@ -59,19 +57,19 @@ const Home: React.FC<Props> = () => {
         Klikkaa kartan palloja avataksesi tehtävän
       </p>
 
-
       <div className="map-container">
         {circleLocations && nodes.map(node =>
           <Node key={node.id} node={node} location={circleLocations[node.id]} onClick={onClickNode} />)}
 
         <MapSvg svgRefCallback={svgRefCallback} />
+        <Flag location={circleLocations?.rovaniemi} />
         <Pawn location={pawnLocation} ref={pawnRef as any} />
         <ProgressMeter />
       </div>
 
       <IonModal isOpen={Boolean(showModal)} cssClass='minigame-modal'>
         <IonContent>
-          <MiniGame node={currentNode} done={done} cancel={cancel} />
+          <MiniGame node={currentNode} done={done} close={closeModal} />
         </IonContent>
       </IonModal>
     </div>

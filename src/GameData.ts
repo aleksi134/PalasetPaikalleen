@@ -62,24 +62,24 @@ export const nodes: MapNode[] = [
     greeting: 'Tervehdys!'
   },
   {
-    id: 'rovaniemi',
-    adj: ['oulu'],
-    theme: 'itsetuntemus',
-    greeting: 'Tervehdys!'
-  },
-  {
     id: 'tampere',
     adj: ['jyvaskyla', 'turku'],
-    theme: 'elamantilanne',
+    theme: 'tietojaopiskelusta',
     greeting: 'Tervehdys!'
   },
   {
     id: 'maarianhamina',
-    adj: [],
+    adj: ['turku'],
     theme: 'bonus',
     isBonus: true,
     greeting: 'Tervehdys!'
-  }
+  },
+  {
+    id: 'rovaniemi',
+    adj: [],
+    theme: 'valintojentekeminen',
+    greeting: 'Tervehdys!'
+  },
 ]
 
 export const NodeContext = createContext(nodes[0])

@@ -81,9 +81,10 @@ class GameState {
   canAdvance(node: MapNode): boolean {
     if (node.id === this.currentLocation) return true
 
-    if (node.isBonus)
+    // If no adjacent nodes, all nodes have to be done to advance
+    if (node.adj.length === 0)
       return Object.values(this.nodes)
-        .filter((n) => !n.isBonus)
+        .filter((n) => n.adj.length > 0)
         .every((node) => Boolean(this.progress[node.id]))
 
     return this.nodes[node.id].adj.some((city) => Boolean(this.progress[city]))

@@ -39,7 +39,7 @@ export const THEME_NAMES: Record<Theme, string> = {
   tietojaopiskelusta: 'Tietoja opiskelusta',
   elamantilanne: 'Elämäntilanne',
   valintojentekeminen: 'Valintojen tekeminen',
-  bonus: 'Bonus'
+  bonus: 'Bonus tehtävä'
 }
 
 export type City = typeof CITIES[number]

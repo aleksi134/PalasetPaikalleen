@@ -1,10 +1,8 @@
 import React, { CSSProperties, useImperativeHandle, useRef, useState } from 'react'
-import Lottie, { EventListener, Options } from 'react-lottie'
+import Lottie, { Options } from 'react-lottie'
 import animationJump from '../lottie/pipopaa_jump.json'
-import animationHappy from '../lottie/pipopaa_happy.json'
 import { Location } from '../Types'
 import './Pawn.scss'
-import { runOnNthCall } from '../utils/runOnNthCall'
 
 interface Props {
   location: Location | null

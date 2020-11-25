@@ -57,6 +57,11 @@
   position: absolute;
   transform: translate(-50%, -50%);
   transform-origin: 0 0;
+
+  &.rovaniemi {
+    width: 16%;
+    height: 8%;
+  }
 }
 
 .map-container .dot.available {
