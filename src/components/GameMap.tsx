@@ -54,7 +54,8 @@ const Home: React.FC<Props> = () => {
   return (
     <div className="container ion-padding">
       <p className="instructions">
-        Klikkaa kartan palloja avataksesi tehtävän
+        Klikkaa kartan palloja avataksesi tehtävän. <br />
+        Avaa ensimmäinen tehtävä täppäämällä pelinappulaa.
       </p>
 
       <div className="map-container">
