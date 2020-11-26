@@ -1,4 +1,4 @@
-import { IonButton } from '@ionic/react'
+import { IonButton, IonCard, IonCardContent, IonCardHeader, IonCardTitle } from '@ionic/react'
 import React, { useState } from 'react'
 import { Claim } from '../../Types'
 import AssignmentFooter from '../AssignmentFooter'
@@ -66,14 +66,17 @@ const claims: Claim[] = [
   }
 ]
 
-const Assignment: React.FC<Props> = ({ state = [], done, cancel }) => {
-  const [result, setResult] = useState<State>({})
+const Assignment: React.FC<Props> = ({ state = {}, done, cancel }) => {
+  const [result, setResult] = useState<State>(state)
 
   const onAnswer = (claim: Claim, answer: boolean) =>
-    setResult({ ...result, [claim.title]: answer })
+    setResult({ ...result, [claim.title]: answer === claim.isCorrect })
 
   const isDone = Object.keys(result).length === claims.length
   const saveAndClose = () => done(result)
+
+  const showResult = Object.keys(result).length === claims.length
+  const rightCount = Object.values(result).filter(a => a).length
 
   return (
     <div>
@@ -83,6 +86,22 @@ const Assignment: React.FC<Props> = ({ state = [], done, cancel }) => {
       </AssignmentInstructions>
 
       <Claims options={claims} result={result} onChange={onAnswer} />
+
+      {
+        showResult &&
+        <IonCard className="results">
+          <IonCardHeader>
+            <IonCardTitle>Erinomaista!</IonCardTitle>
+          </IonCardHeader>
+
+          <IonCardContent>
+            <p className="result">
+              Sait { rightCount } / { claims.length } oikein
+            </p>
+            Nyt olet laajentanut tietämystäsi korkeakouluopiskelusta ja hakuun sekä opintoihin liittyvistä mahdollisuuksista. Tieto korkeakoulutuksesta antaa rohkeutta tehdä omannäköisiä valintoja urapolullasi ja ottaa seuraavat askeleet kohti unelmiesi opiskelupaikkaa.
+          </IonCardContent>
+        </IonCard>
+      }
 
       <AssignmentFooter isDone={isDone} />
 

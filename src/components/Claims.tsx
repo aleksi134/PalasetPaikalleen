@@ -18,9 +18,6 @@ const Claims: React.FC<Props> = ({ options, result = {}, onChange }) => {
   const showButtons = (claim: Claim) =>
     !isBoolean(result[claim.title])
 
-  const showResult = Object.keys(result).length === options.length
-  const rightCount = Object.values(result).filter(a => a).length
-
   return (
     <div className="claims">
       { options.map((option, index) =>
@@ -49,27 +46,10 @@ const Claims: React.FC<Props> = ({ options, result = {}, onChange }) => {
             }
           </IonCardContent>
         </IonCard>
-
       )}
 
-      {
-        showResult &&
-        <IonCard className="results">
-          <IonCardHeader>
-            <IonCardTitle>Erinomaista!</IonCardTitle>
-          </IonCardHeader>
-
-          <IonCardContent>
-            <p className="result">
-              Sait { rightCount } / { options.length } oikein
-            </p>
-            Nyt olet laajentanut tietämystäsi korkeakouluopiskelusta ja hakuun sekä opintoihin liittyvistä mahdollisuuksista. Tieto korkeakoulutuksesta antaa rohkeutta tehdä omannäköisiä valintoja urapolullasi ja ottaa seuraavat askeleet kohti unelmiesi opiskelupaikkaa.
-          </IonCardContent>
-        </IonCard>
-      }
-
     </div>
-  );
-};
+  )
+}
 
 export default Claims
