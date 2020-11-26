@@ -21,6 +21,7 @@
 
   .button.done {
     margin-top: 2rem;
+    margin-bottom: 2rem;;
     width: 75%;
     font-weight: bold;
     --background: #23abb0;
@@ -41,8 +42,8 @@
   }
 
   .footer {
-    .progress-meter {
-      display: inline-block;
-    }
+    // .progress-meter {
+    //   display: inline-block;
+    // }
   }
 }
