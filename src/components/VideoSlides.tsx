@@ -1,6 +1,6 @@
 import { IonButton, IonIcon, IonSlide, IonSlides } from '@ionic/react'
 import { chevronBackOutline, chevronForwardOutline } from 'ionicons/icons'
-import React, { useCallback, useRef, useState } from 'react'
+import React, { useCallback, useEffect, useLayoutEffect, useRef, useState } from 'react'
 import Swiper from 'swiper'
 import './VideoSlides.scss'
 
@@ -16,13 +16,16 @@ const VideoSlides: React.FC<Props> = ({ urls }) => {
   const [swiper, setSwiper] = useState<Swiper>()
   const videoRefs = useRef<Record<string, HTMLVideoElement>>({})
 
-  const slidesRef = useCallback(async (ref: HTMLIonSlidesElement) => {
+  const slidesRef = async (ref: HTMLIonSlidesElement) => {
     if (ref) {
       const swpr = await ref.getSwiper()
       setSwiper(swpr)
-      setTimeout(() => swpr.update())
+
+      setTimeout(() => { swpr.update() })
+      // Sometimes pagination doesn't appear, this seems to fix it...
+      setTimeout(() => { swpr.update() }, 2000)
     }
-  }, [])
+  }
 
   const videoRefCb = useCallback((url: string) => (ref: HTMLVideoElement) => {
     videoRefs.current[url] = ref
