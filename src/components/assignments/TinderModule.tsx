@@ -17,20 +17,32 @@ import MultiSelect from '../MultiSelect'
 import { Occupation, occupations, uniqueFields } from '../../data/alavaihtoehdot'
 import './TinderModule.scss'
 
+type State = {
+  swiped: Occupation[]
+  result: Occupation[]
+  fields: string[]
+}
+
+const defaultState: State = {
+  swiped: [],
+  result: [],
+  fields: []
+}
+
 type Direction = 'left' | 'right'
 
 interface Props {
-  state: Occupation[]
-  done: (result: Result) => void
+  state: State
+  done: (result: State) => void
   cancel: VoidFunction
 }
 
-const Assignment: React.FC<Props> = ({ state = [], done, cancel }) => {
-  const [result, setResult] = useState<Occupation[]>(state)
-  const [fieldSelection, setFieldSelection] = useState<string[]>([])
+const Assignment: React.FC<Props> = ({ state = defaultState, done, cancel }) => {
+  const [result, setResult] = useState<Occupation[]>(state.result)
+  const [fieldSelection, setFieldSelection] = useState<string[]>(state.fields)
   const childRefs = useRef<Record<string, any>>({})
   const [swipeableCards, setSwipeableCards] = useState<Occupation[]>([])
-  const alreadySwipedCards = useRef<Occupation[]>([])
+  const alreadySwipedCards = useRef<Occupation[]>(state.swiped)
 
   const cardsLeft = swipeableCards.length > 0
   const fieldsSelected = fieldSelection.length > 0
@@ -73,6 +85,12 @@ const Assignment: React.FC<Props> = ({ state = [], done, cancel }) => {
 
   const outOfFrame = (occupation: Occupation) =>
     setSwipeableCards(prev => without(prev, occupation))
+
+  const saveAndClose = () => done({
+    result,
+    swiped: alreadySwipedCards.current,
+    fields: fieldSelection
+  })
 
   return (
     <div className="assignment tinder-cards">
@@ -143,7 +161,7 @@ const Assignment: React.FC<Props> = ({ state = [], done, cancel }) => {
         </IonCardContent>
       </IonCard>
 
-      <IonButton className="done" onClick={() => done(result)}>
+      <IonButton className="done" onClick={() => saveAndClose()}>
         Merkitse suoritetuksi
       </IonButton>
     </div>
