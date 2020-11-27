@@ -8,8 +8,8 @@ import {
   IonLabel
 } from '@ionic/react'
 import { closeCircle } from 'ionicons/icons'
-import { findIndex, last, without } from 'lodash'
-import React, { useRef, useState } from 'react'
+import { findIndex, isArray, last, without } from 'lodash'
+import React, { useLayoutEffect, useRef, useState } from 'react'
 import TinderCard from 'react-tinder-card'
 import { Result } from '../../GameState'
 import AssignmentInstructions from '../AssignmentInstructions'
@@ -29,6 +29,9 @@ const defaultState: State = {
   fields: []
 }
 
+const migrateState = (state: any): State =>
+  (Object.keys(state || {}).every(isArray)) ? state : defaultState
+
 type Direction = 'left' | 'right'
 
 interface Props {
@@ -38,12 +41,16 @@ interface Props {
 }
 
 const Assignment: React.FC<Props> = ({ state = defaultState, done, cancel }) => {
-  const [result, setResult] = useState<Occupation[]>(state.result)
-  const [fieldSelection, setFieldSelection] = useState<string[]>(state.fields)
-  const childRefs = useRef<Record<string, any>>({})
-  const [swipeableCards, setSwipeableCards] = useState<Occupation[]>([])
-  const alreadySwipedCards = useRef<Occupation[]>(state.swiped)
+  // Old values cause explosions
+  const newState = migrateState(state)
 
+  const [result, setResult] = useState<Occupation[]>(newState.result)
+  const [fieldSelection, setFieldSelection] = useState<string[]>(newState.fields)
+  const [swipeableCards, setSwipeableCards] = useState<Occupation[]>([])
+  const alreadySwipedCards = useRef<Occupation[]>(newState.swiped)
+  const childRefs = useRef<Record<string, any>>({})
+
+  const cardsContainerRef = useRef<HTMLDivElement>(null)
   const cardsLeft = swipeableCards.length > 0
   const fieldsSelected = fieldSelection.length > 0
 
@@ -92,6 +99,23 @@ const Assignment: React.FC<Props> = ({ state = defaultState, done, cancel }) => 
     fields: fieldSelection
   })
 
+  useLayoutEffect(() => {
+    console.log('effect')
+    const img: HTMLImageElement = cardsContainerRef.current?.querySelector('img.card-img') as any
+
+    if (img) {
+      const onLoad = () => {
+        console.log('effect', img)
+        if (cardsContainerRef.current) {
+          cardsContainerRef.current.style.height = `${img?.height}px`
+          img.removeEventListener('load', onLoad)
+        }
+      }
+
+      img.addEventListener('load', onLoad);
+    }
+  })
+
   return (
     <div className="assignment tinder-cards">
       <AssignmentInstructions title="Korkeakoulukortit">
@@ -111,7 +135,7 @@ const Assignment: React.FC<Props> = ({ state = defaultState, done, cancel }) => 
       <IonCard>
         {cardsLeft &&
           <div className="module">
-            <div className="cardContainer">
+            <div ref={cardsContainerRef} className="cards-container">
               {swipeableCards.map((occupation) => (
                 <TinderCard
                   // @ts-ignore
@@ -122,10 +146,11 @@ const Assignment: React.FC<Props> = ({ state = defaultState, done, cancel }) => 
                   onSwipe={dir => onSwipe(dir as any, occupation)}
                   onCardLeftScreen={() => outOfFrame(occupation)}
                 >
-                  <div
+                  <img className="card-img" src={occupation.url} alt="" />
+                  {/* <div
                     style={{ backgroundImage: 'url(' + occupation.url + ')' }}
                     className="card-img"
-                  />
+                  /> */}
                 </TinderCard>
               ))}
             </div>
