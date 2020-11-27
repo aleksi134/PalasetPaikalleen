@@ -93,7 +93,7 @@ const ProgressMeter: React.FC<Props> = ({ history }) => {
             <circle className="cls-2" cx="133" cy="135.5" r="61.5" />
 
             <text x="100" y="128" fontSize="13" fill="white">UNELMIEN</text>
-            <text x="80" y="148" fontSize="13" fill="white">OPISKELUPAIKKA</text>
+            <text x="77" y="148" fontSize="13" fill="white">OPISKELUPAIKKA</text>
           </g>
         </g>
       </svg>
