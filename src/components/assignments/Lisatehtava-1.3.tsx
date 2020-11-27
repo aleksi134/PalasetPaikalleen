@@ -21,7 +21,7 @@ const Assignment: React.FC<Props> = ({ state = [], done, cancel }) => {
 
   return (
     <div>
-      <AssignmentInstructions title='Työelämätaitoja oikeasta elämästä'>
+      <AssignmentInstructions title='Lahjakkuus'>
 
         <p>Lahjakkuutesi vaikuttavat siihen, minkälainen ammatti sinulle voisi parhaiten sopia ja minkälaisen työn tekemisessä voisit parhaiten hyödyntää sinulle omimpia lahjakkuuden lajeja. Howard Gardnerin kehittämän moniälykkyysteorian mukaan on olemassa useampia kuin vain yksi älykkyyden laji. Nämä eri älykkyyden lajit liittyvät lahjakkuuksiimme ja niiden avulla voikin olla hyvä pohtia sitä, minkä tyyppisissä asioissa olet erityisen hyvä.</p>
         <p>Toiset meistä voivat olla matemaattisesti lahjakkaita, kun taas toisilla lahjakkuus näkyy sosiaalisuudessa tai vaikkapa taiteellisuudessa. Nämä lahjakkuuksien lajit eivät kuitenkaan ole toisiaan poissulkevia. Missä sinä olet erityisen hyvä? Täydennä kykyprofiilisi oheisella tehtävällä ja ota selvää!</p>

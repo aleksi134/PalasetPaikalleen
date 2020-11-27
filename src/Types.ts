@@ -36,7 +36,7 @@ export const THEME_COLOR_INACTIVE = '#E3E3E3'
 export const THEME_NAMES: Record<Theme, string> = {
   itsetuntemus: 'Itsetuntemus',
   tyoelamatietous: 'Työelämätietous',
-  tietojaopiskelusta: 'Tietoja opiskelusta',
+  tietojaopiskelusta: 'Korkeakoulutietous',
   elamantilanne: 'Elämäntilanne',
   valintojentekeminen: 'Valintojen tekeminen',
   bonus: 'Lisätehtävät'

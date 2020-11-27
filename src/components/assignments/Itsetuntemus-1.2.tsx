@@ -38,8 +38,7 @@ const Assignment: React.FC<Props> = ({ state = {}, done, cancel }) => {
   return (
     <div>
       <AssignmentInstructions title='Arvot'>
-        <p> Itsetuntemuksessa on tärkeä pohtia omia arvoja. Alle on listattu yleisiä työhön liittyviä arvoja ja toiveita. Voisiko listaus olla tukena koulutusvalinnassa? Kuinka korkean arvosanan antaisit näille arvopareille ja -ryhmille? Lopussa valitse kolme sinulle tärkeintä paria tai ryhmää. </p>
-        <p>Meiltä kaikilta löytyy monenlaisia vahvuuksia ja osaamista. Niitä ei vain aina osaa heti tunnistaa tai sanallisesti kertoa. Mitkä ovat sinun vahvuutesi? Valitse annetuista vahvuuksista juuri sinua parhaiten kuvaavat tai jos listasta ei löydy mielestäsi sinua kuvaavia vahvuuksia, voit luoda omasi.</p>
+        <p> Itsetuntemuksessa on tärkeä pohtia omia arvoja. Alle on listattu yleisiä työhön liittyviä arvoja ja toiveita. Voisiko listaus olla tukena koulutusvalinnassa? Kuinka korkean arvosanan antaisit näille arvopareille ja -ryhmille? </p>
       </AssignmentInstructions>
 
       <Sliders options={preDefinedOptions} result={result} onChange={setResult} />

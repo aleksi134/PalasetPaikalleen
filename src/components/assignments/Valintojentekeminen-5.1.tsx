@@ -36,7 +36,7 @@ const Assignment: React.FC<Props> = ({ state = {}, done, cancel }) => {
       <AssignmentInstructions title='Valintojen taustalla'>
         <p>
           Tutki listaa, ja pohdi millä tavalla listan asiat voivat vaikuttaa valintoihin. Mistä oma alavalintasi kumpuaa?
-          Merkitse asteikolla 1-10 jonka jälkeen valitse viisi sinulle tärkeintä asiaa.
+          Merkitse asteikolla 1-5 miten voimakkaasti koet näiden asioiden vaikuttavan valintoihisi.
         </p>
 
         <Collapsible trigger="Esimerkkejä">

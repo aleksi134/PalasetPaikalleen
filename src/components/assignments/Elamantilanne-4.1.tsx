@@ -44,7 +44,7 @@ const Assignment: React.FC<Props> = ({ state = [], done, cancel }) => {
   return (
     <div>
       <AssignmentInstructions title='Tuki ja voimavarat'>
-        <p>Opiskelusta ja urapolun pohdinnoista ei tarvitse selviytyä yksin. Apua ja tukea on aina tarjolla, niin mahdollisten sinulle sopivien alojen ja opiskelupaikkojen pohdinnassa, korkeakouluun hakemisessa kuin siellä opiskellessakin. Aina omat voimavarat eivät myöskään riitä ja sinulla voi olla elämässäsi erilaisia haasteita, jotka hankaloittavat opintoihin pääsyä ja opiskelua. Tutustu videolta Marin tarinaan siitä, kuinka hän on päässyt lukihäiriöstä huolimatta haluamiinsa korkeakouluopintoihin sekä Satun ja Jeminan videolla siihen, miten he ohjaustoimijoina näkevät opintoihin ja tuen tarpeeseen liittyvät haasteet.</p>
+        <p>Opiskelusta ja urapolun pohdinnoista ei tarvitse selviytyä yksin. Apua ja tukea on aina tarjolla, niin mahdollisten sinulle sopivien alojen ja opiskelupaikkojen pohdinnassa, korkeakouluun hakemisessa kuin siellä opiskellessakin. Aina omat voimavarat eivät myöskään riitä ja sinulla voi olla elämässäsi erilaisia haasteita, jotka hankaloittavat opintoihin pääsyä ja opiskelua. Tutustu videolta Marin tarinaan siitä, kuinka hän on päässyt lukivaikeuksista huolimatta haluamiinsa korkeakouluopintoihin sekä Satun ja Jeminan videolla siihen, miten he ohjaustoimijoina näkevät opintoihin ja tuen tarpeeseen liittyvät haasteet.</p>
         <p>Mitä tuen tarpeeseen liittyviä teemoja videoissa mainittiin?</p>
       </AssignmentInstructions>
 
