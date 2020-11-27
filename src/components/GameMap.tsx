@@ -49,7 +49,7 @@ const Home: React.FC<Props> = () => {
   const svgRefCallback = useCallback((node: SVGSVGElement) =>
     setCircleLocations(findCircleLocations(CITIES, node)) , [])
 
-  // useIonViewDidEnter(() => setTimeout(() => setShowModal(true)))
+  useIonViewDidEnter(() => setTimeout(() => setShowModal(true)))
 
   return (
     <div className="container ion-padding">

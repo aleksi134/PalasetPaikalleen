@@ -1,63 +1,82 @@
-import React, { useState } from 'react'
 import {
   IonButton,
   IonCard,
   IonCardContent,
+  IonChip,
+  IonIcon,
   IonItem,
-  IonLabel,
-  IonSelect,
-  IonSelectOption,
+  IonLabel
 } from '@ionic/react'
-// import { closeCircle } from 'ionicons/icons' // this is for the chips
+import { closeCircle } from 'ionicons/icons'
+import { findIndex, last, without } from 'lodash'
+import React, { useRef, useState } from 'react'
 import TinderCard from 'react-tinder-card'
-import AssignmentFooter from '../AssignmentFooter'
-import AssignmentInstructions from '../AssignmentInstructions'
 import { Result } from '../../GameState'
-// import './Minigame.scss'
-import alavaihtoehdot from './data/alavaihtoehdot'
-// import _ from 'lodash'
+import AssignmentInstructions from '../AssignmentInstructions'
+import MultiSelect from '../MultiSelect'
+import { Occupation, occupations, uniqueFields } from '../../data/alavaihtoehdot'
+import './TinderModule.scss'
+
+type Direction = 'left' | 'right'
 
 interface Props {
-  state: Result
+  state: Occupation[]
   done: (result: Result) => void
   cancel: VoidFunction
 }
 
-const Assignment: React.FC<Props> = ({ state, done, cancel }) => {
-  const occupations = alavaihtoehdot
-  /* const uniqFields = _.uniq(Object.values(alavaihtoehdot).map((alavaihtoehto: any) => (alavaihtoehto.field))) // Trying to remove duplicates
-  console.log (occupations)
-  console.log(uniqFields) */
+const Assignment: React.FC<Props> = ({ state = [], done, cancel }) => {
+  const [result, setResult] = useState<Occupation[]>(state)
+  const [fieldSelection, setFieldSelection] = useState<string[]>([])
+  const childRefs = useRef<Record<string, any>>({})
+  const [swipeableCards, setSwipeableCards] = useState<Occupation[]>([])
+  const alreadySwipedCards = useRef<Occupation[]>([])
 
-  let occupationDir: any[] = [] // this is for saving swiped data, though might be obsolete (TODO remove)
+  const cardsLeft = swipeableCards.length > 0
+  const fieldsSelected = fieldSelection.length > 0
 
-  const [lastDirection, setLastDirection] = useState<string>() // directions for user to organize/swipe cards in to "piles", also might be obsolete (TODO remove)
-  const [result, setResult] = useState<Result>(state)
-  const saveAndClose = () => done(result)
-  // const [chips, setChips] = useState('')  // TODO make chips happen
+  const setChildRef = (occupation: Occupation) => (ref: any) =>
+    childRefs.current[occupation.name] = ref
 
-  const swiped = (
-    direction: React.SetStateAction<string | undefined>,
-    nameToDelete: string,
-    institute: string,
-    field: string
-  ) => {
-    console.log('You swiped: ' + direction)
-    console.log('removing ' + nameToDelete + ' from ' + institute + ' with field of ' + field)
-    occupationDir.push({ dir: direction, name: nameToDelete, institute: institute, field: field }) // saving everything just in case calculator needs it
-    console.log(occupationDir)
-    setResult(occupationDir)
-    setLastDirection(direction) // direction latDirection might be obsolete TODO maybe remove
+  const onFieldSelection = (selection: string[]) => {
+    setFieldSelection(selection)
+    const fieldCards = occupations.filter(o => selection.includes(o.field))
+    setSwipeableCards(without(fieldCards, ...alreadySwipedCards.current))
   }
 
-  const outOfFrame = (name: string) => {
-    // Likely this isn't needed (TODO maybe remove)
-    console.log(name + ' left the screen')
+  const swipe = (dir: Direction) => {
+    const cards = swipeableCards.slice().reverse()
+    const lastIndex = findIndex(cards, o => o.name === last(alreadySwipedCards.current)?.name)
+    const current = lastIndex > -1 ? cards[lastIndex + 1] : cards[0]
+
+    if (current) {
+      const currentRef: { swipe: (dir: Direction) => void } = childRefs.current[current.name]
+      currentRef.swipe(dir)
+    }
   }
+
+  const onSwipe = (dir: Direction, occupation: Occupation) => {
+    alreadySwipedCards.current.push(occupation)
+
+    if (dir === 'right')
+      setResult(prev => [...prev, occupation])
+  }
+
+  const reset = () => {
+    setResult([])
+    setFieldSelection([])
+    alreadySwipedCards.current = []
+  }
+
+  const removeOccupation = (occupation: Occupation) =>
+    setResult(result.filter(o => o.name !== occupation.name))
+
+  const outOfFrame = (occupation: Occupation) =>
+    setSwipeableCards(prev => without(prev, occupation))
 
   return (
-    <div className="assignment">
-      <AssignmentInstructions title="3.2 KOULUTUSALAT">
+    <div className="assignment tinder-cards">
+      <AssignmentInstructions title="Korkeakoulukortit">
         <p>Polut työelämään ja unelmien ammattiin voivat olla hyvin monenlaiset. </p>
         <p>
           Kuinka hyvin tunnet korkeakouluissa opiskeltavat alat? Mitä kaikkia sinua kiinnostavaan
@@ -68,56 +87,63 @@ const Assignment: React.FC<Props> = ({ state, done, cancel }) => {
         </p>
       </AssignmentInstructions>
 
-      {/* Insert swiping tutorial somewhere TODO */}
+      <h3>Valitse sinua kiinnostavat alat</h3>
+      <MultiSelect options={uniqueFields} selection={fieldSelection} onChange={onFieldSelection} columns={1} />
+
       <IonCard>
-        <IonCardContent>
-          <IonItem>
-            <IonLabel>Valitse ala</IonLabel>
-            <IonSelect interface="alert" multiple>
-              {Object.values(occupations).map((occupation: any) => (
-                <IonSelectOption key={occupation.name} value={occupation.field}>
-                  {occupation.field}
-                </IonSelectOption>
-              ))}
-            </IonSelect>
-          </IonItem>
-        </IonCardContent>
-        <div className="module">
-          <div className="cardContainer">
-            {Object.values(occupations).map((occupation: any) => (
-              <TinderCard
-                className="swipe"
-                key={occupation.name}
-                onSwipe={(dir: React.SetStateAction<string | undefined>) =>
-                  swiped(dir, occupation.name, occupation.institute, occupation.field)
-                }
-                onCardLeftScreen={() => outOfFrame(occupation.name)}
-              >
-                <div
-                  style={{ backgroundImage: 'url(' + occupation.url + ')' }}
+        {cardsLeft &&
+          <div className="module">
+            <div className="cardContainer">
+              {swipeableCards.map((occupation) => (
+                <TinderCard
+                  // @ts-ignore
+                  ref={setChildRef(occupation)}
+                  key={occupation.name}
+                  // @ts-ignore
                   className="card"
-                ></div>
-              </TinderCard>
-            ))}
+                  onSwipe={dir => onSwipe(dir as any, occupation)}
+                  onCardLeftScreen={() => outOfFrame(occupation)}
+                >
+                  <div
+                    style={{ backgroundImage: 'url(' + occupation.url + ')' }}
+                    className="card-img"
+                  />
+                </TinderCard>
+              ))}
+            </div>
+            <div className='buttons'>
+              <IonButton className="left" onClick={() => swipe('left')}>Ei kiinnosta</IonButton>
+              <IonButton className="right" onClick={() => swipe('right')}>Kiinnostaa!</IonButton>
+            </div>
           </div>
-          {/** TODO remove or include infotext?
-          {lastDirection ? (
-            <p className="infoText">You swiped {lastDirection}</p>
-          ) : (
-            <p className="infoText" />
-          )} */}
-        </div>
-        {/* ' TODO Add "swipe to direction X" buttons or not? */}
-        {/* <IonCardContent> TODO add chip system
-          <IonChip>
-            <IonLabel>Button Chip</IonLabel>{' '}
-            {/* Label comes from state (e.g. swipedRight, setSwipedRight)
-            <IonIcon icon={closeCircle} />
-          </IonChip>
-        </IonCardContent> */}
+        }
+
+        {!cardsLeft && fieldsSelected &&
+          <React.Fragment>
+            <IonItem>
+              <IonLabel>Loistavaa!</IonLabel>
+            </IonItem>
+            <IonCardContent>
+              <p>Löysit sinulle sopivat alavaihtoedot korttipakasta. Monipuolinen tieto sinua kiinnostavista koulutusaloista auttaa sinua oman näköisten valintojen tekemisessä sekä ottamaan seuraavan askeleen urasuunnittelun polulla.</p>
+
+              <p>Eikö tulokset miellytä? Valitse lisää aloja tai pelaa uudelleen!</p>
+              <IonButton onClick={reset}>Aloita alusta!</IonButton>
+
+            </IonCardContent>
+          </React.Fragment>
+        }
+
+        <IonCardContent className="chips">
+          {result.map(occupation => (
+            <IonChip key={occupation.name} onClick={() => removeOccupation(occupation)}>
+              <p>{occupation.name}</p>
+              <IonIcon icon={closeCircle} />
+            </IonChip>
+          ))}
+        </IonCardContent>
       </IonCard>
-      <AssignmentFooter isDone={true} />
-      <IonButton className="done" onClick={saveAndClose}>
+
+      <IonButton className="done" onClick={() => done(result)}>
         Merkitse suoritetuksi
       </IonButton>
     </div>
