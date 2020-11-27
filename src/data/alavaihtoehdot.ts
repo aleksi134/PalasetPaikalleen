@@ -118,7 +118,7 @@ export const occupations: Occupation[] = [
   },
   {
     name: 'kuvataiteilija',
-    url: 'assets/tinder-img/kuvataitelija.png',
+    url: 'assets/tinder-img/kuvataiteilija.png',
     institute: 'Ammattikorkeakoulu',
     field: 'Taiteet ja kulttuuri',
   },
@@ -332,7 +332,7 @@ export const occupations: Occupation[] = [
   },
   {
     name: 'kulttuurihistoria',
-    url: 'assets/tinder-img/kulttuurihistoria.png"',
+    url: 'assets/tinder-img/kulttuurihistoria.png',
     institute: 'Yliopisto',
     field: 'Humanistiset alat ja teologia',
   },
