@@ -38,6 +38,7 @@ const Home: React.FC<Props> = () => {
     const isCurrentNode = currentNode.id === node.id
 
     if (gameState.canAdvance(node)) {
+      console.log('canadvance')
       pawnRef.current?.jump()
       setCurrentNode(node)
       gameState.move(node)
@@ -49,7 +50,7 @@ const Home: React.FC<Props> = () => {
   const svgRefCallback = useCallback((node: SVGSVGElement) =>
     setCircleLocations(findCircleLocations(CITIES, node)) , [])
 
-  useIonViewDidEnter(() => setTimeout(() => setShowModal(true)))
+  // useIonViewDidEnter(() => setTimeout(() => setShowModal(true)))
 
   return (
     <div className="container ion-padding">
@@ -63,12 +64,12 @@ const Home: React.FC<Props> = () => {
           <Node key={node.id} node={node} location={circleLocations[node.id]} onClick={onClickNode} />)}
 
         <MapSvg svgRefCallback={svgRefCallback} />
-        <Flag location={circleLocations?.rovaniemi} />
+        <Flag location={circleLocations?.joensuu} />
         <Pawn location={pawnLocation} ref={pawnRef as any} />
         <ProgressMeter />
       </div>
 
-      <IonModal isOpen={Boolean(showModal)} cssClass='minigame-modal'>
+      <IonModal isOpen={Boolean(showModal)} onDidDismiss={closeModal} cssClass='minigame-modal'>
         <IonContent>
           <MiniGame node={currentNode} done={done} close={closeModal} />
         </IonContent>

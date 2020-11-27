@@ -21,7 +21,7 @@ import './Minigame.scss'
 
 const cityGameMap: CityRecord<FC<any>[]> = {
   kuopio: [Itsetuntemus11],
-  joensuu: [Itsetuntemus12],
+  joensuu: [Valintojentekeminen52],
   oulu: [Tyoelamatietous22],
   jyvaskyla: [Tyoelamatietous21],
   vaasa: [Tietojaopiskelusta31],
@@ -29,7 +29,7 @@ const cityGameMap: CityRecord<FC<any>[]> = {
   helsinki: [Elamantilanne42],
   lappeenranta: [Valintojentekeminen51],
   tampere: [TinderModule],
-  rovaniemi: [Valintojentekeminen52],
+  rovaniemi: [Itsetuntemus12],
   maarianhamina: [Lisatehtava13, Lisatehtava33],
 }
 

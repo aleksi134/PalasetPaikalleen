@@ -21,7 +21,7 @@ export const nodes: MapNode[] = [
   },
   {
     id: 'joensuu',
-    adj: ['kuopio'],
+    adj: [],
     theme: 'itsetuntemus',
     greeting: 'Tervehdys!'
   },
@@ -76,7 +76,7 @@ export const nodes: MapNode[] = [
   },
   {
     id: 'rovaniemi',
-    adj: [],
+    adj: ['oulu'],
     theme: 'valintojentekeminen',
     greeting: 'Tervehdys!'
   },

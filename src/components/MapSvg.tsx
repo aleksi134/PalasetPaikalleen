@@ -285,9 +285,10 @@ const MapSvg: React.FC<Props> = ({ svgRefCallback }) => {
               <path className="cls-3" d="M262.66,402a31,31,0,0,0,1.76,3.5,1.13,1.13,0,0,0,1.95-1.13,28.83,28.83,0,0,1-1.77-3.51,1.13,1.13,0,0,0-.67-.52,1.15,1.15,0,0,0-.87.12,1.13,1.13,0,0,0-.52.67l0,.3a1.07,1.07,0,0,0,.16.57Z" />
             </g>
             <polyline className="cls-4" points="259.5 579.75 157.5 637.75 76.5 635.75 131.5 568.75 171.5 504.75 75.5 471.75" />
-            <polyline className="cls-4" points="313.5 474.75 218.5 454.75 171.5 504.75" />
-            {/* <polyline className="cls-4" points="196.5 209.75 182.5 340.75 218.5 454.75" /> */}
             {/* Lines to rovaniemi removed */}
+            {/* <polyline className="cls-4" points="313.5 474.75 218.5 454.75 171.5 504.75" /> */}
+            <polyline className="cls-4" points="218.5 454.75 171.5 504.75" />
+            <polyline className="cls-4" points="196.5 209.75 182.5 340.75 218.5 454.75" />
             <polyline className="cls-4" points="182.5 340.75 218.5 454.75" />
 
             {/* Maarianhamina line */}
