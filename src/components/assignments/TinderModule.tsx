@@ -99,20 +99,20 @@ const Assignment: React.FC<Props> = ({ state = defaultState, done, cancel }) => 
     fields: fieldSelection
   })
 
+  // Update image height once loaded
   useLayoutEffect(() => {
-    console.log('effect')
-    const img: HTMLImageElement = cardsContainerRef.current?.querySelector('img.card-img') as any
+    const img: HTMLImageElement = cardsContainerRef
+      .current?.querySelector('img.card-img') as any
 
     if (img) {
       const onLoad = () => {
-        console.log('effect', img)
         if (cardsContainerRef.current) {
           cardsContainerRef.current.style.height = `${img?.height}px`
           img.removeEventListener('load', onLoad)
         }
       }
 
-      img.addEventListener('load', onLoad);
+      img.addEventListener('load', onLoad)
     }
   })
 
