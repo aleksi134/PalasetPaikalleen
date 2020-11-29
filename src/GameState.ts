@@ -78,14 +78,20 @@ class GameState {
     return Boolean(this.progress[node.id])
   }
 
+  isGameCompleted(): boolean {
+    return Object.values(this.nodes)
+      .filter(node => !node.isBonus)
+      .every(node => this.isCompleted(node))
+  }
+
   canAdvance(node: MapNode): boolean {
     if (node.id === this.currentLocation) return true
 
-    // If no adjacent nodes, all nodes have to be done to advance
+    // If no adjacent nodes, all non bonus nodes have to be done to advance
     if (node.adj.length === 0)
       return Object.values(this.nodes)
-        .filter((n) => n.adj.length > 0)
-        .every((node) => Boolean(this.progress[node.id]))
+        .filter((n) => !n.isBonus && n.id !== node.id)
+        .every(node => this.isCompleted(node))
 
     return this.nodes[node.id].adj.some((city) => Boolean(this.progress[city]))
   }

@@ -81,6 +81,7 @@ export const nodes: MapNode[] = [
     id: 'inari',
     adj: ['rovaniemi'],
     theme: 'itsetuntemus',
+    isBonus: true,
     greeting: 'Tervehdys!',
     customThemeName: 'Lisätehtävä: itsetuntemus'
   },

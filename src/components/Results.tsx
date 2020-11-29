@@ -7,8 +7,10 @@ import './Results.scss'
 
 interface Props { }
 
-const Home: React.FC<Props> = () => {
+const Results: React.FC<Props> = () => {
   const resultsRef = useRef<HTMLDivElement>(null)
+
+  const isGameCompleted = gameState.isGameCompleted()
 
   const createImage = () => {
     const node = resultsRef.current!
@@ -51,9 +53,12 @@ const Home: React.FC<Props> = () => {
         </pre>
       </div>
 
-      <IonButton onClick={createImage}>Lataa tulokset</IonButton>
+      { !isGameCompleted &&
+        <div>Suorita peli ennen tulosten lataamista</div>
+      }
+      <IonButton disabled={!isGameCompleted} onClick={createImage}>Lataa tulokset</IonButton>
     </div>
   )
 }
 
-export default Home
+export default Results
