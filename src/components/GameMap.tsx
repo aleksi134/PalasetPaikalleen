@@ -11,7 +11,7 @@ import Node from './Node'
 import Pawn from './Pawn'
 import NodeIcon from './NodeIcon'
 import ProgressMeter from './ProgressMeter'
-import { flag, helpCircleOutline } from 'ionicons/icons'
+import { flag, helpOutline } from 'ionicons/icons'
 
 interface Props {
   name: string
@@ -66,8 +66,8 @@ const Home: React.FC<Props> = () => {
         <MapSvg svgRefCallback={svgRefCallback} />
 
         <NodeIcon location={circleLocations?.joensuu} icon={flag} />
-        <NodeIcon location={circleLocations?.maarianhamina} icon={helpCircleOutline} />
-        <NodeIcon location={circleLocations?.inari} icon={helpCircleOutline} />
+        <NodeIcon location={circleLocations?.maarianhamina} icon={helpOutline} />
+        <NodeIcon location={circleLocations?.inari} icon={helpOutline} />
 
         <Pawn location={pawnLocation} ref={pawnRef as any} />
 
