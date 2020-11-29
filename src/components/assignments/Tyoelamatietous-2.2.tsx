@@ -29,6 +29,8 @@ const options = [
   { title: 'rohkeus ryhtyä yrittäjäksi', isCorrect: false }
 ]
 
+// const correctCount = options.filter(o => o.isCorrect).length
+
 const videos = [
   '/assets/videos/assignment-2.2/alina.webm',
   '/assets/videos/assignment-2.2/carecare.webm',
@@ -40,7 +42,7 @@ const videos = [
 const Assignment: React.FC<Props> = ({ state = [], done, close }) => {
   const [ result, setResult ] = useState<State>(state)
 
-  const isDone = result.length >= 3
+  const isDone = result.length > 0
 
   return (
     <div>

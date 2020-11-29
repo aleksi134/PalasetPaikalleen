@@ -1,3 +1,4 @@
+import { findIndex } from 'lodash';
 import React from 'react'
 import './MultiSelect.scss'
 
@@ -13,16 +14,16 @@ interface Props {
 const MultiSelect: React.FC<Props> = ({ options, selection = [], onChange, columns = 2 }) => {
 
   const toggleSelection = (o: Option) => {
-    const found = selection.indexOf(o) > -1
+    const found = Boolean(selection.find(s => s.title === o.title))
 
     const newSelection = found
-      ? selection.filter(e => e !== o)
+      ? selection.filter(e => e.title !== o.title)
       : [...selection, o]
 
     onChange(newSelection)
   }
 
-  const isSelected = (o: Option) => selection.indexOf(o) > -1
+  const isSelected = (o: Option) => findIndex(selection, s => s.title === o.title) > -1
 
   const classes = ['multi-select', (columns === 1) ? 'full-width' : ''].join(' ')
 

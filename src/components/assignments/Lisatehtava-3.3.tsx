@@ -35,6 +35,8 @@ const options = [
   { title: 'Ohjaamo ja muut ohjaustoiminnan tukitoimijat', isCorrect: false },
 ]
 
+// const correctCount = options.filter(o => o.isCorrect).length
+
 const videos = [
   '/assets/videos/assignment-3.3/ina1.webm',
   '/assets/videos/assignment-3.3/ina2.webm',
@@ -46,6 +48,8 @@ const videos = [
 
 const Assignment: React.FC<Props> = ({ state = [], done, close }) => {
   const [ result, setResult ] = useState<State>(state)
+
+  const isDone = result.length > 0
 
   return (
     <div>
@@ -88,7 +92,7 @@ const Assignment: React.FC<Props> = ({ state = [], done, close }) => {
 
       <MultiSelectCorrect options={options} selection={result} onChange={setResult} columns={1} />
 
-      <AssignmentFooter done={() => done(result)} close={close} isDone={true}>
+      <AssignmentFooter done={() => done(result)} close={close} isDone={isDone}>
       </AssignmentFooter>
     </div>
   )

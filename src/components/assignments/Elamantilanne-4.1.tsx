@@ -28,6 +28,7 @@ const options = [
   { title: 'Saavutettavuus opintomateriaaleissa', isCorrect: false },
 ]
 
+const correctCount = options.filter(o => o.isCorrect).length
 
 const videos = [
   '/assets/videos/assignment-4.1/mari.webm',
@@ -38,7 +39,8 @@ const videos = [
 const Assignment: React.FC<Props> = ({ state = [], done, close }) => {
   const [ result, setResult ] = useState<State>(state)
 
-  const isDone = result.length >= 3
+  const correctAnswers = result.filter(s => options.find(o => o.title === s.title)?.isCorrect)
+  const isDone = correctAnswers.length >= correctCount
 
   return (
     <div>
