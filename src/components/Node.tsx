@@ -1,6 +1,7 @@
-import React from 'react'
+import React, { CSSProperties } from 'react'
 import { MapNode } from '../GameData'
 import gameState from '../GameState'
+// import { THEME_COLORS } from '../Types'
 
 interface Props {
   node: MapNode,
@@ -10,16 +11,22 @@ interface Props {
 
 const Node: React.FC<Props> = ({ node, location, onClick }) => {
 
+  // const themeColor = THEME_COLORS[node.theme]
+  const canAdvance = gameState.canAdvance(node)
+  const isCompleted = gameState.isCompleted(node)
+
   const classes = [
     'dot',
     node.id,
-    gameState.canAdvance(node) ? 'available' : '',
-    gameState.isCompleted(node) ? 'completed' : ''
+    canAdvance ? 'available' : '',
+    isCompleted ? 'completed' : ''
   ].join(' ')
 
-  const style = {
+  const style: CSSProperties = {
     left: `${location.x}%`,
-    top: `${location.y}%`
+    top: `${location.y}%`,
+    // borderColor: themeColor,
+    // ...(isCompleted ? { backgroundColor: themeColor } : {})
   }
 
   return (

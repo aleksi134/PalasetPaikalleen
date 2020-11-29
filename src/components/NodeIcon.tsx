@@ -1,24 +1,24 @@
 import { IonIcon } from '@ionic/react'
-import { flag } from 'ionicons/icons'
 import React, { CSSProperties } from 'react'
 import { Location } from '../Types'
-import './Flag.scss'
+import './NodeIcon.scss'
 
 interface Props {
   location: Location | undefined
+  icon: string
 }
 
-const Flag: React.FC<Props> = ({ location }) => {
+const NodeIcon: React.FC<Props> = ({ location, icon }) => {
 
   const style: CSSProperties = location
     ? { top: `${location.y}%`, left: `${location.x}%` }
     : { display: 'none' }
 
   return (
-    <div className="flag" style={style}>
-      <IonIcon icon={flag} />
+    <div className="node-icon" style={style}>
+      <IonIcon icon={icon} />
     </div>
   )
 }
 
-export default Flag
+export default NodeIcon

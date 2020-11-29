@@ -9,8 +9,9 @@ import MapSvg from './MapSvg'
 import MiniGame from './MiniGame'
 import Node from './Node'
 import Pawn from './Pawn'
-import Flag from './Flag'
+import NodeIcon from './NodeIcon'
 import ProgressMeter from './ProgressMeter'
+import { flag, helpCircleOutline } from 'ionicons/icons'
 
 interface Props {
   name: string
@@ -49,7 +50,7 @@ const Home: React.FC<Props> = () => {
   const svgRefCallback = useCallback((node: SVGSVGElement) =>
     setCircleLocations(findCircleLocations(CITIES, node)) , [])
 
-  useIonViewDidEnter(() => setTimeout(() => setShowModal(true)))
+  // useIonViewDidEnter(() => setTimeout(() => setShowModal(true)))
 
   return (
     <div className="container ion-padding">
@@ -63,7 +64,8 @@ const Home: React.FC<Props> = () => {
           <Node key={node.id} node={node} location={circleLocations[node.id]} onClick={onClickNode} />)}
 
         <MapSvg svgRefCallback={svgRefCallback} />
-        <Flag location={circleLocations?.joensuu} />
+        <NodeIcon location={circleLocations?.joensuu} icon={flag} />
+        <NodeIcon location={circleLocations?.maarianhamina} icon={helpCircleOutline} />
         <Pawn location={pawnLocation} ref={pawnRef as any} />
         <ProgressMeter />
       </div>

@@ -292,7 +292,7 @@ const MapSvg: React.FC<Props> = ({ svgRefCallback }) => {
             <polyline className="cls-4" points="182.5 340.75 218.5 454.75" />
 
             {/* Maarianhamina line */}
-            <line className="cls-4" x1="18.5" y1="662.75" x2="76.5" y2="635.75" />
+            {/* <line className="cls-4" x1="18.5" y1="662.75" x2="76.5" y2="635.75" /> */}
 
             {circles}
 
