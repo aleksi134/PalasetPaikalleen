@@ -18,20 +18,20 @@ import Valintojentekeminen51 from './assignments/Valintojentekeminen-5.1'
 import Valintojentekeminen52 from './assignments/Valintojentekeminen-5.2'
 import TinderModule from './assignments/TinderModule'
 import './Minigame.scss'
-import AssignmentFooter from './AssignmentFooter'
 
-const cityGameMap: CityRecord<FC<any>[]> = {
-  kuopio: [Itsetuntemus11],
-  joensuu: [Valintojentekeminen52],
-  oulu: [Tyoelamatietous22],
-  jyvaskyla: [Tyoelamatietous21],
-  vaasa: [Tietojaopiskelusta31],
-  turku: [Elamantilanne41],
-  helsinki: [Elamantilanne42],
-  lappeenranta: [Valintojentekeminen51],
-  tampere: [TinderModule],
-  rovaniemi: [Itsetuntemus12],
-  maarianhamina: [Lisatehtava13, Lisatehtava33],
+const cityGameMap: CityRecord<FC<any>> = {
+  kuopio: Itsetuntemus11,
+  joensuu: Valintojentekeminen52,
+  oulu: Tyoelamatietous22,
+  jyvaskyla: Tyoelamatietous21,
+  vaasa: Tietojaopiskelusta31,
+  turku: Elamantilanne41,
+  helsinki: Elamantilanne42,
+  lappeenranta: Valintojentekeminen51,
+  tampere: TinderModule,
+  rovaniemi: Itsetuntemus12,
+  maarianhamina: Lisatehtava13,
+  inari: Lisatehtava33,
 }
 
 type Done = (result: Result) => void
@@ -43,14 +43,15 @@ interface Props {
 }
 
 const MiniGame: React.FC<Props> = ({ node, done, close }) => {
-  const currentGameComponents = cityGameMap[node.id]
   const state = gameState.load(node.id)
   const classes = ['container', 'minigame', 'assignment', node.id]
 
-  const themeName = THEME_NAMES[node.theme]
+  const themeName = node.customThemeName || THEME_NAMES[node.theme]
   const themeStyle: CSSProperties = {
     backgroundColor: THEME_COLORS[node.theme]
   }
+
+  const Component = cityGameMap[node.id]
 
   return (
     <div className={classes.join(' ')}>
@@ -62,9 +63,7 @@ const MiniGame: React.FC<Props> = ({ node, done, close }) => {
       </div>
 
       <NodeContext.Provider value={node}>
-        {currentGameComponents.map((Component, index) =>
-          <Component key={index} state={state} done={done} close={close} />
-        )}
+        <Component state={state} done={done} close={close} />
       </NodeContext.Provider>
     </div>
   )

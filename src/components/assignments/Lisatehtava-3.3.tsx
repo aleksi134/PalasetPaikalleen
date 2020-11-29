@@ -47,8 +47,6 @@ const videos = [
 const Assignment: React.FC<Props> = ({ state = [], done, close }) => {
   const [ result, setResult ] = useState<State>(state)
 
-  const saveAndClose = () => done(result)
-
   return (
     <div>
       <AssignmentInstructions title="Mahdollisuuksien maailma" showBubble={false}>
@@ -90,12 +88,8 @@ const Assignment: React.FC<Props> = ({ state = [], done, close }) => {
 
       <MultiSelectCorrect options={options} selection={result} onChange={setResult} columns={1} />
 
-      <AssignmentFooter {...{ done, close, isDone: true }}>
+      <AssignmentFooter done={() => done(result)} close={close} isDone={true}>
       </AssignmentFooter>
-
-      <IonButton disabled={false} className="done" onClick={saveAndClose}>
-        Merkitse suoritetuksi
-      </IonButton>
     </div>
   )
 }

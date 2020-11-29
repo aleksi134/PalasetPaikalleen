@@ -10,6 +10,7 @@ const MapSvg: React.FC<Props> = ({ svgRefCallback }) => {
   const circles =
     <React.Fragment>
       <circle className="cls-5 rovaniemi" cx="196.5" cy="209.75" r="17" />
+      <circle className="cls-5 inari" cx="210" cy="60" r="17" />
       <circle className="cls-5 kuopio" cx="218.5" cy="454.75" r="17" />
       <circle className="cls-5 lappeenranta" cx="259.5" cy="579.75" r="17" />
       <circle className="cls-5 joensuu" cx="313.5" cy="474.75" r="17" />

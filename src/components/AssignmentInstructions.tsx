@@ -1,4 +1,4 @@
-import { IonCard, IonCardContent, IonItem } from '@ionic/react'
+import { IonCard, IonCardContent, IonItem, IonLabel } from '@ionic/react'
 import React, { useContext, useState } from 'react'
 import Lottie, { EventListener } from 'react-lottie'
 import { NodeContext } from '../GameData'
@@ -35,7 +35,7 @@ const AssignmentInstructions: React.FC<Props> = ({ title, showBubble = true, chi
           />
           {showBubble && <div className="greeting speech-bubble">{node.greeting}</div> }
         </div>
-        <p>{title}</p>
+        <IonLabel>{title}</IonLabel>
       </IonItem>
 
       <IonCardContent>

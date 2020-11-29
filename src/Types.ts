@@ -10,7 +10,8 @@ export const CITIES = [
 	'vaasa',
 	'turku',
 	'helsinki',
-	'maarianhamina',
+  'maarianhamina',
+  'inari'
 ] as const
 
 export const THEMES = [

@@ -1,9 +1,10 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Collapsible from 'react-collapsible'
 import AssignmentFooter from '../AssignmentFooter'
 import AssignmentInstructions from '../AssignmentInstructions'
+import Sliders from '../Sliders'
 
-type State = string
+type State = Partial<Record<string, number>>
 
 interface Props {
   state: State
@@ -11,13 +12,21 @@ interface Props {
   close: VoidFunction
 }
 
-// const options = [ ]
-// const videos = [ ]
+const preDefinedOptions = [
+  'Loogis-matemaattinen lahjakkuus',
+  'Kielellinen lahjakkuus',
+  'Musiikillinen lahjakkuus ',
+  'Kinesteettis-liikunnallinen lahjakkuus',
+  'Avaruudellinen ja visuaalinen lahjakkuus',
+  'Interpersoonallinen lahjakkuus',
+  'Intrapersoonallinen lahjakkuus',
+  'Luonnon ymmärtämisen kyky',
+]
 
-const Assignment: React.FC<Props> = ({ state = [], done, close }) => {
-  // const [ result, setResult ] = useState<State>(state)
+const Assignment: React.FC<Props> = ({ state = {}, done, close }) => {
+  const [ result, setResult ] = useState<State>(state)
 
-  const saveAndClose = () => done('bonus')
+  const saveAndClose = () => done(result)
 
   return (
     <div>
@@ -116,18 +125,12 @@ const Assignment: React.FC<Props> = ({ state = [], done, close }) => {
           </p>
 
         </Collapsible>
-
       </AssignmentInstructions>
 
-      {/* <VideoSlides urls={videos} /> */}
+      <Sliders options={preDefinedOptions} result={result} onChange={setResult} />
 
-      {/* <MultiSelectCorrect options={options} selection={result} onChange={setResult} columns={1} /> */}
-
-      {/* <AssignmentFooter isDone={true} /> */}
-
-      {/* <IonButton disabled={false} className="done" onClick={saveAndClose}>
-        Seuraava tehtävä
-      </IonButton> */}
+      <AssignmentFooter done={() => done(result)} close={close} isDone={true}>
+      </AssignmentFooter>
     </div>
   )
 }

@@ -8,6 +8,8 @@ export type MapNode = {
   isBonus?: boolean
   greeting: string
 
+  // Show instead of theme name
+  customThemeName?: string
   // result type
   // isdone fn checker
 }
@@ -70,9 +72,17 @@ export const nodes: MapNode[] = [
   {
     id: 'maarianhamina',
     adj: ['turku'],
-    theme: 'bonus',
+    theme: 'tietojaopiskelusta',
     isBonus: true,
-    greeting: 'Tervehdys!'
+    greeting: 'Tervehdys!',
+    customThemeName: 'Lisätehtävä: korkeakoulutietous'
+  },
+  {
+    id: 'inari',
+    adj: ['rovaniemi'],
+    theme: 'itsetuntemus',
+    greeting: 'Tervehdys!',
+    customThemeName: 'Lisätehtävä: itsetuntemus'
   },
   {
     id: 'rovaniemi',
