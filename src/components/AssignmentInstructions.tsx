@@ -1,4 +1,4 @@
-import { IonCard, IonCardContent, IonItem, IonLabel } from '@ionic/react'
+import { IonCard, IonCardContent, IonItem } from '@ionic/react'
 import React, { useContext, useState } from 'react'
 import Lottie, { EventListener } from 'react-lottie'
 import { NodeContext } from '../GameData'
@@ -9,11 +9,10 @@ import './AssignmentInstructions.scss'
 
 interface Props {
   title: string
-  description?: string
   showBubble?: boolean
 }
 
-const AssignmentInstructions: React.FC<Props> = ({ title, description, showBubble = true, children }) => {
+const AssignmentInstructions: React.FC<Props> = ({ title, showBubble = true, children }) => {
   const [animation, setAnimation] = useState<any>(animationJump)
 
 
@@ -36,11 +35,11 @@ const AssignmentInstructions: React.FC<Props> = ({ title, description, showBubbl
           />
           {showBubble && <div className="greeting speech-bubble">{node.greeting}</div> }
         </div>
-        <IonLabel>{title}</IonLabel>
+        <p>{title}</p>
       </IonItem>
 
       <IonCardContent>
-        {description ? <p>description </p> : children}
+        {children}
       </IonCardContent>
     </IonCard>
   )

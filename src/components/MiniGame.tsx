@@ -18,6 +18,7 @@ import Valintojentekeminen51 from './assignments/Valintojentekeminen-5.1'
 import Valintojentekeminen52 from './assignments/Valintojentekeminen-5.2'
 import TinderModule from './assignments/TinderModule'
 import './Minigame.scss'
+import AssignmentFooter from './AssignmentFooter'
 
 const cityGameMap: CityRecord<FC<any>[]> = {
   kuopio: [Itsetuntemus11],
@@ -51,11 +52,6 @@ const MiniGame: React.FC<Props> = ({ node, done, close }) => {
     backgroundColor: THEME_COLORS[node.theme]
   }
 
-  const saveAndClose = (res: any) => {
-    done(res)
-    close()
-  }
-
   return (
     <div className={classes.join(' ')}>
       <div className="theme-bar" style={themeStyle}>
@@ -67,7 +63,7 @@ const MiniGame: React.FC<Props> = ({ node, done, close }) => {
 
       <NodeContext.Provider value={node}>
         {currentGameComponents.map((Component, index) =>
-          <Component key={index} state={state} done={saveAndClose} cancel={close} />
+          <Component key={index} state={state} done={done} close={close} />
         )}
       </NodeContext.Provider>
     </div>

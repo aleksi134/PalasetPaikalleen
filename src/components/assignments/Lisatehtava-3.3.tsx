@@ -11,7 +11,7 @@ type State = { title: string, isCorrect: boolean }[]
 interface Props {
   state: State
   done: (result: State) => void
-  cancel: VoidFunction
+  close: VoidFunction
 }
 
 const options = [
@@ -44,7 +44,7 @@ const videos = [
   '/assets/videos/assignment-3.3/tyttilotta.webm',
 ]
 
-const Assignment: React.FC<Props> = ({ state = [], done, cancel }) => {
+const Assignment: React.FC<Props> = ({ state = [], done, close }) => {
   const [ result, setResult ] = useState<State>(state)
 
   const saveAndClose = () => done(result)
@@ -90,7 +90,8 @@ const Assignment: React.FC<Props> = ({ state = [], done, cancel }) => {
 
       <MultiSelectCorrect options={options} selection={result} onChange={setResult} columns={1} />
 
-      <AssignmentFooter isDone={true} />
+      <AssignmentFooter {...{ done, close, isDone: true }}>
+      </AssignmentFooter>
 
       <IonButton disabled={false} className="done" onClick={saveAndClose}>
         Merkitse suoritetuksi

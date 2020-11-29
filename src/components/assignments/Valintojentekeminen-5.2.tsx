@@ -8,16 +8,15 @@ type State = Partial<Record<string, number>>
 interface Props {
   state: State,
   done: (result: State) => void
-  cancel: VoidFunction
+  close: VoidFunction
 }
 
 // const preDefinedOptions = [ ]
 
-const Assignment: React.FC<Props> = ({ state = {}, done, cancel }) => {
+const Assignment: React.FC<Props> = ({ state = {}, done, close }) => {
   const [ result, setResult ] = useState<State>(state)
 
   const isDone = true
-  const saveAndClose = () => done(result)
 
   return (
     <div>
@@ -28,8 +27,8 @@ const Assignment: React.FC<Props> = ({ state = {}, done, cancel }) => {
 
       </AssignmentInstructions>
 
-      <AssignmentFooter isDone={isDone} />
-      <IonButton disabled={!isDone} className="done" onClick={saveAndClose}>Merkitse suoritetuksi</IonButton>
+      <AssignmentFooter done={() => done(result)} close={close} isDone={isDone}>
+      </AssignmentFooter>
     </div>
   )
 }

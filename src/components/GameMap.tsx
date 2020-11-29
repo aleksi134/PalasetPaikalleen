@@ -38,7 +38,6 @@ const Home: React.FC<Props> = () => {
     const isCurrentNode = currentNode.id === node.id
 
     if (gameState.canAdvance(node)) {
-      console.log('canadvance')
       pawnRef.current?.jump()
       setCurrentNode(node)
       gameState.move(node)
@@ -50,7 +49,7 @@ const Home: React.FC<Props> = () => {
   const svgRefCallback = useCallback((node: SVGSVGElement) =>
     setCircleLocations(findCircleLocations(CITIES, node)) , [])
 
-  // useIonViewDidEnter(() => setTimeout(() => setShowModal(true)))
+  useIonViewDidEnter(() => setTimeout(() => setShowModal(true)))
 
   return (
     <div className="container ion-padding">

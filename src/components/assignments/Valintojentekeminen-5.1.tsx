@@ -10,7 +10,7 @@ type State = Partial<Record<string, number>>
 interface Props {
   state: State,
   done: (result: State) => void
-  cancel: VoidFunction
+  close: VoidFunction
 }
 
 const preDefinedOptions = [
@@ -25,11 +25,10 @@ const preDefinedOptions = [
   'Omat taidot ja kiinnostus',
 ]
 
-const Assignment: React.FC<Props> = ({ state = {}, done, cancel }) => {
+const Assignment: React.FC<Props> = ({ state = {}, done, close }) => {
   const [ result, setResult ] = useState<State>(state)
 
   const isDone = true
-  const saveAndClose = () => done(result)
 
   return (
     <div>
@@ -64,21 +63,8 @@ const Assignment: React.FC<Props> = ({ state = {}, done, cancel }) => {
 
       <Sliders options={preDefinedOptions} result={result} onChange={setResult} />
 
-      {/*
-      {
-        isDone &&
-        <IonCard>
-          <IonItem>
-            <IonLabel>Hienoa!</IonLabel>
-          </IonItem>
-          <IonCardContent>
-            <p> Nyt tunnet ja tunnistat omat vahvuutesi. Muista että meiltä kaikilta löytyy omanlaisiamme vahvuuksia ja voimme oppia hyödyntämään niitä mitä erilaisimmissa tilanteissa. Vahvuudet auttavat sinua urasuunnittelusi polulla eteenpäin. </p>
-          </IonCardContent>
-        </IonCard>
-      } */}
-
-      <AssignmentFooter isDone={isDone} />
-      <IonButton disabled={!isDone} className="done" onClick={saveAndClose}>Merkitse suoritetuksi</IonButton>
+      <AssignmentFooter done={() => done(result)} close={close} isDone={isDone}>
+      </AssignmentFooter>
     </div>
   )
 }

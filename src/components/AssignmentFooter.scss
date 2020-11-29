@@ -1,18 +1,36 @@
 .assignment .footer {
   padding-top: 2rem;
 
-  .progress-meter {
-    // width: 50^;
+  .footer-container {
+    .progress-meter, div[title="animation"] {
+      display: inline-block;
+      width: 30% !important;
+      margin: 0 2rem;
+    }
+    // .progress-meter {
+    //   // margin-left: 0;
+    // }
+    // div[title="animation"] {
+    //   // svg { }
+    // }
   }
 
-  &, ion-row, ion-col, div[title] {
-    overflow: visible !important;
-  }
+  .footer-slider {
+    position: absolute;
+    bottom: 0;
+    background: white;
+    overflow: hidden;
+    transform-origin: bottom;
+    transition: transform 0.3s ease-in-out;
+    width: 100%;
+    min-height: 300px;
+    box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.8);
 
-
-  .pollo {
-    svg {
-      max-width: 80%;
+    &.hidden {
+      transform: scaleY(0);
+    }
+    &.visible {
+      transform: scaleY(1);
     }
   }
 }

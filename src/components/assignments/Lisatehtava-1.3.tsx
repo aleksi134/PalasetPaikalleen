@@ -8,13 +8,13 @@ type State = string
 interface Props {
   state: State
   done: (result: State) => void
-  cancel: VoidFunction
+  close: VoidFunction
 }
 
 // const options = [ ]
 // const videos = [ ]
 
-const Assignment: React.FC<Props> = ({ state = [], done, cancel }) => {
+const Assignment: React.FC<Props> = ({ state = [], done, close }) => {
   // const [ result, setResult ] = useState<State>(state)
 
   const saveAndClose = () => done('bonus')
@@ -123,7 +123,7 @@ const Assignment: React.FC<Props> = ({ state = [], done, cancel }) => {
 
       {/* <MultiSelectCorrect options={options} selection={result} onChange={setResult} columns={1} /> */}
 
-      <AssignmentFooter isDone={true} />
+      {/* <AssignmentFooter isDone={true} /> */}
 
       {/* <IonButton disabled={false} className="done" onClick={saveAndClose}>
         Seuraava tehtävä

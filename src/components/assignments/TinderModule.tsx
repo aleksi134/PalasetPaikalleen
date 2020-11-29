@@ -16,6 +16,7 @@ import AssignmentInstructions from '../AssignmentInstructions'
 import MultiSelect from '../MultiSelect'
 import { Occupation, occupations, uniqueFields } from '../../data/alavaihtoehdot'
 import './TinderModule.scss'
+import AssignmentFooter from '../AssignmentFooter'
 
 type State = {
   swiped: Occupation[]
@@ -37,10 +38,10 @@ type Direction = 'left' | 'right'
 interface Props {
   state: State
   done: (result: State) => void
-  cancel: VoidFunction
+  close: VoidFunction
 }
 
-const Assignment: React.FC<Props> = ({ state = defaultState, done, cancel }) => {
+const Assignment: React.FC<Props> = ({ state = defaultState, done, close }) => {
   // Old values cause explosions
   const newState = migrateState(state)
 
@@ -93,7 +94,7 @@ const Assignment: React.FC<Props> = ({ state = defaultState, done, cancel }) => 
   const outOfFrame = (occupation: Occupation) =>
     setSwipeableCards(prev => without(prev, occupation))
 
-  const saveAndClose = () => done({
+  const save = () => done({
     result,
     swiped: alreadySwipedCards.current,
     fields: fieldSelection
@@ -186,9 +187,7 @@ const Assignment: React.FC<Props> = ({ state = defaultState, done, cancel }) => 
         </IonCardContent>
       </IonCard>
 
-      <IonButton className="done" onClick={() => saveAndClose()}>
-        Merkitse suoritetuksi
-      </IonButton>
+      <AssignmentFooter done={save} close={close} isDone={true} />
     </div>
   )
 }

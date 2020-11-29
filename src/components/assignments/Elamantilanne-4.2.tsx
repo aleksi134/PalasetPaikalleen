@@ -10,7 +10,7 @@ type Result = string[]
 interface Props {
   state: string[]
   done: (result: Result) => void
-  cancel: VoidFunction
+  close: VoidFunction
 }
 
 const preDefinedOptions = [
@@ -28,12 +28,12 @@ const preDefinedOptions = [
   'matkustelu',
 ]
 
-const Assignment: React.FC<Props> = ({ state = [], done, cancel }) => {
+const Assignment: React.FC<Props> = ({ state = [], done, close }) => {
   const uniqueOptions = uniq([...preDefinedOptions, ...state])
 
-  const [ options, setOptions ] = useState<Result>(uniqueOptions)
-  const [ customOption, setCustomOption ] = useState('')
-  const [ result, setResult ] = useState<Result>(state)
+  const [options, setOptions] = useState<Result>(uniqueOptions)
+  const [customOption, setCustomOption] = useState('')
+  const [result, setResult] = useState<Result>(state)
 
   const addCustomOption = () => {
     setOptions([...options, customOption])
@@ -67,8 +67,7 @@ const Assignment: React.FC<Props> = ({ state = [], done, cancel }) => {
         </IonItem>
       </IonList>
 
-      {
-        isDone &&
+      <AssignmentFooter done={() => done(result)} close={close} isDone={isDone}>
         <IonCard>
           <IonItem>
             <IonLabel>Hienoa!</IonLabel>
@@ -77,10 +76,7 @@ const Assignment: React.FC<Props> = ({ state = [], done, cancel }) => {
             <p> Nyt olet koonnut hyvän mielen reppuun niitä asioita, jotka tuottavat sinulle iloa, antavat energiaa ja auttavat jaksamaan. Voit pitää tätä listaa tallessa pahan päivän varalle, jolloin voit palata siihen ja huomata hyvät asiat ympärilläsi sekä itsessäsi. Nämä voimavarat auttavat sinua ottamaan tarvittavat askeleet urasuunnittelusi polulla. </p>
           </IonCardContent>
         </IonCard>
-      }
-
-      <AssignmentFooter isDone={isDone} />
-      <IonButton disabled={!isDone} className="done" onClick={saveAndClose}>Merkitse suoritetuksi</IonButton>
+      </AssignmentFooter>
     </div>
   )
 }

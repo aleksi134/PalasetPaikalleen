@@ -10,7 +10,7 @@ type State = Record<string, boolean>
 interface Props {
   state: State
   done: (result: State) => void
-  cancel: VoidFunction
+  close: VoidFunction
 }
 
 const claims: Claim[] = [
@@ -66,16 +66,13 @@ const claims: Claim[] = [
   }
 ]
 
-const Assignment: React.FC<Props> = ({ state = {}, done, cancel }) => {
+const Assignment: React.FC<Props> = ({ state = {}, done, close }) => {
   const [result, setResult] = useState<State>(state)
 
   const onAnswer = (claim: Claim, answer: boolean) =>
     setResult({ ...result, [claim.title]: answer === claim.isCorrect })
 
   const isDone = Object.keys(result).length === claims.length
-  const saveAndClose = () => done(result)
-
-  const showResult = Object.keys(result).length === claims.length
   const rightCount = Object.values(result).filter(a => a).length
 
   return (
@@ -87,8 +84,7 @@ const Assignment: React.FC<Props> = ({ state = {}, done, cancel }) => {
 
       <Claims options={claims} result={result} onChange={onAnswer} />
 
-      {
-        showResult &&
+      <AssignmentFooter done={() => done(result)} close={close} isDone={isDone}>
         <IonCard className="results">
           <IonCardHeader>
             <IonCardTitle>Erinomaista!</IonCardTitle>
@@ -96,18 +92,13 @@ const Assignment: React.FC<Props> = ({ state = {}, done, cancel }) => {
 
           <IonCardContent>
             <p className="result">
-              Sait { rightCount } / { claims.length } oikein
+              Sait {rightCount} / {claims.length} oikein
             </p>
             Nyt olet laajentanut tietämystäsi korkeakouluopiskelusta ja hakuun sekä opintoihin liittyvistä mahdollisuuksista. Tieto korkeakoulutuksesta antaa rohkeutta tehdä omannäköisiä valintoja urapolullasi ja ottaa seuraavat askeleet kohti unelmiesi opiskelupaikkaa.
           </IonCardContent>
         </IonCard>
-      }
+      </AssignmentFooter>
 
-      <AssignmentFooter isDone={isDone} />
-
-      <IonButton disabled={!isDone} className="done" onClick={saveAndClose}>
-        Merkitse suoritetuksi
-      </IonButton>
     </div>
   )
 }

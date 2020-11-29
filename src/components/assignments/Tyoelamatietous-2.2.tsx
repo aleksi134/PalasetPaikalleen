@@ -10,7 +10,7 @@ type State = { title: string, isCorrect: boolean }[]
 interface Props {
   state: State
   done: (result: State) => void
-  cancel: VoidFunction
+  close: VoidFunction
 }
 
 const options = [
@@ -37,11 +37,10 @@ const videos = [
   '/assets/videos/assignment-2.2/vauhti.webm',
 ]
 
-const Assignment: React.FC<Props> = ({ state = [], done, cancel }) => {
+const Assignment: React.FC<Props> = ({ state = [], done, close }) => {
   const [ result, setResult ] = useState<State>(state)
 
   const isDone = result.length >= 3
-  const saveAndClose = () => done(result)
 
   return (
     <div>
@@ -55,11 +54,9 @@ const Assignment: React.FC<Props> = ({ state = [], done, cancel }) => {
 
       <MultiSelectCorrect options={options} selection={result} onChange={setResult} columns={1} />
 
-      <AssignmentFooter isDone={isDone} />
+      <AssignmentFooter done={() => done(result)} close={close} isDone={isDone}>
+      </AssignmentFooter>
 
-      <IonButton disabled={!isDone} className="done" onClick={saveAndClose}>
-        Merkitse suoritetuksi
-      </IonButton>
     </div>
   )
 }
