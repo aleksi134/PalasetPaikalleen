@@ -1,4 +1,7 @@
 .claims {
+  $rightcolor: #33ae35;
+  $wrongcolor: #c3234b;
+
   ion-card.claim {
     text-align: left;
 
@@ -8,33 +11,59 @@
     }
   }
 
-  .results {
-    ion-card-title {
-      font-size: 1.5rem;
+  .icons {
+    position: absolute;
+    top: 0.5rem;
+    right: 0.5rem;
+    font-size: 3rem;
+    .right {
+      color: $rightcolor;
     }
-    .result {
-      margin-bottom: 1rem;
+    .wrong {
+      color: $wrongcolor;
     }
   }
 
   .buttons {
     text-align: center;
+
     ion-button {
       margin: 0.8rem;
+
+      &.right {
+        --background: #33ae35;
+        --border-color: #33ae35;
+        --background-activated: lighten(#33ae35, 50);
+      }
+      &.wrong {
+        --background: #c3234b;
+        --border-color: #c3234b;
+        --background-activated: lighten(#c3234b, 50);
+      }
     }
   }
 
   .explanation {
     margin-top: 1rem;
     border-radius: 10px;
+    padding: 20px;
+    margin: -20px;
+    margin-top: 1rem;
+
+    &.visible {
+      display: block;
+    }
+    &.hidden {
+      display: none;
+    }
 
     &.correct {
-      border: 1px solid green;
-      padding: 1rem;
+      color: white;
+      background: $rightcolor;
     }
     &.incorrect {
-      border: 1px solid red;
-      padding: 1rem;
+      color: white;
+      background: $wrongcolor;
     }
   }
 }

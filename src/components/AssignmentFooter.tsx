@@ -57,7 +57,7 @@ const AssignmentFooter: React.FC<Props> = ({ done, close, isDone, children }) =>
 
   return (
     <div className="footer">
-      <IonButton disabled={!isDone} className="done" onClick={setDone}>Merkitse suoritetuksi</IonButton>
+      <IonButton disabled={!isDone} className="done" expand="block" onClick={setDone}>Merkitse suoritetuksi</IonButton>
 
       <div className={sliderClasses}>
         <div className="theme-bar" style={themeStyle}> {themeName} </div>
@@ -86,7 +86,7 @@ const AssignmentFooter: React.FC<Props> = ({ done, close, isDone, children }) =>
           </IonCard>
         )}
 
-        <IonButton disabled={!isDone} className="done" onClick={close}>Valmis</IonButton>
+        <IonButton disabled={!isDone} className="done" expand="block" onClick={close}>Valmis</IonButton>
       </div>
 
     </div>

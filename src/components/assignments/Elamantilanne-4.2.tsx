@@ -50,6 +50,7 @@ const Assignment: React.FC<Props> = ({ state = [], done, close }) => {
       <AssignmentInstructions title='Hyvän mielen reppu'>
         <p>Meiltä kaikilta löytyy erilaisia voimavaroja ja hyvää mieltä tuottavia asioita. Ne voivat löytyä meidän ympäriltämme tai ihan meistä itsestämmekin. Näitä voimavaroja voi olla aluksi hankala huomata, koska suurin osa niistä on meille niin arkisia. Kun niitä alkaa pohtimaan, huomaa kuitenkin pian että niitähän on aivan valtavan suuri joukko.</p>
         <p>Pohtiessasi sinulle miellyttäviä asioita, voi muistella kaikkia niitä asioita, jotka ovat tuoneet sinulle iloa ja hyvää mieltä. Voit miettiä niin pieniä kuin isompiakin asioita.</p>
+        <p>Valitse vähintään kolme vuomavaraa.</p>
       </AssignmentInstructions>
 
       <MultiSelect options={options} selection={result} onChange={setResult} />

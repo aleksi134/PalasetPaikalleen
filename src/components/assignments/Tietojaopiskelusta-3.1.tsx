@@ -91,7 +91,7 @@ const Assignment: React.FC<Props> = ({ state = {}, done, close }) => {
           </IonCardHeader>
 
           <IonCardContent>
-            <p className="result">
+            <p className="result ion-padding">
               Sait {rightCount} / {claims.length} oikein
             </p>
             Nyt olet laajentanut tietämystäsi korkeakouluopiskelusta ja hakuun sekä opintoihin liittyvistä mahdollisuuksista. Tieto korkeakoulutuksesta antaa rohkeutta tehdä omannäköisiä valintoja urapolullasi ja ottaa seuraavat askeleet kohti unelmiesi opiskelupaikkaa.

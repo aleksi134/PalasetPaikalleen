@@ -1,4 +1,5 @@
-import { IonButton, IonCard, IonCardContent, IonCardHeader, IonCardTitle } from '@ionic/react'
+import { IonButton, IonCard, IonCardContent, IonCardHeader, IonCardTitle, IonIcon } from '@ionic/react'
+import { checkmarkCircleOutline, closeCircleOutline } from 'ionicons/icons'
 import { isBoolean } from 'lodash'
 import React from 'react'
 import { Claim } from '../Types'
@@ -18,6 +19,9 @@ const Claims: React.FC<Props> = ({ options, result = {}, onChange }) => {
   const showButtons = (claim: Claim) =>
     !isBoolean(result[claim.title])
 
+   const isAnswerCorrect = (claim: Claim) =>
+     result[claim.title]
+
   return (
     <div className="claims">
       { options.map((option, index) =>
@@ -27,21 +31,28 @@ const Claims: React.FC<Props> = ({ options, result = {}, onChange }) => {
             <IonCardTitle>Väittämä</IonCardTitle>
           </IonCardHeader>
 
-          <IonCardContent>
-            <div> {option.title} </div>
+          {
+            !showButtons(option) &&
+            < div className="icons">
+              {isAnswerCorrect(option)
+                ? <IonIcon icon={checkmarkCircleOutline} className="right" />
+                : <IonIcon icon={closeCircleOutline} className="wrong" />
+              }
+            </div>
+          }
 
-            {
-              showExplanation(option) &&
-              <div className={`explanation ${option.isCorrect ? 'correct' : 'incorrect'}`}>
-                {option.explanation}
-              </div>
-            }
+          <IonCardContent>
+            <div className="claim"> {option.title} </div>
+
+            <div className={`explanation ${option.isCorrect ? 'correct' : 'incorrect'} ${showExplanation(option) ? 'visible' : 'hidden'}`}>
+              {option.explanation}
+            </div>
 
             {
               showButtons(option) &&
               <div className="buttons">
-                <IonButton onClick={() => onChange(option, true)} color="success">Oikein</IonButton>
-                <IonButton onClick={() => onChange(option, false)} color="danger">Väärin</IonButton>
+                <IonButton onClick={() => onChange(option, true)} className="right">Oikein</IonButton>
+                <IonButton onClick={() => onChange(option, false)} className="wrong">Väärin</IonButton>
               </div>
             }
           </IonCardContent>
