@@ -8,15 +8,15 @@ import {
   IonLabel
 } from '@ionic/react'
 import { closeCircle } from 'ionicons/icons'
-import { findIndex, isArray, last, without } from 'lodash'
+import { findIndex, last, uniqBy, without } from 'lodash'
 import React, { useLayoutEffect, useRef, useState } from 'react'
 import TinderCard from 'react-tinder-card'
-import { Result } from '../../GameState'
-import AssignmentInstructions from '../AssignmentInstructions'
-import MultiSelect from '../MultiSelect'
 import { Occupation, occupations, uniqueFields } from '../../data/alavaihtoehdot'
-import './TinderModule.scss'
 import AssignmentFooter from '../AssignmentFooter'
+import AssignmentInstructions from '../AssignmentInstructions'
+import AssignmentProgress from '../AssignmentProgress'
+import MultiSelect from '../MultiSelect'
+import './TinderModule.scss'
 
 type State = {
   swiped: Occupation[]
@@ -30,8 +30,8 @@ const defaultState: State = {
   fields: []
 }
 
-const migrateState = (state: any): State =>
-  (Object.keys(state || {}).every(isArray)) ? state : defaultState
+// const migrateState = (state: any): State =>
+//   (Object.values(state || {}).every(isArray)) ? state : defaultState
 
 type Direction = 'left' | 'right'
 
@@ -43,12 +43,12 @@ interface Props {
 
 const Assignment: React.FC<Props> = ({ state = defaultState, done, close }) => {
   // Old values cause explosions
-  const newState = migrateState(state)
+  // const newState = migrateState(state)
 
-  const [result, setResult] = useState<Occupation[]>(newState.result)
-  const [fieldSelection, setFieldSelection] = useState<string[]>(newState.fields)
+  const [result, setResult] = useState<Occupation[]>([])
+  const [fieldSelection, setFieldSelection] = useState<string[]>([])
   const [swipeableCards, setSwipeableCards] = useState<Occupation[]>([])
-  const alreadySwipedCards = useRef<Occupation[]>(newState.swiped)
+  const alreadySwipedCards = useRef<Occupation[]>([])
   const childRefs = useRef<Record<string, any>>({})
 
   const cardsContainerRef = useRef<HTMLDivElement>(null)
@@ -65,6 +65,7 @@ const Assignment: React.FC<Props> = ({ state = defaultState, done, close }) => {
   }
 
   const swipe = (dir: Direction) => {
+
     const cards = swipeableCards.slice().reverse()
     const lastIndex = findIndex(cards, o => o.name === last(alreadySwipedCards.current)?.name)
     const current = lastIndex > -1 ? cards[lastIndex + 1] : cards[0]
@@ -79,14 +80,14 @@ const Assignment: React.FC<Props> = ({ state = defaultState, done, close }) => {
     alreadySwipedCards.current.push(occupation)
 
     if (dir === 'right')
-      setResult(prev => [...prev, occupation])
+      setResult(prev => uniqBy([...prev, occupation], o => o.name))
   }
 
-  const reset = () => {
-    setResult([])
-    setFieldSelection([])
-    alreadySwipedCards.current = []
-  }
+  // const reset = () => {
+  //   setResult([])
+  //   setFieldSelection([])
+  //   alreadySwipedCards.current = []
+  // }
 
   const removeOccupation = (occupation: Occupation) =>
     setResult(result.filter(o => o.name !== occupation.name))
@@ -99,6 +100,9 @@ const Assignment: React.FC<Props> = ({ state = defaultState, done, close }) => {
     swiped: alreadySwipedCards.current,
     fields: fieldSelection
   })
+
+  // Populate cards on load
+  // useLayoutEffect(() => onFieldSelection(fieldSelection), [])
 
   // Update image height once loaded
   useLayoutEffect(() => {
@@ -116,6 +120,10 @@ const Assignment: React.FC<Props> = ({ state = defaultState, done, close }) => {
       img.addEventListener('load', onLoad)
     }
   })
+
+  const selectionsRequired = 3
+  const selectedCount = result.length
+  const isDone = selectedCount >= selectionsRequired
 
   return (
     <div className="assignment tinder-cards">
@@ -164,7 +172,7 @@ const Assignment: React.FC<Props> = ({ state = defaultState, done, close }) => {
 
         {!cardsLeft && fieldsSelected &&
           <React.Fragment>
-            <IonItem>
+            {/* <IonItem>
               <IonLabel>Loistavaa!</IonLabel>
             </IonItem>
             <IonCardContent>
@@ -173,21 +181,36 @@ const Assignment: React.FC<Props> = ({ state = defaultState, done, close }) => {
               <p>Eikö tulokset miellytä? Valitse lisää aloja tai pelaa uudelleen!</p>
               <IonButton onClick={reset}>Aloita alusta!</IonButton>
 
-            </IonCardContent>
+            </IonCardContent> */}
           </React.Fragment>
         }
 
-        <IonCardContent className="chips">
-          {result.map(occupation => (
-            <IonChip key={occupation.name} onClick={() => removeOccupation(occupation)}>
-              <p>{occupation.name}</p>
-              <IonIcon icon={closeCircle} />
-            </IonChip>
-          ))}
-        </IonCardContent>
+        {result.length > 0 &&
+          <IonCardContent className="chips">
+            {result.map(occupation => (
+              <IonChip key={occupation.name} onClick={() => removeOccupation(occupation)}>
+                <p>{occupation.name}</p>
+                <IonIcon icon={closeCircle} />
+              </IonChip>
+            ))}
+          </IonCardContent>
+        }
       </IonCard>
 
-      <AssignmentFooter done={save} close={close} isDone={true} />
+      <AssignmentProgress required={selectionsRequired} selected={selectedCount} />
+      <AssignmentFooter done={save} close={close} isDone={isDone}>
+        <IonCard>
+          <IonItem>
+            <IonLabel>Loistavaa!</IonLabel>
+          </IonItem>
+          <IonCardContent>
+            <p>Löysit sinulle sopivat alavaihtoedot korttipakasta. Monipuolinen tieto sinua kiinnostavista koulutusaloista auttaa sinua oman näköisten valintojen tekemisessä sekä ottamaan seuraavan askeleen urasuunnittelun polulla.</p>
+            <p>Eikö tulokset miellytä? Voit aina palata tehtävään ja pelata uudelleen!</p>
+            {/* <IonButton onClick={reset}>Aloita alusta!</IonButton> */}
+
+          </IonCardContent>
+        </IonCard>
+      </AssignmentFooter>
     </div>
   )
 }
