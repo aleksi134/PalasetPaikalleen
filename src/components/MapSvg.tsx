@@ -9,18 +9,18 @@ const MapSvg: React.FC<Props> = ({ svgRefCallback }) => {
 
   const circles =
     <React.Fragment>
-      <circle className="cls-5 rovaniemi" cx="196.5" cy="209.75" r="17" />
-      <circle className="cls-5 inari" cx="210" cy="60" r="17" />
-      <circle className="cls-5 kuopio" cx="218.5" cy="454.75" r="17" />
-      <circle className="cls-5 lappeenranta" cx="259.5" cy="579.75" r="17" />
-      <circle className="cls-5 joensuu" cx="313.5" cy="474.75" r="17" />
-      <circle className="cls-5 tampere" cx="131.5" cy="568.75" r="17" />
-      <circle className="cls-5 jyvaskyla" cx="171.5" cy="504.75" r="17" />
-      <circle className="cls-5 vaasa" cx="75.5" cy="471.75" r="17" />
-      <circle className="cls-5 turku" cx="76.5" cy="635.75" r="17" />
-      <circle className="cls-5 maarianhamina" cx="18.5" cy="662.75" r="17" />
-      <circle className="cls-5 helsinki" cx="157.5" cy="637.75" r="17" />
-      <circle className="cls-5 oulu" cx="182.5" cy="340.75" r="17" />
+      <circle className="cls-5 rovaniemi" cx="196.5" cy="209.75" r="0" />
+      <circle className="cls-5 inari" cx="210" cy="60" r="0" />
+      <circle className="cls-5 kuopio" cx="218.5" cy="454.75" r="0" />
+      <circle className="cls-5 lappeenranta" cx="259.5" cy="579.75" r="0" />
+      <circle className="cls-5 joensuu" cx="313.5" cy="474.75" r="0" />
+      <circle className="cls-5 tampere" cx="131.5" cy="568.75" r="0" />
+      <circle className="cls-5 jyvaskyla" cx="171.5" cy="504.75" r="0" />
+      <circle className="cls-5 vaasa" cx="75.5" cy="471.75" r="0" />
+      <circle className="cls-5 turku" cx="76.5" cy="635.75" r="0" />
+      <circle className="cls-5 maarianhamina" cx="18.5" cy="662.75" r="0" />
+      <circle className="cls-5 helsinki" cx="157.5" cy="637.75" r="0" />
+      <circle className="cls-5 oulu" cx="182.5" cy="340.75" r="0" />
     </React.Fragment>
 
   return (
