@@ -1,8 +1,10 @@
 import { IonButton, IonCard, IonCardContent, IonInput, IonItem, IonLabel, IonList } from '@ionic/react'
 import { uniq } from 'lodash'
 import React, { useState } from 'react'
+import { numberNames } from '../../Types'
 import AssignmentFooter from '../AssignmentFooter'
 import AssignmentInstructions from '../AssignmentInstructions'
+import AssignmentProgress from '../AssignmentProgress'
 import MultiSelect from '../MultiSelect'
 
 type Result = string[]
@@ -58,18 +60,18 @@ const Assignment: React.FC<Props> = ({ state = [], done, close }) => {
     setCustomOption('')
   }
 
-  const isDone = result.length >= 5
-  const saveAndClose = () => done(result)
+  const selectionsRequired = 5
+  const isDone = result.length >= selectionsRequired
 
   return (
     <div>
       <AssignmentInstructions title='Vahvuudet'>
         <p>Meiltä kaikilta löytyy monenlaisia vahvuuksia ja osaamista. Niitä ei vain aina osaa heti tunnistaa tai sanallisesti kertoa. Mitkä ovat sinun vahvuutesi? Valitse annetuista vahvuuksista juuri sinua parhaiten kuvaavat tai jos listasta ei löydy mielestäsi sinua kuvaavia vahvuuksia, voit luoda omasi.</p>
         <p>Omien vahvuuksiesi pohtimisessa voi olla apua kun mietit:</p>
-        <p> Mihin uppoudut vapaa-ajallasi? </p>
-        <p> Minkä tehtävän tai asian tekemisestä nautit, vaikka siitä ei olisi sinulle mitään konkreettista hyötyä? </p>
-        <p> Missä asiassa koet olevasi oikein hyvä? </p>
-        <p> Kun tunnistat omat vahvuutesi ja lahjakkuutesi, voit hyödyntää niitä ammatin valinnassa, pääsykokeisiin valmistautumisessa, tulevissa opinnoissasi ja ihan jokapäiväisessä elämässäsi. </p>
+        <p>Mihin uppoudut vapaa-ajallasi?</p>
+        <p>Minkä tehtävän tai asian tekemisestä nautit, vaikka siitä ei olisi sinulle mitään konkreettista hyötyä?</p>
+        <p>Missä asiassa koet olevasi oikein hyvä?</p>
+        <p>Kun tunnistat omat vahvuutesi ja lahjakkuutesi, voit hyödyntää niitä ammatin valinnassa, pääsykokeisiin valmistautumisessa, tulevissa opinnoissasi ja ihan jokapäiväisessä elämässäsi.</p>
       </AssignmentInstructions>
 
       <MultiSelect options={options} selection={result} onChange={setResult} />
@@ -86,6 +88,8 @@ const Assignment: React.FC<Props> = ({ state = [], done, close }) => {
           <IonButton disabled={customOption.length <= 3} size="default" slot="end" onClick={addCustomOption as any}>Lisää</IonButton>
         </IonItem>
       </IonList>
+
+      <AssignmentProgress required={selectionsRequired} selected={result.length} />
 
       <AssignmentFooter done={() => done(result)} close={close} isDone={isDone}>
         <IonCard>

@@ -3,6 +3,7 @@ import { uniq } from 'lodash'
 import React, { useState } from 'react'
 import AssignmentFooter from '../AssignmentFooter'
 import AssignmentInstructions from '../AssignmentInstructions'
+import AssignmentProgress from '../AssignmentProgress'
 import MultiSelect from '../MultiSelect'
 
 type Result = string[]
@@ -41,8 +42,8 @@ const Assignment: React.FC<Props> = ({ state = [], done, close }) => {
     setCustomOption('')
   }
 
-  const isDone = result.length >= 3
-  const saveAndClose = () => done(result)
+  const selectionsRequired = 3
+  const isDone = result.length >= selectionsRequired
 
   return (
     <div>
@@ -67,6 +68,8 @@ const Assignment: React.FC<Props> = ({ state = [], done, close }) => {
           <IonButton disabled={customOption.length <= 3} size="default" slot="end" onClick={addCustomOption as any}>Lisää</IonButton>
         </IonItem>
       </IonList>
+
+      <AssignmentProgress required={selectionsRequired} selected={result.length} />
 
       <AssignmentFooter done={() => done(result)} close={close} isDone={isDone}>
         <IonCard>

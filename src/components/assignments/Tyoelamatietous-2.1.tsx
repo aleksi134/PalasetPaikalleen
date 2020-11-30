@@ -1,8 +1,8 @@
-import { IonButton } from '@ionic/react'
 import React, { useState } from 'react'
 import Collapsible from 'react-collapsible'
 import AssignmentFooter from '../AssignmentFooter'
 import AssignmentInstructions from '../AssignmentInstructions'
+import AssignmentProgress from '../AssignmentProgress'
 import MultiSelect from '../MultiSelect'
 
 type State = string[]
@@ -29,7 +29,9 @@ const options = [
 const Assignment: React.FC<Props> = ({ state = [], done, close }) => {
   const [ result, setResult ] = useState<State>(state)
 
-  const isDone = result.length >= 3
+  const selectionsRequired = 3
+  const selectedCount = Object.keys(result).length
+  const isDone = selectedCount >= selectionsRequired
 
   return (
     <div>
@@ -64,8 +66,8 @@ const Assignment: React.FC<Props> = ({ state = [], done, close }) => {
 
       <MultiSelect options={options} selection={result} onChange={setResult} columns={1} />
 
-      <AssignmentFooter done={() => done(result)} close={close} isDone={isDone}>
-      </AssignmentFooter>
+      <AssignmentProgress required={selectionsRequired} selected={selectedCount} />
+      <AssignmentFooter done={() => done(result)} close={close} isDone={isDone} />
     </div>
   )
 }

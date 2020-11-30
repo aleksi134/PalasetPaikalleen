@@ -50,3 +50,17 @@ export type Location = { x: number; y: number }
 export type CityRecord<T> = { [key in City]: T }
 
 export type Claim = { title: string, explanation: string, isCorrect: boolean }
+
+export const numberNames = [
+  'nolla',
+  'yksi',
+  'kaksi',
+  'kolme',
+  'neljä',
+  'viisi',
+  'kuusi',
+  'seitsemän',
+  'kahdeksan',
+  'yhdeksän',
+  'kymmenen',
+]

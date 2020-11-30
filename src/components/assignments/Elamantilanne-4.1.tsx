@@ -1,4 +1,3 @@
-import { IonButton } from '@ionic/react'
 import React, { useState } from 'react'
 import AssignmentFooter from '../AssignmentFooter'
 import AssignmentInstructions from '../AssignmentInstructions'
@@ -28,7 +27,7 @@ const options = [
   { title: 'Saavutettavuus opintomateriaaleissa', isCorrect: false },
 ]
 
-const correctCount = options.filter(o => o.isCorrect).length
+// const correctCount = options.filter(o => o.isCorrect).length
 
 const videos = [
   '/assets/videos/assignment-4.1/mari.webm',
@@ -39,8 +38,8 @@ const videos = [
 const Assignment: React.FC<Props> = ({ state = [], done, close }) => {
   const [ result, setResult ] = useState<State>(state)
 
-  const correctAnswers = result.filter(s => options.find(o => o.title === s.title)?.isCorrect)
-  const isDone = correctAnswers.length >= correctCount
+  // const correctAnswers = result.filter(s => options.find(o => o.title === s.title)?.isCorrect)
+  // const isDone = correctAnswers.length >= correctCount
 
   return (
     <div>
@@ -53,8 +52,7 @@ const Assignment: React.FC<Props> = ({ state = [], done, close }) => {
 
       <MultiSelectCorrect options={options} selection={result} onChange={setResult} columns={1} />
 
-      <AssignmentFooter done={() => done(result)} close={close} isDone={isDone}>
-      </AssignmentFooter>
+      <AssignmentFooter done={() => done(result)} close={close} isDone={true} />
     </div>
   )
 }

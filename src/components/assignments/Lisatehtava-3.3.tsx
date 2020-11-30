@@ -49,7 +49,7 @@ const videos = [
 const Assignment: React.FC<Props> = ({ state = [], done, close }) => {
   const [ result, setResult ] = useState<State>(state)
 
-  const isDone = result.length > 0
+  const isDone = true
 
   return (
     <div>

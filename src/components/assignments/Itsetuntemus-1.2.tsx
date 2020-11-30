@@ -1,8 +1,7 @@
-import { IonButton } from '@ionic/react'
-import { close } from 'ionicons/icons'
 import React, { useState } from 'react'
 import AssignmentFooter from '../AssignmentFooter'
 import AssignmentInstructions from '../AssignmentInstructions'
+import AssignmentProgress from '../AssignmentProgress'
 import Sliders from '../Sliders'
 
 type State = Partial<Record<string, number>>
@@ -34,6 +33,8 @@ const Assignment: React.FC<Props> = ({ state = {}, done, close }) => {
   const [ result, setResult ] = useState<State>(state)
 
   const isDone = true
+  const selectedCount = Object.keys(result).length
+  const selectionsRequired = 3
 
   return (
     <div>
@@ -43,8 +44,8 @@ const Assignment: React.FC<Props> = ({ state = {}, done, close }) => {
 
       <Sliders options={preDefinedOptions} result={result} onChange={setResult} />
 
-      <AssignmentFooter done={() => done(result)} close={close} isDone={isDone}>
-      </AssignmentFooter>
+      <AssignmentProgress required={selectionsRequired} selected={selectedCount} />
+      <AssignmentFooter done={() => done(result)} close={close} isDone={isDone} />
     </div>
   )
 }
