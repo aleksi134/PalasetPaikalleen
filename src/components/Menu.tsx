@@ -8,7 +8,7 @@ import {
   IonMenu,
   IonMenuToggle
 } from '@ionic/react'
-import { flowerOutline, mapOutline } from 'ionicons/icons'
+import { flowerOutline, homeOutline, mapOutline } from 'ionicons/icons'
 import React from 'react'
 import { useLocation } from 'react-router-dom'
 import './Menu.css'
@@ -26,6 +26,11 @@ const appPages: AppPage[] = [
   {
     title: 'Palaset paikalleen',
     url: '/page/Home',
+    icon: homeOutline
+  },
+  {
+    title: 'Pelikartta',
+    url: '/page/Map',
     icon: mapOutline
   },
   {
