@@ -1,7 +1,9 @@
+import { IonIcon } from '@ionic/react'
 import React, { CSSProperties } from 'react'
 import { MapNode } from '../GameData'
 import gameState from '../GameState'
-// import { THEME_COLORS } from '../Types'
+import { THEME_COLORS } from '../Types'
+import { lightenDarkenColor } from '../utils/color-tools'
 
 interface Props {
   node: MapNode,
@@ -11,12 +13,15 @@ interface Props {
 
 const Node: React.FC<Props> = ({ node, location, onClick }) => {
 
-  // const themeColor = THEME_COLORS[node.theme]
+  const themeColor = THEME_COLORS[node.theme]
   const canAdvance = gameState.canAdvance(node)
   const isCompleted = gameState.isCompleted(node)
 
+  const backgroundColor = isCompleted ? themeColor : lightenDarkenColor(themeColor, 75)
+
   const classes = [
     'dot',
+    [node.theme],
     node.id,
     canAdvance ? 'available' : '',
     isCompleted ? 'completed' : ''
@@ -25,12 +30,15 @@ const Node: React.FC<Props> = ({ node, location, onClick }) => {
   const style: CSSProperties = {
     left: `${location.x}%`,
     top: `${location.y}%`,
-    // borderColor: themeColor,
-    // ...(isCompleted ? { backgroundColor: themeColor } : {})
+    borderColor: themeColor,
+    backgroundColor
+    // ...(isCompleted ? { backgroundColor: themeColor } : {}),
   }
 
   return (
-    <div className={classes} style={style} onClick={() => onClick(node)}> </div>
+    <div className={classes} style={style} onClick={() => onClick(node)}>
+      { node.icon && <IonIcon className="node-icon" icon={node.icon} style={{ color: themeColor }} />}
+    </div>
   )
 }
 

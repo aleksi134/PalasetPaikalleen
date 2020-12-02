@@ -33,11 +33,11 @@ const Sliders: React.FC<Props> = ({ options, result = {}, onChange }) => {
           <Fragment key={option}>
             <IonItemDivider>{option}</IonItemDivider>
             <IonItem lines="none">
-              <IonRange min={1} max={5} snaps={true} step={1} color="secondary"
+              <IonRange min={1} max={5} step={1} snaps={true} pin={true} color="secondary"
                 value={result[option] || 1}
                 onIonChange={e => updateValue(option, e.detail.value as number)}>
-                <IonLabel slot="start">1</IonLabel>
-                <IonLabel slot="end">5</IonLabel>
+                {/* <IonLabel slot="start">1</IonLabel>
+                <IonLabel slot="end">5</IonLabel> */}
               </IonRange>
             </IonItem>
           </Fragment>

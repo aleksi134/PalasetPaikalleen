@@ -64,13 +64,7 @@ const Home: React.FC<Props> = () => {
           <Node key={node.id} node={node} location={circleLocations[node.id]} onClick={onClickNode} />)}
 
         <MapSvg svgRefCallback={svgRefCallback} />
-
-        <NodeIcon location={circleLocations?.joensuu} icon={flag} />
-        <NodeIcon location={circleLocations?.maarianhamina} icon={helpOutline} />
-        <NodeIcon location={circleLocations?.inari} icon={helpOutline} />
-
         <Pawn location={pawnLocation} ref={pawnRef as any} />
-
         <ProgressMeter />
       </div>
 

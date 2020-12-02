@@ -1,3 +1,4 @@
+import { flag, helpOutline } from 'ionicons/icons'
 import { createContext } from 'react'
 import { City, Theme } from './Types'
 
@@ -7,11 +8,10 @@ export type MapNode = {
   theme: Theme,
   isBonus?: boolean
   greeting: string
+  icon?: string // ionicon
 
   // Show instead of theme name
   customThemeName?: string
-  // result type
-  // isdone fn checker
 }
 
 export const nodes: MapNode[] = [
@@ -25,7 +25,8 @@ export const nodes: MapNode[] = [
     id: 'joensuu',
     adj: [],
     theme: 'itsetuntemus',
-    greeting: 'Tervehdys!'
+    greeting: 'Tervehdys!',
+    icon: flag
   },
   {
     id: 'oulu',
@@ -75,6 +76,7 @@ export const nodes: MapNode[] = [
     theme: 'tietojaopiskelusta',
     isBonus: true,
     greeting: 'Tervehdys!',
+    icon: helpOutline,
     customThemeName: 'Lisätehtävä: korkeakoulutietous'
   },
   {
@@ -83,6 +85,7 @@ export const nodes: MapNode[] = [
     theme: 'itsetuntemus',
     isBonus: true,
     greeting: 'Tervehdys!',
+    icon: helpOutline,
     customThemeName: 'Lisätehtävä: itsetuntemus'
   },
   {
