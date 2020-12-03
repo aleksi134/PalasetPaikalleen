@@ -1,0 +1,19 @@
+.info-container {
+  padding: 1rem;
+  text-align: left;
+
+  h3 {
+    font-size: 1.2rem;
+  }
+  p {
+    padding-bottom: 1rem;
+  }
+  a {
+    // display: inline-block;
+    // padding: .5rem 0;
+    overflow-wrap: break-word;
+  }
+  strong {
+    font-size: inherit;
+  }
+}

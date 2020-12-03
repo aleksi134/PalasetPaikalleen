@@ -1,8 +1,15 @@
 .results-container {
-  .results {
+
+  .progress-wrapper {
+    text-align: center;
     .progress-meter {
       max-width: 300px;
+      display: inline-block;
+      margin-bottom: 1rem;
     }
+  }
+
+  .results {
 
     pre {
       font-size: 10px;

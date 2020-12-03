@@ -1,7 +1,9 @@
-import { IonButton } from '@ionic/react'
+import { IonButton, IonCard, IonCardContent, IonIcon, IonItem, IonLabel, IonList } from '@ionic/react'
 import * as htmlToImage from 'html-to-image'
+import { ellipse } from 'ionicons/icons'
 import React, { CSSProperties, useRef } from 'react'
 import gameState from '../GameState'
+import { THEME_COLORS } from '../Types'
 import ProgressMeter from './ProgressMeter'
 import './Results.scss'
 
@@ -39,13 +41,43 @@ const Results: React.FC<Props> = () => {
   return (
     <div className="container results-container">
 
-      <p>
-        Tähän tulee tulosten visualisointi ja niiden lataaminen sekä jakaminen.
-      </p>
+      <IonCard>
+        <IonCardContent>
+          Tästä raportista näet mitä uraohjausmallin osioita olet suorittanut ja millaisia valintoja olet tehnyt.
+          Pelattuasi pelin loppuun saat itsellesi ladattavan raportin pelikertasi tuloksista.
+          Muistathan, että mikäli tehdyt valinnat eivät tunnut oikeilta tai muutit mielesi, voit aina palata takaisin tehtävään ja valita toisin!
+        </IonCardContent>
+
+        <IonCardContent className="progress-wrapper">
+          <ProgressMeter />
+          <IonList lines="none">
+            <IonItem>
+              <IonLabel>Itsetuntemus</IonLabel>
+              <IonIcon slot="end" icon={ellipse} style={{ color: THEME_COLORS.itsetuntemus }} />
+            </IonItem>
+            <IonItem>
+              <IonLabel>Työelämätietous</IonLabel>
+              <IonIcon slot="end" icon={ellipse} style={{ color: THEME_COLORS.tyoelamatietous }} />
+            </IonItem>
+            <IonItem>
+              <IonLabel>Korkeakoulutietous</IonLabel>
+              <IonIcon slot="end" icon={ellipse} style={{ color: THEME_COLORS.tietojaopiskelusta }} />
+            </IonItem>
+            <IonItem>
+              <IonLabel>Elämäntilanne</IonLabel>
+              <IonIcon slot="end" icon={ellipse} style={{ color: THEME_COLORS.elamantilanne }} />
+            </IonItem>
+            <IonItem>
+              <IonLabel>Valintojen tekeminen</IonLabel>
+              <IonIcon slot="end" icon={ellipse} style={{ color: THEME_COLORS.valintojentekeminen }} />
+            </IonItem>
+          </IonList>
+        </IonCardContent>
+      </IonCard>
+
 
       <div className="results" ref={resultsRef} style={resultsStyle}>
         <div className="ion-padding">
-          <ProgressMeter />
         </div>
 
         <pre>

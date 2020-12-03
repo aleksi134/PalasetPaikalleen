@@ -1,12 +1,12 @@
 import { IonButtons, IonContent, IonHeader, IonMenuButton, IonPage, IonTitle, IonToolbar } from '@ionic/react'
 import React from 'react'
 import './Page.css'
-import Results from '../components/Results'
+import Info from '../components/Info'
 
 const Page: React.FC = () => {
 
   // const { name } = useParams<{ name: string; }>();
-  const name = 'Omat tulokseni'
+  const name = 'Lisätietoja'
 
   return (
     <IonPage>
@@ -26,7 +26,7 @@ const Page: React.FC = () => {
           </IonToolbar>
         </IonHeader>
 
-        <Results />
+        <Info />
 
       </IonContent>
     </IonPage>
