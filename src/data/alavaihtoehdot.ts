@@ -1010,3 +1010,8 @@ export const occupations: Occupation[] = [
 ]
 
 export const uniqueFields = uniq(occupations.map(o => o.field))
+
+export const getIndexedOccupations = (names: string[]): Record<string, Occupation> =>
+  occupations
+    .filter((o) => names.includes(o.name))
+    .reduce((acc, o) => ({ ...acc, [o.name]: o }), {})

@@ -1,0 +1,143 @@
+.calculator {
+  .calculator-component {
+    width: 100%;
+    margin-bottom: 2rem;
+  }
+
+  .calculator-instructions {
+    padding: 2rem 1rem;
+    p {
+      margin-bottom: 1rem;
+    }
+  }
+
+  ion-item-divider {
+    // text-transform: capitalize;
+    text-align: left;
+    font-size: 1rem;
+    background-color: #22b8be;
+    color: #fff;
+  }
+
+  ion-range::part(pin) {
+    // font-size: 1rem;
+  }
+
+  .occupations-selector {
+    ion-label::first-letter {
+      text-transform: capitalize;
+    }
+  }
+
+  .probability-selector {
+    width: 100%;
+    // ion-item-divider:host > *::first-letter {
+    // ion-item-divider:host >  {
+    .occupation-name::first-letter {
+      text-transform: uppercase;
+    }
+
+    ion-label {
+      font-size: 0.8rem;
+    }
+  }
+
+  .calculator-results {
+    .occupation-card {
+      text-align: left;
+
+        overflow: visible;
+
+      ion-card-header {
+        text-align: left;
+        padding-bottom: 0;
+        ion-card-title {
+          font-size: 1.2rem;
+        }
+        ion-card-title::first-letter {
+          text-transform: uppercase;
+        }
+        ion-card-subtitle {
+          font-size: 0.6rem;
+        }
+      }
+
+      ion-icon.trophy {
+        position: absolute;
+        right: 8px;
+        top: 30px;
+        color: gold;
+        font-size: 3rem;
+      }
+
+      .score-container {
+        position: absolute;
+        top: 1px;
+        right: 8px;
+        padding: 5px;
+        // height: $size;
+        // width: ;
+
+        text-align: right;
+
+        ion-icon,
+        .score {
+          // line-height: 50px;
+        }
+
+        ion-icon {
+          color: gold;
+          font-size: 1.2rem;
+          transform: translateY(2px) translateX(-2px);
+        }
+
+        .score {
+          width: 100%;
+          font-weight: 500;
+          font-size: 1rem;
+          color: #000;
+        }
+      }
+      // .score-container {
+      //   $size: 50px;
+      //   position: absolute;
+      //   top: 0;
+      //   right: 0;
+      //   padding: 1rem;
+      //   height: $size;
+      //   width: $size;
+
+      //   ion-icon, .score {
+      //     position: absolute;
+      //     top: 0;
+      //     right: 0;
+      //   }
+
+      //   ion-icon {
+      //     color: gold;
+      //     font-size: $size;
+      //   }
+
+      //   .score {
+      //     width: 100%;
+      //     text-align: center;
+      //     line-height: $size + 2px;
+      //     font-weight: bold;
+      //     font-size: $size / 3.5;
+      //     color: #FFF;
+      //     color: black;
+      //     // text-shadow: 1px 1px 2px #000;
+      //   }
+      // }
+
+      .Collapsible__contentInner {
+        padding: 0;
+        border: none;
+        img {
+          border-bottom-left-radius: 10px;
+          border-bottom-right-radius: 10px;
+        }
+      }
+    }
+  }
+}

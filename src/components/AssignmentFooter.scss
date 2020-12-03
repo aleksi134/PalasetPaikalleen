@@ -1,6 +1,7 @@
 .assignment .footer {
   padding-top: 2rem;
   padding-bottom: 1rem;
+  z-index: 10000000;
 
   .footer-container {
     margin-top: 3rem;
@@ -30,6 +31,7 @@
   }
 
   .footer-slider {
+    z-index: 10000000;
     position: absolute;
     bottom: 0;
     padding-bottom: 1rem;

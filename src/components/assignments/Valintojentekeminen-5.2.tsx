@@ -1,9 +1,13 @@
-import { IonButton } from '@ionic/react'
-import React, { useState } from 'react'
+import React, { useMemo, useState } from 'react'
+import { Occupation } from '../../data/alavaihtoehdot'
+import gameState from '../../GameState'
 import AssignmentFooter from '../AssignmentFooter'
 import AssignmentInstructions from '../AssignmentInstructions'
+import Calculator from '../calculator/Calculator'
 
+export type Score = { occupation: string, score: number }
 type State = Partial<Record<string, number>>
+
 
 interface Props {
   state: State,
@@ -11,24 +15,22 @@ interface Props {
   close: VoidFunction
 }
 
-// const preDefinedOptions = [ ]
-
 const Assignment: React.FC<Props> = ({ state = {}, done, close }) => {
-  const [ result, setResult ] = useState<State>(state)
+  const occupationResults: Occupation[] = useMemo(() => gameState.load('tampere')?.result || [], [])
+  const [result, setResult] = useState<Score[]>([])
 
-  const isDone = true
+  const isDone = result.length > 0
 
   return (
     <div>
       <AssignmentInstructions title='Laskuri'>
-        <p>
-          Tähän tulee laskuri.
-        </p>
-
+        <p>Urasuunnittelun polkusi on johtanut sinut valintojen äärelle. Itsetuntemus, opiskelu- ja työelämän tuntemus ja oman elämäntilanteesi huomioiminen ovat kaikki antaneet sinulle valintojen tekemiseen tarvittavaa tietoa. Nyt on aika pohtia sitä, mikä sinua kiinnostavista aloista sopisi juuri sinulle parhaiten.</p>
+        <p>Tällä laskurilla voit kätevästi vertailla eri vaihtoehtoja painottaen eri vaikuttavien asioiden tärkeyttä. Laskuri on päätöksentekosi tukena toimiva laskentamalli. Voit käyttää laskuria apuna pohtiessasi valintaa eri koulutusalojen välillä, kun päätöksentekoon vaikuttaa yhtä aikaa monia tekijöitä.</p>
       </AssignmentInstructions>
 
-      <AssignmentFooter done={() => done(result)} close={close} isDone={isDone}>
-      </AssignmentFooter>
+      <Calculator occupations={occupationResults} onResult={setResult} />
+
+      <AssignmentFooter done={() => done(result as any)} close={close} isDone={isDone} />
     </div>
   )
 }
