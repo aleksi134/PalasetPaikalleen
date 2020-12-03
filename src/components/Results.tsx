@@ -4,6 +4,7 @@ import { ellipse } from 'ionicons/icons'
 import React, { CSSProperties, useRef } from 'react'
 import gameState from '../GameState'
 import { THEME_COLORS } from '../Types'
+import ColorInstructions from './ColorInstructions'
 import ProgressMeter from './ProgressMeter'
 import './Results.scss'
 
@@ -50,28 +51,7 @@ const Results: React.FC<Props> = () => {
 
         <IonCardContent className="progress-wrapper">
           <ProgressMeter />
-          <IonList lines="none">
-            <IonItem>
-              <IonLabel>Itsetuntemus</IonLabel>
-              <IonIcon slot="end" icon={ellipse} style={{ color: THEME_COLORS.itsetuntemus }} />
-            </IonItem>
-            <IonItem>
-              <IonLabel>Työelämätietous</IonLabel>
-              <IonIcon slot="end" icon={ellipse} style={{ color: THEME_COLORS.tyoelamatietous }} />
-            </IonItem>
-            <IonItem>
-              <IonLabel>Korkeakoulutietous</IonLabel>
-              <IonIcon slot="end" icon={ellipse} style={{ color: THEME_COLORS.tietojaopiskelusta }} />
-            </IonItem>
-            <IonItem>
-              <IonLabel>Elämäntilanne</IonLabel>
-              <IonIcon slot="end" icon={ellipse} style={{ color: THEME_COLORS.elamantilanne }} />
-            </IonItem>
-            <IonItem>
-              <IonLabel>Valintojen tekeminen</IonLabel>
-              <IonIcon slot="end" icon={ellipse} style={{ color: THEME_COLORS.valintojentekeminen }} />
-            </IonItem>
-          </IonList>
+          <ColorInstructions />
         </IonCardContent>
       </IonCard>
 

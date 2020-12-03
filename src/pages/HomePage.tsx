@@ -1,16 +1,11 @@
-import { IonButton, IonButtons, IonContent, IonHeader, IonMenuButton, IonPage, IonTitle, IonToolbar } from '@ionic/react'
-import React, { MouseEventHandler } from 'react'
-import { RouteComponentProps, withRouter } from 'react-router'
+import { IonButtons, IonContent, IonHeader, IonMenuButton, IonPage, IonTitle, IonToolbar } from '@ionic/react'
+import React from 'react'
+import Onboarding from '../components/Onboarding'
 import './Page.css'
 
-interface Props extends RouteComponentProps<any> {}
+interface Props {}
 
-const Page: React.FC<Props> = ({ history }) => {
-
-  const navigateToMap: MouseEventHandler = (e) => {
-    e.preventDefault()
-    history.push('/page/Map')
-  }
+const Page: React.FC<Props> = () => {
 
   // const { name } = useParams<{ name: string; }>();
   const name = 'Palaset paikalleen'
@@ -33,13 +28,11 @@ const Page: React.FC<Props> = ({ history }) => {
           </IonToolbar>
         </IonHeader>
 
-        <h2>Onboarding</h2>
-        <p>Tervetuloa!</p>
-        <IonButton onClick={navigateToMap}>Aloita peli</IonButton>
+        <Onboarding />
 
       </IonContent>
     </IonPage>
   )
 }
 
-export default withRouter(Page)
+export default Page

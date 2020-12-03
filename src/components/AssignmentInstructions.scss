@@ -12,6 +12,10 @@
     font-size: 0.9rem;
   }
 
+  ion-label {
+    white-space: pre-wrap !important;
+  }
+
   // Make speech bouble visible
   overflow: visible;
   .instructions-header {
@@ -23,6 +27,7 @@
     position: relative;
     width: 40%;
     padding: 0.5rem 5%;
+    padding-left: 0;
 
     $bubble-color: #22b8be;
 
