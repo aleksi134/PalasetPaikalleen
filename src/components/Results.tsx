@@ -16,7 +16,7 @@ const createCopy = (node: Node, offScreen: Node, width: number = 1600) => {
   const overlayTexts = clone.querySelector<HTMLDivElement>('.overlay-texts')
   const resultsCard = clone.querySelector<HTMLDivElement>('.results-card')
   if (overlayTexts && resultsCard) {
-    overlayTexts.style.fontSize = (1600 / 6) + '%';
+    overlayTexts.style.fontSize = (width / 10) + '%';
     resultsCard.style.width = 'auto'
     resultsCard.style.height = 'auto'
   }

@@ -1,14 +1,28 @@
-import React, { useCallback, useEffect, useLayoutEffect, useRef, useState } from 'react'
+import { isArray, orderBy } from 'lodash'
+import React, { useEffect, useRef, useState } from 'react'
 import gameState from '../GameState'
+import { CalculatorResult } from './calculator/Calculator'
 import './ResultsCard.scss'
 
-interface Props { }
+const capitalize = (s: string) => {
+  if (typeof s !== 'string') return ''
+  return s.charAt(0).toUpperCase() + s.slice(1)
+}
 
-const ResultsCard: React.FC<Props> = () => {
+const mapSpans = (input: string[]) =>
+  isArray(input) ? input.map((s, i) => <span key={i}>{i === 0 ? capitalize(s) : s}</span>) : []
+
+const mapScores = (input: Record<string, number> = {}, take: number) =>
+  orderBy(Object.entries(input || {}), ([key, value]) => value)
+    .reverse()
+    .slice(0, take)
+    .map(([key], i) => <span key={i}>{capitalize(key)}</span>)
+
+const ResultsCard: React.FC = () => {
   const [imgDimension, setImgDimensions] = useState<{ width: number, height: number } | null>(null)
   const imgRef = useRef<HTMLImageElement>(null)
 
-  const fontSize = imgDimension ? (imgDimension.width / 6) + '%' : 0
+  const fontSize = imgDimension ? (imgDimension.width / 6.5) + '%' : 0
   const opacity = imgDimension ? 1 : 0
   const containerStyle = imgDimension ? {
     width: imgDimension.width + 'px',
@@ -29,52 +43,36 @@ const ResultsCard: React.FC<Props> = () => {
   }, [])
 
 
-  const isGameCompleted = gameState.isGameCompleted()
+  const vahvuudet = mapSpans(gameState.load('kuopio'))
+  const voimavarapankki = mapSpans(gameState.load('rovaniemi'))
+  const tyoelamataidot = mapSpans(gameState.load('oulu'))
 
-  const vahvuudet: string[] = gameState.load('kuopio')
-  const voimavarapankki = gameState.load('kuopio')
-  const arvot = gameState.load('kuopio')
-  const valintojenTaustalla = gameState.load('kuopio')
-  const koulutusalat = gameState.load('kuopio')
-  const vaihtoehtolaskuri = gameState.load('kuopio')
-  const tarkeat = gameState.load('kuopio')
-  const kehittaa = gameState.load('kuopio')
-  const score = 125//gameState.load('kuopio')
+  const arvot = mapScores(gameState.load('jyvaskyla'), 3)
+  const valintojenTaustalla = mapScores(gameState.load('lappeenranta'), 5)
 
+  const _calculatorResult: CalculatorResult = gameState.load('joensuu') || { scores: [], factors: [] }
+
+  const koulutusalat = mapSpans(_calculatorResult.scores.map(r => r.occupation).slice(0, 5))
+  const score = _calculatorResult.scores[0]?.score || 0
+
+  const vaihtoehtolaskuri = <React.Fragment>
+    <span className="occupation">{capitalize(_calculatorResult.scores[0]?.occupation)}</span>
+    {_calculatorResult.factors.map((f, i) => <span key={i} className="factor">{f.name}</span>)}
+  </React.Fragment>
 
   return (
     <div className="results-card" style={containerStyle}>
-      <img ref={imgRef} className="card-background" src="/assets/loppukortti.png" alt="loppukortti" />
+      <img ref={imgRef} className="card-background" src="/assets/loppukortti2.png" alt="loppukortti" />
 
       <div className="overlay-texts" style={{ fontSize, opacity }}>
-        <div className="img-overlay vahvuudet">
-          {vahvuudet.join(', ')}
-          {/* {vahvuudet.map(x => <span>{x}, </span>)} */}
-        </div>
-        <div className="img-overlay voimavarapankki">
-          {vahvuudet.join(', ')}
-        </div>
-        <div className="img-overlay arvot">
-          {vahvuudet.join(', ')}
-        </div>
-        <div className="img-overlay valintojen-taustalla">
-          {vahvuudet.join(', ')}
-        </div>
-        <div className="img-overlay koulutusalat">
-          {vahvuudet.join(', ')}
-        </div>
-        <div className="img-overlay vaihtoehtolaskuri">
-          {vahvuudet.join(', ')}
-        </div>
-        <div className="img-overlay tarkeat">
-          {vahvuudet.join(', ')}
-        </div>
-        <div className="img-overlay kehittaa">
-          {vahvuudet.join(', ')}
-        </div>
-        <div className="img-overlay score">
-          {score}
-        </div>
+        <div className="img-overlay vahvuudet"> {vahvuudet} </div>
+        <div className="img-overlay voimavarapankki"> {voimavarapankki} </div>
+        <div className="img-overlay arvot list"> {arvot} </div>
+        <div className="img-overlay valintojen-taustalla list"> {valintojenTaustalla} </div>
+        <div className="img-overlay koulutusalat list"> {koulutusalat} </div>
+        <div className="img-overlay vaihtoehtolaskuri list"> {vaihtoehtolaskuri} </div>
+        <div className="img-overlay tyoelamataidot list"> {tyoelamataidot} </div>
+        <div className="img-overlay score"> {score} </div>
       </div>
 
     </div>

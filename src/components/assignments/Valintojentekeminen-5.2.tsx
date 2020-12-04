@@ -3,11 +3,11 @@ import { Occupation } from '../../data/alavaihtoehdot'
 import gameState from '../../GameState'
 import AssignmentFooter from '../AssignmentFooter'
 import AssignmentInstructions from '../AssignmentInstructions'
-import Calculator from '../calculator/Calculator'
+import Calculator, { CalculatorResult } from '../calculator/Calculator'
 
 export type Score = { occupation: string, score: number }
-type State = Partial<Record<string, number>>
 
+type State = Partial<Record<string, number>>
 
 interface Props {
   state: State,
@@ -17,9 +17,9 @@ interface Props {
 
 const Assignment: React.FC<Props> = ({ state = {}, done, close }) => {
   const occupationResults: Occupation[] = useMemo(() => gameState.load('tampere')?.result || [], [])
-  const [result, setResult] = useState<Score[]>([])
+  const [result, setResult] = useState<CalculatorResult>({ scores: [], factors: [] })
 
-  const isDone = result.length > 0
+  const isDone = (result?.scores?.length || 0) > 0
 
   return (
     <div>

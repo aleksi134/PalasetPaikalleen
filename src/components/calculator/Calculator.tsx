@@ -31,6 +31,8 @@ export type Probabilities = {
   }
 }
 
+export type CalculatorResult = { scores: Score[], factors: Factor[] }
+
 const factors: Factor[] = [
   { name: 'Työn kiinnostavuus', score: 1, isChecked: true },
   { name: 'Hyvä palkkaus', score: 1, isChecked: true },
@@ -41,7 +43,7 @@ const factors: Factor[] = [
 
 interface Props {
   occupations: Occupation[]
-  onResult: (result: any) => void
+  onResult: (result: CalculatorResult) => void
 }
 
 const Calculator: React.FC<Props> = ({ occupations = [], onResult }) => {
@@ -67,7 +69,7 @@ const Calculator: React.FC<Props> = ({ occupations = [], onResult }) => {
 
     // TODO lift state up
     setScores(scores)
-    onResult(scores)
+    onResult({ scores: scores, factors: selectedFactors })
   }
 
   // console.log({selectedOccupations})

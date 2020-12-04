@@ -47,7 +47,7 @@ const Assignment: React.FC<Props> = ({ state = [], done, close }) => {
   return (
     <div>
       <AssignmentInstructions title='Työelämätaitoja oikeasta elämästä'>
-        <p> Mitä tärkeitä työelämätaitoja sinulta voisi nyt jo löytyä? Entä mitä pitäisi vielä kehittää? </p>
+        <p>Mitä tärkeitä työelämätaitoja sinulta voisi nyt jo löytyä? Entä mitä pitäisi vielä kehittää? </p>
         <p>Työelämätaitojen tunnistaminen ja niistä tietoiseksi tuleminen tapahtuu monesti oman kokemuksen kautta, mutta myös toisten kokemuksesta voi oppia paljon. Videolla Hurry Oy:n Tero Hyttinen, Huoneistohotelli Lietsun Helena Puhakka-Tarvainen ja Maria Saastamoinen, Joen kotihoiva Oy:n Sari Korhonen, Care Care Oy:n Anneli Muona ja Vauhti Speed Oy:n Esa Puukilainen kertovat ajatuksiaan  nykyisestä työelämästä ja siellä tarvittavista taidoista.</p>
         <p>Mitä tärkeitä työelämään liittyviä teemoja videoilla mainitaan?</p>
       </AssignmentInstructions>

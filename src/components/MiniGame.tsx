@@ -18,21 +18,6 @@ import Valintojentekeminen52 from './assignments/Valintojentekeminen-5.2'
 import TinderModule from './assignments/TinderModule'
 import './Minigame.scss'
 
-// const cityGameMap: CityRecord<FC<any>> = {
-//   kuopio: Itsetuntemus11,
-//   joensuu: Valintojentekeminen52,
-//   oulu: Tyoelamatietous22,
-//   jyvaskyla: Tyoelamatietous21,
-//   vaasa: Tietojaopiskelusta31,
-//   turku: Elamantilanne41,
-//   helsinki: Elamantilanne42,
-//   lappeenranta: Valintojentekeminen51,
-//   tampere: TinderModule,
-//   rovaniemi: Itsetuntemus12,
-//   maarianhamina: Lisatehtava13,
-//   inari: Lisatehtava33,
-// }
-
 const cityGameMap: CityRecord<FC<any>> = {
   kuopio: Itsetuntemus11,
   joensuu: Valintojentekeminen52,

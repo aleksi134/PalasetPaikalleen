@@ -29,23 +29,27 @@ import './theme/variables.scss'
 
 /* Global css */
 import './theme/global.scss'
+import ErrorBoundary from './ErrorBoundary'
+
 
 const App: React.FC = () => {
 
   return (
     <IonApp>
-      <IonReactRouter>
-        <IonSplitPane contentId="main">
-          <Menu />
-          <IonRouterOutlet id="main">
-            <Route path="/page/Home" component={HomePage} exact />
-            <Route path="/page/Map" component={MapPage} exact />
-            <Route path="/page/Results" component={ResultsPage} exact />
-            <Route path="/page/Info" component={InfoPage} exact />
-            <Redirect from="/" to="/page/Map" exact />
-          </IonRouterOutlet>
-        </IonSplitPane>
-      </IonReactRouter>
+      <ErrorBoundary>
+        <IonReactRouter>
+          <IonSplitPane contentId="main">
+            <Menu />
+            <IonRouterOutlet id="main">
+              <Route path="/page/Home" component={HomePage} exact />
+              <Route path="/page/Map" component={MapPage} exact />
+              <Route path="/page/Results" component={ResultsPage} exact />
+              <Route path="/page/Info" component={InfoPage} exact />
+              <Redirect from="/" to="/page/Map" exact />
+            </IonRouterOutlet>
+          </IonSplitPane>
+        </IonReactRouter>
+      </ErrorBoundary>
     </IonApp>
   );
 };

@@ -1,0 +1,15 @@
+.error-boundary {
+  padding: 2rem;
+  max-width: 400px;
+  margin: 2rem auto;
+  text-align: center;
+  background-color: white;
+  border-radius: 16px;
+  color: black;
+
+  .reset-button, .reload-button {
+    position: static;
+    width: 300px;
+    margin: 10px 5%;
+  }
+}
