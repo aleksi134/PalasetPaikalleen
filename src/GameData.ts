@@ -24,7 +24,7 @@ export const nodes: MapNode[] = [
   {
     id: 'joensuu',
     adj: [],
-    theme: 'itsetuntemus',
+    theme: 'valintojentekeminen',
     greeting: 'Tervehdys!',
     icon: flag
   },
@@ -37,13 +37,13 @@ export const nodes: MapNode[] = [
   {
     id: 'jyvaskyla',
     adj: ['tampere', 'kuopio', 'vaasa'],
-    theme: 'tyoelamatietous',
+    theme: 'itsetuntemus',
     greeting: 'Tervehdys!'
   },
   {
     id: 'vaasa',
     adj: ['jyvaskyla'],
-    theme: 'korkeakoulutietous',
+    theme: 'tyoelamatietous',
     greeting: 'Tervehdys!'
   },
   {
@@ -55,7 +55,7 @@ export const nodes: MapNode[] = [
   {
     id: 'helsinki',
     adj: ['lappeenranta', 'turku'],
-    theme: 'elamantilanne',
+    theme: 'korkeakoulutietous',
     greeting: 'Tervehdys!'
   },
   {
@@ -73,7 +73,7 @@ export const nodes: MapNode[] = [
   {
     id: 'maarianhamina',
     adj: ['turku'],
-    theme: 'korkeakoulutietous',
+    theme: 'itsetuntemus',
     isBonus: true,
     greeting: 'Tervehdys!',
     icon: helpOutline,
@@ -82,7 +82,7 @@ export const nodes: MapNode[] = [
   {
     id: 'inari',
     adj: ['rovaniemi'],
-    theme: 'itsetuntemus',
+    theme: 'korkeakoulutietous',
     isBonus: true,
     greeting: 'Tervehdys!',
     icon: helpOutline,
@@ -91,7 +91,7 @@ export const nodes: MapNode[] = [
   {
     id: 'rovaniemi',
     adj: ['oulu'],
-    theme: 'valintojentekeminen',
+    theme: 'elamantilanne',
     greeting: 'Tervehdys!'
   },
 ]

@@ -1,7 +1,7 @@
 import { IonButton, IonIcon } from '@ionic/react'
 import { close as closeIcon } from 'ionicons/icons'
 import React, { CSSProperties, FC } from 'react'
-import { MapNode, NodeContext, nodes } from '../GameData'
+import { MapNode, NodeContext } from '../GameData'
 import gameState, { Result } from '../GameState'
 import { CityRecord, THEME_COLORS, THEME_NAMES } from '../Types'
 import Elamantilanne41 from './assignments/Elamantilanne-4.1'
@@ -38,12 +38,12 @@ const cityGameMap: CityRecord<FC<any>> = {
   joensuu: Valintojentekeminen52,
   oulu: Tyoelamatietous21,
   jyvaskyla: Itsetuntemus12,
-  vaasa: Tietojaopiskelusta31,
+  vaasa: Tyoelamatietous22,
   turku: Elamantilanne41,
-  helsinki: Elamantilanne42,
+  helsinki: Tietojaopiskelusta31,
   lappeenranta: Valintojentekeminen51,
   tampere: TinderModule,
-  rovaniemi: Itsetuntemus12,
+  rovaniemi: Elamantilanne42,
   maarianhamina: Lisatehtava13,
   inari: Lisatehtava33,
 }
