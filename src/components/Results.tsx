@@ -1,4 +1,4 @@
-import { IonButton, IonCard, IonCardContent, IonSpinner } from '@ionic/react'
+import { IonButton, IonCard, IonCardContent, IonCol, IonGrid, IonRow, IonSpinner } from '@ionic/react'
 import * as htmlToImage from 'html-to-image'
 import React, { useRef, useState } from 'react'
 import gameState from '../GameState'
@@ -77,7 +77,16 @@ const Results: React.FC = () => {
         </IonCardContent>
 
         <IonCardContent className="progress-wrapper">
-          <ProgressMeter />
+          <IonGrid>
+            <IonRow>
+              <IonCol>
+                <ProgressMeter />
+              </IonCol>
+              <IonCol>
+                <img className="enlightened-beanie" src="/assets/PIPO_valaistunut.png" alt="valaistunut pipo" />
+              </IonCol>
+            </IonRow>
+          </IonGrid>
           <ColorInstructions />
         </IonCardContent>
       </IonCard>

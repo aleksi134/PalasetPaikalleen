@@ -1,22 +1,24 @@
 .results-container {
+  ion-col {
+    padding: 0;
+  }
+
   .progress-wrapper {
     text-align: center;
+
+    img.enlightened-beanie {
+      max-height: 300px;
+      max-width: 80%;
+      width: auto;
+      height: auto;
+      margin-right: -40px;
+      margin-top: -15px;
+      display: inline-block;
+    }
     .progress-meter {
       max-width: 300px;
-      display: inline-block;
-      margin-bottom: 1rem;
     }
   }
 
-  .results {
-    // position: 'relative',
-    // background: 'white',
-    // textAlign: 'left',
-    // padding: '0'
-    // pre {
-    //   font-size: 10px;
-    //   white-space: pre-wrap;
-    // }
-  }
-
+  // .results { }
 }
