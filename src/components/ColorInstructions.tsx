@@ -18,7 +18,7 @@ const ColorInstructions: React.FC<Props> = () => {
       </IonItem>
       <IonItem>
         <IonLabel>Korkeakoulutietous</IonLabel>
-        <IonIcon slot="end" icon={ellipse} style={{ color: THEME_COLORS.tietojaopiskelusta }} />
+        <IonIcon slot="end" icon={ellipse} style={{ color: THEME_COLORS.korkeakoulutietous }} />
       </IonItem>
       <IonItem>
         <IonLabel>Elämäntilanne</IonLabel>

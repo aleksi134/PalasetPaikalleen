@@ -17,7 +17,7 @@ export const CITIES = [
 export const THEMES = [
   'itsetuntemus',
   'tyoelamatietous',
-  'tietojaopiskelusta',
+  'korkeakoulutietous',
   'elamantilanne',
 	'valintojentekeminen',
 	'bonus'
@@ -26,7 +26,7 @@ export const THEMES = [
 export const THEME_COLORS: Record<Theme, string> = {
   itsetuntemus: '#4A69CF',
   tyoelamatietous: '#3AB844',
-  tietojaopiskelusta: '#D03A5D',
+  korkeakoulutietous: '#D03A5D',
   elamantilanne: '#D0D341',
   valintojentekeminen: '#A342C9',
   bonus: 'black'
@@ -37,7 +37,7 @@ export const THEME_COLOR_INACTIVE = '#E3E3E3'
 export const THEME_NAMES: Record<Theme, string> = {
   itsetuntemus: 'Itsetuntemus',
   tyoelamatietous: 'Työelämätietous',
-  tietojaopiskelusta: 'Korkeakoulutietous',
+  korkeakoulutietous: 'Korkeakoulutietous',
   elamantilanne: 'Elämäntilanne',
   valintojentekeminen: 'Valintojen tekeminen',
   bonus: 'Lisätehtävät'

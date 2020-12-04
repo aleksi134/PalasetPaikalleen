@@ -1,5 +1,4 @@
 .results-container {
-
   .progress-wrapper {
     text-align: center;
     .progress-meter {
@@ -10,10 +9,14 @@
   }
 
   .results {
-
-    pre {
-      font-size: 10px;
-      white-space: pre-wrap;
-    }
+    // position: 'relative',
+    // background: 'white',
+    // textAlign: 'left',
+    // padding: '0'
+    // pre {
+    //   font-size: 10px;
+    //   white-space: pre-wrap;
+    // }
   }
+
 }

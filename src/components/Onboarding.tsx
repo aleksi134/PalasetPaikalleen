@@ -1,14 +1,9 @@
-import { IonButton, IonCard, IonCardContent, IonIcon, IonItem, IonLabel, IonList } from '@ionic/react'
-import * as htmlToImage from 'html-to-image'
-import { ellipse } from 'ionicons/icons'
-import React, { CSSProperties, MouseEventHandler, useRef } from 'react'
+import { IonButton } from '@ionic/react'
+import React, { MouseEventHandler } from 'react'
 import { RouteComponentProps, withRouter } from 'react-router'
-import gameState from '../GameState'
-import { THEME_COLORS } from '../Types'
-import ProgressMeter from './ProgressMeter'
-import './Onboarding.scss'
 import AssignmentInstructions from './AssignmentInstructions'
 import ColorInstructions from './ColorInstructions'
+import './Onboarding.scss'
 
 interface Props extends RouteComponentProps<any> {}
 
@@ -32,7 +27,7 @@ const Onboarding: React.FC<Props> = ({ history}) => {
         <p>Kysymysmerkkiruudut sisältävät lisätehtäviä, joiden suorittaminen ei ole pakollista pelin läpipelaamisen kannalta. Ne sisältävät lisätietoa valintojesi tueksi, joten käy rohkeasti katsomassa mikä kysymysmerkkien takana odottaa!</p>
         <p>Peli on kehitetty osana Korkeakoulustartti-hanketta ja se perustuu hankkeessa kehitettyyn Palaset Paikalleen -uraohjausmalliin.</p>
 
-      <IonButton className="start" onClick={navigateToMap} expand="block" >Aloita peli</IonButton>
+        <IonButton className="start" onClick={navigateToMap} expand="block" >Aloita peli</IonButton>
 
       </AssignmentInstructions>
 

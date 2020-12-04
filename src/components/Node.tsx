@@ -16,8 +16,9 @@ const Node: React.FC<Props> = ({ node, location, onClick }) => {
   const themeColor = THEME_COLORS[node.theme]
   const canAdvance = gameState.canAdvance(node)
   const isCompleted = gameState.isCompleted(node)
-
-  const backgroundColor = isCompleted ? themeColor : lightenDarkenColor(themeColor, 75)
+  const lightenedColor = lightenDarkenColor(themeColor, 75)
+  const backgroundColor = isCompleted ? themeColor : lightenedColor
+  const iconColor = isCompleted ? lightenedColor : themeColor
 
   const classes = [
     'dot',
@@ -37,7 +38,7 @@ const Node: React.FC<Props> = ({ node, location, onClick }) => {
 
   return (
     <div className={classes} style={style} onClick={() => onClick(node)}>
-      { node.icon && <IonIcon className="node-icon" icon={node.icon} style={{ color: themeColor }} />}
+      { node.icon && <IonIcon className="node-icon" icon={node.icon} style={{ color: iconColor }} />}
     </div>
   )
 }

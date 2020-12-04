@@ -1,42 +1,69 @@
-import { IonButton, IonCard, IonCardContent, IonIcon, IonItem, IonLabel, IonList } from '@ionic/react'
+import { IonButton, IonCard, IonCardContent, IonSpinner } from '@ionic/react'
 import * as htmlToImage from 'html-to-image'
-import { ellipse } from 'ionicons/icons'
-import React, { CSSProperties, useRef } from 'react'
+import React, { useRef, useState } from 'react'
 import gameState from '../GameState'
-import { THEME_COLORS } from '../Types'
+import { delay } from '../utils/delay'
 import ColorInstructions from './ColorInstructions'
 import ProgressMeter from './ProgressMeter'
+import ResultsCard from './ResultCard'
 import './Results.scss'
 
-interface Props { }
+const createCopy = (node: Node, offScreen: Node, width: number = 1600) => {
+  const clone: HTMLDivElement = node.cloneNode(true) as any
+  clone.style.width = width + 'px'
 
-const Results: React.FC<Props> = () => {
+  // Reset styles
+  const overlayTexts = clone.querySelector<HTMLDivElement>('.overlay-texts')
+  const resultsCard = clone.querySelector<HTMLDivElement>('.results-card')
+  if (overlayTexts && resultsCard) {
+    overlayTexts.style.fontSize = (1600 / 6) + '%';
+    resultsCard.style.width = 'auto'
+    resultsCard.style.height = 'auto'
+  }
+
+  offScreen.appendChild(clone)
+
+  return clone
+}
+
+const clearClone = (node: Node) =>
+  node.parentNode?.removeChild(node)
+
+
+const Results: React.FC = () => {
   const resultsRef = useRef<HTMLDivElement>(null)
+  const offScreenRef = useRef<HTMLDivElement>(null)
+  const [loading, setLoading] = useState(false)
 
   const isGameCompleted = gameState.isGameCompleted()
 
-  const createImage = () => {
+  const createImage = async () => {
+    setLoading(true)
+
     const node = resultsRef.current!
+    const offScreen = offScreenRef.current!
+
+    const clone = createCopy(node, offScreen)
+    await delay(2000)
 
     const options: htmlToImage.Options = {
-      quality: 0.95,
-      pixelRatio: 1
+      quality: 1,
+      pixelRatio: 1,
+      skipFonts: false
     }
 
     htmlToImage
-      .toJpeg(node, options)
+      .toPng(clone, options)
       .then((dataUrl) => {
+
+        clearClone(clone)
+        setLoading(false)
+
         const link = document.createElement('a');
-        link.download = 'palaset-paikalleen.jpeg'
+        link.download = 'palaset-paikalleen.png'
         link.href = dataUrl
         link.click()
       })
-  }
-
-  const resultsStyle: CSSProperties = {
-    background: 'white',
-    textAlign: 'left',
-    padding: '1rem'
   }
 
   return (
@@ -55,20 +82,30 @@ const Results: React.FC<Props> = () => {
         </IonCardContent>
       </IonCard>
 
-
-      <div className="results" ref={resultsRef} style={resultsStyle}>
-        <div className="ion-padding">
+      <IonCard>
+        <div className="results" ref={resultsRef}>
+          <ResultsCard />
         </div>
+      </IonCard>
 
-        <pre>
-          {JSON.stringify(gameState.progress, null, '  ')}
-        </pre>
-      </div>
+      <div className="offscreen-results" ref={offScreenRef} style={{
+        position: 'absolute',
+        left: '-20000px',
+        bottom: '-20000px'
+      }} />
 
       { !isGameCompleted &&
         <div>Suorita peli ennen tulosten lataamista</div>
       }
-      <IonButton disabled={!isGameCompleted} onClick={createImage}>Lataa tulokset</IonButton>
+
+      <IonButton
+        disabled={!isGameCompleted || loading}
+        onClick={createImage}
+        expand="block"
+        className="ion-margin">
+        Lataa tulokset
+        {loading && <IonSpinner />}
+      </IonButton>
     </div>
   )
 }

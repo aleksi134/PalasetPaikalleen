@@ -18,7 +18,7 @@ const ProgressMeter: React.FC<Props> = ({ history }) => {
   const refs: Record<ProgressTheme, RefObject<SVGPathElement>[]> = {
     itsetuntemus: [useRef(null), useRef(null)],
     tyoelamatietous: [useRef(null), useRef(null)],
-    tietojaopiskelusta: [useRef(null), useRef(null)],
+    korkeakoulutietous: [useRef(null), useRef(null)],
     elamantilanne: [useRef(null), useRef(null)],
     valintojentekeminen: [useRef(null), useRef(null)]
   }
@@ -81,8 +81,8 @@ const ProgressMeter: React.FC<Props> = ({ history }) => {
             <path ref={refs.tyoelamatietous[1]} className="cls-1" d="M36.5,135.5A98.36,98.36,0,0,1,77.12,55.8L55.82,26.52A135.13,135.13,0,0,0,7.1,177.28l34.26-11.17A98.3,98.3,0,0,1,36.5,135.5Z" />
             <path ref={refs.tyoelamatietous[0]} className="cls-1" d="M135,135.5v.11l.17-.06-58-79.75A98.58,98.58,0,0,0,41.36,166.11L135,135.61Z" />
 
-            <path ref={refs.tietojaopiskelusta[1]} className="cls-1" d="M41.36,166.11,7.1,177.28A135,135,0,0,0,135,270.49V234A98.53,98.53,0,0,1,41.36,166.11Z" />
-            <path ref={refs.tietojaopiskelusta[0]} className="cls-1" d="M134.94,136l.06-.08v-.31l-93.64,30.5A98.53,98.53,0,0,0,135,234V135.92Z" />
+            <path ref={refs.korkeakoulutietous[1]} className="cls-1" d="M41.36,166.11,7.1,177.28A135,135,0,0,0,135,270.49V234A98.53,98.53,0,0,1,41.36,166.11Z" />
+            <path ref={refs.korkeakoulutietous[0]} className="cls-1" d="M134.94,136l.06-.08v-.31l-93.64,30.5A98.53,98.53,0,0,0,135,234V135.92Z" />
 
             <path ref={refs.elamantilanne[1]} className="cls-1" d="M214.64,26.13,193,55.91a98.59,98.59,0,0,1,35.74,109.81L264,177.12a135.12,135.12,0,0,0-49.31-151Z" />
             <path ref={refs.elamantilanne[0]} className="cls-1" d="M135.93,135.19l-.09,0-.19.26,93.68,30.4a98.55,98.55,0,0,0-35.81-110l-57.68,79.32Z" />

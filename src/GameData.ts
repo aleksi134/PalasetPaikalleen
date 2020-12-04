@@ -43,7 +43,7 @@ export const nodes: MapNode[] = [
   {
     id: 'vaasa',
     adj: ['jyvaskyla'],
-    theme: 'tietojaopiskelusta',
+    theme: 'korkeakoulutietous',
     greeting: 'Tervehdys!'
   },
   {
@@ -67,13 +67,13 @@ export const nodes: MapNode[] = [
   {
     id: 'tampere',
     adj: ['jyvaskyla', 'turku'],
-    theme: 'tietojaopiskelusta',
+    theme: 'korkeakoulutietous',
     greeting: 'Tervehdys!'
   },
   {
     id: 'maarianhamina',
     adj: ['turku'],
-    theme: 'tietojaopiskelusta',
+    theme: 'korkeakoulutietous',
     isBonus: true,
     greeting: 'Tervehdys!',
     icon: helpOutline,
