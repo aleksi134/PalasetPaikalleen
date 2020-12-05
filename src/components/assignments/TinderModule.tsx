@@ -128,7 +128,7 @@ const Assignment: React.FC<Props> = ({ state = defaultState, done, close }) => {
   return (
     <div className="assignment tinder-cards">
       <AssignmentInstructions title="Korkeakoulukortit">
-        <p>Polut työelämään ja unelmien ammattiin voivat olla hyvin monenlaiset. </p>
+        <p>Polut työelämään ja unelmien ammattiin voivat olla hyvin monenlaiset. Urasuunnittelua tehdessäsi on hyvä tietää ja tiedostaa, mitä kaikkea voit opiskella yliopistossa tai ammattikorkeakoulussa. Tiesitkö, että erilaisia koulutusaloja on yli 150? Kun perehdyt siihen, millaisia tutkinnot ja eri opiskelumuodot ovat, pääset lähemmäksi päätöstä siitä, millainen opiskelumuoto, -ala ja koulutus parhaiten soveltuu sinulle. </p>
         <p>
           Kuinka hyvin tunnet korkeakouluissa opiskeltavat alat? Mitä kaikkia sinua kiinnostavaan
           alaan liittyviä opiskeluvaihtoehtoja Suomesta löytyy? Tutustu Korkeakoulukorttien avulla
@@ -170,9 +170,9 @@ const Assignment: React.FC<Props> = ({ state = defaultState, done, close }) => {
           </div>
         }
 
-        {!cardsLeft && fieldsSelected &&
+        {/* {!cardsLeft && fieldsSelected &&
           <React.Fragment>
-            {/* <IonItem>
+            <IonItem>
               <IonLabel>Loistavaa!</IonLabel>
             </IonItem>
             <IonCardContent>
@@ -181,9 +181,9 @@ const Assignment: React.FC<Props> = ({ state = defaultState, done, close }) => {
               <p>Eikö tulokset miellytä? Valitse lisää aloja tai pelaa uudelleen!</p>
               <IonButton onClick={reset}>Aloita alusta!</IonButton>
 
-            </IonCardContent> */}
+            </IonCardContent>
           </React.Fragment>
-        }
+        } */}
 
         {result.length > 0 &&
           <IonCardContent className="chips">
@@ -204,10 +204,8 @@ const Assignment: React.FC<Props> = ({ state = defaultState, done, close }) => {
             <IonLabel>Loistavaa!</IonLabel>
           </IonItem>
           <IonCardContent>
-            <p>Löysit sinulle sopivat alavaihtoedot korttipakasta. Monipuolinen tieto sinua kiinnostavista koulutusaloista auttaa sinua oman näköisten valintojen tekemisessä sekä ottamaan seuraavan askeleen urasuunnittelun polulla.</p>
-            <p>Eikö tulokset miellytä? Voit aina palata tehtävään ja pelata uudelleen!</p>
-            {/* <IonButton onClick={reset}>Aloita alusta!</IonButton> */}
-
+          <p>Löysit sinulle sopivat alavaihtoehdot korttipakasta. Monipuolinen tieto sinua kiinnostavista koulutusaloista auttaa sinua oman näköisten valintojen tekemisessä sekä ottamaan seuraavan askeleen urasuunnittelun polulla. </p>
+          <p>Eivätkö valitsemasi alat tunnukaan omilta? Voit aina palata tehtävään ja valita korttisi uudelleen! </p>
           </IonCardContent>
         </IonCard>
       </AssignmentFooter>

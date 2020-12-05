@@ -17,8 +17,8 @@ const CalculatorResults: React.FC<Props> = ({ occupations = [], scores }) => {
     <div className="calculator-component calculator-results">
 
       <div className="calculator-instructions">
-        <p> Taulukkoon on koottu kaikki laskentamallissa mukana olevat tekijät. Tulos-sarakkeessa näkyvät eri vaihtoehtojesi saamat pistemäärät. Mitä korkeampi pistemäärä sitä paremmin vaihtoehto vastaa vaatimuksiasi. </p>
-        <p> Jos tulos on yllättävä, voit miettiä ovatko tekijöiden painokertoimet tai niiden toteutumisarviot aivan kohdallaan. Voit palata takaisin askel kerrallaan, muuttaa arvoja ja katsoa sitten, miten muutokset vaikuttavat lopputulokseen. Voit halutessasi myös lisätä tai poistaa vaikuttavia tekijöitä ja katsoa, vaikuttavatko ne tulokseen. </p>
+        <p>Tulokseksi saat eri vaihtoehtojesi saamat pistemäärät. Mitä korkeampi pistemäärä sitä paremmin kyseinen ala vastaa toiveitasi. </p>
+        <p>Jos tulos on yllättävä tai se tuntuu väärältä, voit miettiä ovatko tekijöiden painokertoimet tai niiden toteutumisarviot aivan kohdallaan. Voit palata takaisin askel kerrallaan, muuttaa arvoja ja katsoa sitten, miten muutokset vaikuttavat lopputulokseen. Voit halutessasi myös lisätä tai poistaa vaikuttavia tekijöitä ja katsoa, vaikuttavatko ne tulokseen. </p>
         <img className="enlightened-beanie" src="/assets/PIPO_valaistunut.png" alt="valaistunut pipo" />
       </div>
 

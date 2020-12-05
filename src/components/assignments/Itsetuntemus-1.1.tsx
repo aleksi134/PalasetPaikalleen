@@ -5,6 +5,7 @@ import { numberNames } from '../../Types'
 import AssignmentFooter from '../AssignmentFooter'
 import AssignmentInstructions from '../AssignmentInstructions'
 import AssignmentProgress from '../AssignmentProgress'
+import CustomOption from '../CustomOption'
 import MultiSelect from '../MultiSelect'
 
 type Result = string[]
@@ -51,13 +52,11 @@ const Assignment: React.FC<Props> = ({ state = [], done, close }) => {
   const uniqueOptions = uniq([...preDefinedOptions, ...state])
 
   const [options, setOptions] = useState<Result>(uniqueOptions)
-  const [customOption, setCustomOption] = useState('')
   const [result, setResult] = useState<Result>(state)
 
-  const addCustomOption = () => {
-    setOptions([...options, customOption])
-    setResult([...result, customOption])
-    setCustomOption('')
+  const addCustomOption = (option: string) => {
+    setOptions([...options, option])
+    setResult([...result, option])
   }
 
   const selectionsRequired = 5
@@ -66,28 +65,18 @@ const Assignment: React.FC<Props> = ({ state = [], done, close }) => {
   return (
     <div>
       <AssignmentInstructions title='Vahvuudet'>
-        <p>Meiltä kaikilta löytyy monenlaisia vahvuuksia ja osaamista. Niitä ei vain aina osaa heti tunnistaa tai sanallisesti kertoa. Mitkä ovat sinun vahvuutesi? Valitse annetuista vahvuuksista juuri sinua parhaiten kuvaavat tai jos listasta ei löydy mielestäsi sinua kuvaavia vahvuuksia, voit luoda omasi.</p>
-        <p>Omien vahvuuksiesi pohtimisessa voi olla apua kun mietit:</p>
-        <p>Mihin uppoudut vapaa-ajallasi?</p>
-        <p>Minkä tehtävän tai asian tekemisestä nautit, vaikka siitä ei olisi sinulle mitään konkreettista hyötyä?</p>
-        <p>Missä asiassa koet olevasi oikein hyvä?</p>
-        <p>Kun tunnistat omat vahvuutesi ja lahjakkuutesi, voit hyödyntää niitä ammatin valinnassa, pääsykokeisiin valmistautumisessa, tulevissa opinnoissasi ja ihan jokapäiväisessä elämässäsi.</p>
+        <p>Omaa urasuunnittelua tehtäessä itsetuntemus on tärkeää. Ammatinvalintaa tehdessä on keskeistä tunnistaa omat vahvuudet, valmiudet, taidot sekä kehittämisen kohteet ja osaamisen vajeet, eikä tämä onnistu ilman riittävää tuntemusta itsestä.  </p>
+        <p>Meiltä kaikilta löytyy monenlaisia vahvuuksia ja osaamista. Niitä ei vain aina osaa heti tunnistaa tai sanallisesti kertoa. Kun tunnistat omat vahvuutesi, voit hyödyntää niitä ammatin valinnassa, pääsykokeisiin valmistautumisessa, tulevissa opinnoissasi ja ihan jokapäiväisessä elämässäsi. Mitkä ovat sinun vahvuutesi?  </p>
+        <p>Valitse annetuista vahvuuksista juuri sinua parhaiten kuvaavat tai jos listasta ei löydy mielestäsi sinua kuvaavia vahvuuksia, voit luoda omasi. </p>
       </AssignmentInstructions>
 
       <MultiSelect options={options} selection={result} onChange={setResult} />
 
-      <IonList lines="none" className="ion-margin-vertical">
-        <IonItem>
-          <IonLabel><strong>Kirjoita oma</strong></IonLabel>
-        </IonItem>
-        <IonItem lines="inset">
-          <IonInput
-            value={customOption}
-            onIonChange={e => setCustomOption(e.detail.value!)}
-            placeholder="Esim. Puhelias"> </IonInput>
-          <IonButton disabled={customOption.length <= 3} size="default" slot="end" onClick={addCustomOption as any}>Lisää</IonButton>
-        </IonItem>
-      </IonList>
+      <CustomOption
+        title="Lisää oma vahvuutesi listalle"
+        placeholder="Esim. reipas"
+        onAdd={addCustomOption}
+      />
 
       <AssignmentProgress required={selectionsRequired} selected={result.length} />
 

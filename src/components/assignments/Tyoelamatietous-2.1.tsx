@@ -1,3 +1,4 @@
+import { IonCard, IonCardContent, IonItem, IonLabel } from '@ionic/react'
 import React, { useState } from 'react'
 import Collapsible from 'react-collapsible'
 import AssignmentFooter from '../AssignmentFooter'
@@ -60,14 +61,22 @@ const Assignment: React.FC<Props> = ({ state = [], done, close }) => {
           <p> Kriittinen ajattelu auttaa meitä arvioimaan työssämme tietoa, tilanteita sekä menetelmiä tehokkaasti sekä havaitsemaan erilaiset taustalla vaikuttavat kontekstit, valtasuhteet ja ajattelutavat. Kriittinen ajattelu voi myös auttaa kohdistamaan uudelleen arvioivan katseen itseensä ja omiin toimintatapoihin. Luovuus puolestaan auttaa meitä soveltamaan osaamistamme, kokeilemaan ja luomaan rohkeasti uutta sekä ajattelemaan asioita laajemmin sekä joustavammin työssämme. </p>
           <h2> 10. Itseohjautuvuus </h2>
           <p> Itseohjautuvuudella tarkoitetaan ihmisen kykyä toimia ilman ulkopuolisen ohjauksen ja kontrollin tarvetta eli ihmisen kykyä ohjata ja johtaa itse itseään. Itseohjautuvuus tuo työntekijälle sekä vapautta että vastuuta, parhaillaan se mahdollistaa työn tekemisestä itselle mielekästä ja oman näköistä. Itseohjautuvuus kuitenkin vaatii työntekijältä kykyä huolehtia itse työnsä etenemisestä aikatauluissa pysymisestä sekä viime kädessä vastuun ottamista omasta työpanoksestaan ilman ulkopuolista valvontaa. </p>
-          <p> Hyvä! Nyt tunnet tärkeimmät tulevaisuuden työelämätaidot ja osaat tunnistaa mitä näistä taidoista sinulta itseltäsi voisi löytyä tai mitä niistä haluat kehittää. Pidä nämä työelämätaidot mielessäsi kun otat seuraavan askeleen urasuunnittelusi polulla. </p>
         </Collapsible>
       </AssignmentInstructions>
 
       <MultiSelect options={options} selection={result} onChange={setResult} columns={1} />
 
       <AssignmentProgress required={selectionsRequired} selected={selectedCount} />
-      <AssignmentFooter done={() => done(result)} close={close} isDone={isDone} />
+      <AssignmentFooter done={() => done(result)} close={close} isDone={isDone}>
+        <IonCard>
+          <IonItem>
+            <IonLabel>Hyvä!</IonLabel>
+          </IonItem>
+          <IonCardContent>
+            <p>Nyt tunnet tärkeimmät tulevaisuuden työelämätaidot ja osaat tunnistaa mitä näistä taidoista sinulta itseltäsi voisi löytyä tai mitä niistä haluat kehittää. Pidä nämä työelämätaidot mielessäsi kun otat seuraavan askeleen urasuunnittelusi polulla. </p>
+          </IonCardContent>
+        </IonCard>
+      </AssignmentFooter>
     </div>
   )
 }

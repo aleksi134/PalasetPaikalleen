@@ -59,8 +59,8 @@ const PropabilitySelector: React.FC<Props> = ({
     <div className="calculator-component probability-selector">
 
       <div className="calculator-instructions">
-        <p> Seuraavaksi arvioidaan, kuinka suurella todennäköisyydellä haluamasi tekijä toteutuu kussakin vaihtoehdossa. Esimerkiksi jos vaihtoehdot ovat aloja ja yksi päätökseen vaikuttava tekijä on palkka, niin arvioidaan, kuinka suuret mahdollisuudet on saavuttaa palkkatavoite vaihtoehtoina olevilla aloilla. </p>
-        <p> Todennäköisyydet arvioidaan asteikolla 1-5, missä 5 merkitsee erittäin suurta todennäköisyyttä toteutumiselle ja 1 erittäin pientä todennäköisyyttä. </p>
+        <p>Seuraavaksi arvioi itse, kuinka suurella todennäköisyydellä itsellesi tärkeä tekijä toteutuu kussakin alavaihtoehdossa. Esimerkiksi jos yksi päätökseen vaikuttava tekijä on hyvä palkka, niin arvioi, kuinka suurella todennäköisyydellä tämä tekijä toteutuu vaihtoehtoina olevilla aloilla.  </p>
+        <p>Todennäköisyydet arvioidaan asteikolla 1-5, missä 5 merkitsee erittäin suurta todennäköisyyttä toteutumiselle ja 1 erittäin pientä todennäköisyyttä.  </p>
       </div>
 
 

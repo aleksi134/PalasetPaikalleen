@@ -1,4 +1,4 @@
-import { IonButton } from '@ionic/react'
+import { IonButton, IonCard, IonCardContent, IonItem, IonLabel } from '@ionic/react'
 import React, { useState } from 'react'
 import AssignmentFooter from '../AssignmentFooter'
 import AssignmentInstructions from '../AssignmentInstructions'
@@ -20,23 +20,26 @@ const options = [
   { title: 'työntekijän kyky itseohjautuvaan työskentelyyn', isCorrect: false },
   { title: 'harrastuksen kautta oman alan löytäminen', isCorrect: true },
   { title: 'uudenlaiset taidot kuten digitaalisuus-, viestintä- ja vastuullisuusosaaminen', isCorrect: true },
+  { title: 'luovuus', isCorrect: true },
   { title: 'korkeakoulutuksen antama suunta työelämään', isCorrect: true },
-  { title: 'verkostoitumisosaamisen korostuminen', isCorrect: false },
-  { title: 'johonkin tiettyyn osaamisalueeseen keskittyminen opinnoissa', isCorrect: true },
+  { title: 'verkostoitumisosaaminen', isCorrect: true },
+  { title: 'johonkin tiettyyn osaamisalueeseen keskittyminen opintojen aikana', isCorrect: true },
+  { title: 'kriittinen ajattelu työssä', isCorrect: true },
   { title: 'työntekijöiden ja työnantajan arvojen yhteensopivuus', isCorrect: true },
   { title: 'innokkuus uuden oppimiseen keskeisen tärkeää', isCorrect: true },
   { title: 'uudelleenkouluttautumisen tarve', isCorrect: false },
-  { title: 'rohkeus ryhtyä yrittäjäksi', isCorrect: false }
+  { title: 'projektimainen työskentely', isCorrect: true },
+  { title: 'rohkeus ryhtyä yrittäjäksi', isCorrect: true }
 ]
 
 // const correctCount = options.filter(o => o.isCorrect).length
 
 const videos = [
-  '/assets/videos/assignment-2.2/alina.webm',
-  '/assets/videos/assignment-2.2/carecare.webm',
   '/assets/videos/assignment-2.2/lietsu.webm',
   '/assets/videos/assignment-2.2/tero.webm',
+  '/assets/videos/assignment-2.2/alina.webm',
   '/assets/videos/assignment-2.2/vauhti.webm',
+  '/assets/videos/assignment-2.2/carecare.webm',
 ]
 
 const Assignment: React.FC<Props> = ({ state = [], done, close }) => {
@@ -46,9 +49,9 @@ const Assignment: React.FC<Props> = ({ state = [], done, close }) => {
 
   return (
     <div>
-      <AssignmentInstructions title='Työelämätaitoja oikeasta elämästä'>
-        <p>Mitä tärkeitä työelämätaitoja sinulta voisi nyt jo löytyä? Entä mitä pitäisi vielä kehittää? </p>
-        <p>Työelämätaitojen tunnistaminen ja niistä tietoiseksi tuleminen tapahtuu monesti oman kokemuksen kautta, mutta myös toisten kokemuksesta voi oppia paljon. Videolla Hurry Oy:n Tero Hyttinen, Huoneistohotelli Lietsun Helena Puhakka-Tarvainen ja Maria Saastamoinen, Joen kotihoiva Oy:n Sari Korhonen, Care Care Oy:n Anneli Muona ja Vauhti Speed Oy:n Esa Puukilainen kertovat ajatuksiaan  nykyisestä työelämästä ja siellä tarvittavista taidoista.</p>
+      <AssignmentInstructions title='Työelämätaidot ammattilaisten silmin'>
+        <p>Urasuunnittelun tekemisessä on keskeisen tärkeää saada ajantasaista tietoa työelämästä ja siinä tarvittavista taidoista. Nämä taidot voivat auttaa sinua oman tulevan alasi valinnassa sekä sen hahmottamisessa, minkälaisia työelämätaitoja kiinnostava ala vaatii.  </p>
+        <p>Työelämätaitojen tunnistaminen ja niistä tietoiseksi tuleminen tapahtuu monesti oman kokemuksen kautta, mutta myös toisten kokemuksesta voi oppia paljon. Videolla Huoneistohotelli Lietsun Helena Puhakka-Tarvainen ja Maria Saastamoinen, Hurry Oy:n Tero Hyttinen, Joen kotihoiva Oy:n Sari Korhonen, Vauhti Speed Oy:n Esa Puukilainen ja Care Care Oy:n Anneli Muona kertovat ajatuksiaan nykyisestä työelämästä ja siellä tarvittavista taidoista.</p>
         <p>Mitä tärkeitä työelämään liittyviä teemoja videoilla mainitaan?</p>
       </AssignmentInstructions>
 
@@ -57,6 +60,14 @@ const Assignment: React.FC<Props> = ({ state = [], done, close }) => {
       <MultiSelectCorrect options={options} selection={result} onChange={setResult} columns={1} />
 
       <AssignmentFooter done={() => done(result)} close={close} isDone={isDone}>
+        <IonCard>
+          <IonItem>
+            <IonLabel>Erinomaista!</IonLabel>
+          </IonItem>
+          <IonCardContent>
+            <p>Nyt olet tutustunut työelämäntaitoihin ja teemoihin, jotka ovat tärkeitä nykyisessä työelämässä. Pidä nämä teemat mielessäsi ja ota rohkeasti seuraava askel urasuunnittelun polulla. </p>
+          </IonCardContent>
+        </IonCard>
       </AssignmentFooter>
 
     </div>

@@ -86,6 +86,7 @@ class GameState {
 
   canAdvance(node: MapNode): boolean {
     if (node.id === this.currentLocation) return true
+    if (this.isCompleted(node)) return true
 
     // If no adjacent nodes, all non bonus nodes have to be done to advance
     if (node.adj.length === 0)

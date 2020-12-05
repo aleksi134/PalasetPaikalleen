@@ -3,11 +3,12 @@ import React, { useState } from 'react'
 import './CustomOption.scss'
 
 interface Props {
-	onAdd: (option: string) => void
+  onAdd: (option: string) => void
+  title?: string
 	placeholder?: string
 }
 
-const CustomOption: React.FC<Props> = ({ onAdd, placeholder }) => {
+const CustomOption: React.FC<Props> = ({ onAdd, title, placeholder }) => {
 	const [customOption, setCustomOption] = useState('')
 
 	const addOption = () => {
@@ -19,7 +20,7 @@ const CustomOption: React.FC<Props> = ({ onAdd, placeholder }) => {
     <div className="custom-option">
       <IonList lines="none" className="ion-margin-vertical">
         <IonItem>
-          <IonLabel>Kirjoita oma</IonLabel>
+          <IonLabel>{title || 'Kirjoita oma'}</IonLabel>
         </IonItem>
         <IonItem lines="inset">
           <IonInput

@@ -1,3 +1,4 @@
+import { IonCard, IonCardContent, IonItem, IonLabel } from '@ionic/react'
 import React, { useState } from 'react'
 import Collapsible from 'react-collapsible'
 import AssignmentFooter from '../AssignmentFooter'
@@ -35,8 +36,9 @@ const Assignment: React.FC<Props> = ({ state = {}, done, close }) => {
     <div>
       <AssignmentInstructions title='Lahjakkuus'>
 
-        <p>Lahjakkuutesi vaikuttavat siihen, minkälainen ammatti sinulle voisi parhaiten sopia ja minkälaisen työn tekemisessä voisit parhaiten hyödyntää sinulle omimpia lahjakkuuden lajeja. Howard Gardnerin kehittämän moniälykkyysteorian mukaan on olemassa useampia kuin vain yksi älykkyyden laji. Nämä eri älykkyyden lajit liittyvät lahjakkuuksiimme ja niiden avulla voikin olla hyvä pohtia sitä, minkä tyyppisissä asioissa olet erityisen hyvä.</p>
-        <p>Toiset meistä voivat olla matemaattisesti lahjakkaita, kun taas toisilla lahjakkuus näkyy sosiaalisuudessa tai vaikkapa taiteellisuudessa. Nämä lahjakkuuksien lajit eivät kuitenkaan ole toisiaan poissulkevia. Missä sinä olet erityisen hyvä? Täydennä kykyprofiilisi oheisella tehtävällä ja ota selvää!</p>
+        <p>Henkilökohtaiset kykysi ja lahjakkuutesi voivat antaa vinkkiä siihen, minkälainen ammatti sinulle voisi parhaiten sopia. Minkälaisen työn tekemisessä voisit parhaiten hyödyntää sinulle omimpia lahjakkuuden lajeja? Moniälykkyysteorian mukaan on olemassa useampia kuin vain yksi älykkyyden laji ja nämä eri älykkyyden lajit liittyvät lahjakkuuksiimme. Niiden avulla voikin olla hyvä pohtia sitä, minkä tyyppisissä asioissa olet erityisen hyvä. </p>
+        <p>Toiset meistä voivat olla matemaattisesti lahjakkaita, kun taas toisilla lahjakkuus näkyy sosiaalisuudessa tai vaikkapa taiteellisuudessa. Nämä lahjakkuuksien lajit eivät kuitenkaan ole toisiaan poissulkevia.  </p>
+        <p>Missä sinä olet erityisen hyvä? Muodosta oma lahjakkuusprofiilisi oheisen tehtävän avulla! Arvioi asteikolla 1-5 miten koet, että nämä lahjakkuuden lajit ilmenevät sinulla. </p>
 
         <ul>
           <li>Loogis-matemaattinen lahjakkuus</li>
@@ -56,7 +58,7 @@ const Assignment: React.FC<Props> = ({ state = {}, done, close }) => {
           <ul>
             <li>Kyky ymmärtää abstrakteja suhteita (loogisia ja matemaattisia ongelmia)</li>
             <li>Kyky käsitellä numeroita tehokkaasti, analysoida ongelmia loogisesti, tutkia ongelmia tieteellisesti</li>
-            <li>Mysteerien ratkaiseminen, numerot ja monimutkaiset laskutoimitukset, taulukointi, aivopähkinät</li>
+            <li>Tällaisia henkilöitä kiinnostavat mm. mysteerien ratkaiseminen, numerot ja monimutkaiset laskutoimitukset, taulukointi, aivopähkinät</li>
           </ul>
           <p>Tätä on mm. matemaatikoiden, tiedemiesten, insinöörien ja loogikkojen älykkyys </p>
 
@@ -64,7 +66,7 @@ const Assignment: React.FC<Props> = ({ state = {}, done, close }) => {
           <ul>
             <li>Tärkeä vieraiden kielten oppimisessa</li>
             <li>Kielellisesti älykkäät ihmiset vaikuttavat luonnollisilta selittäessään asioita, opettaessaan tai suostutellessaan ihmisiä, sillä he käyttävät kieltä hyvin täsmällisesti.</li>
-            <li>Lukeminen, tarinoiden kertominen, elokuvien katsominen, kirjoittaminen, taide, vieraiden kielten opettelu</li>
+            <li>Tällaisia henkilöitä kiinnostavat mm. lukeminen, tarinoiden kertominen, elokuvien katsominen, kirjoittaminen, taide, vieraiden kielten opettelu</li>
           </ul>
           <p> Tätä älykkyyttä on muun muassa lakimiehillä, kirjailijoilla, runoilijoilla, opettajilla, koomikoilla ja puhujilla </p>
 
@@ -72,7 +74,7 @@ const Assignment: React.FC<Props> = ({ state = {}, done, close }) => {
           <ul>
             <li>Kyky havaita musiikin muotoja ja säveltää, tulkita, muuttaa ja arvioida kaikenlaista musiikkia ja ääniä.</li>
             <li>Herkkyys rytmille, sävelille ja soinnuille sekä luonnon ja ympäristön äänille</li>
-            <li>Laulaminen, musiikin kuuntelu, soittaminen, konserteissa käyminen, musiikin luominen, jne.</li>
+            <li>Tällaisia henkilöitä kiinnostavat mm. laulaminen, musiikin kuuntelu, soittaminen, konserteissa käyminen, musiikin luominen, jne. </li>
           </ul>
           <p> Tätä älykkyyttä on musiikin ystävillä esimerkiksi säveltäjillä, laulajilla, ääniteknikoilla, muusikoilla, musiikinopettajilla </p>
 
@@ -90,7 +92,7 @@ const Assignment: React.FC<Props> = ({ state = {}, done, close }) => {
             <li>Kyky muokata ja hahmottaa 2- ja 3 –ulotteisia kuvia.</li>
             <li>Kykyä ymmärtää, käsitellä ja muokata sekä isojen että pienten tilojen sommittelua.</li>
             <li>Helpompi muistaa valokuvia ja esineitä kuin sanoja.</li>
-            <li>Piirtäminen, maalaaminen, videopelien pelaaminen, karttojen lukeminen, erilaisten mallien tekeminen</li>
+            <li>Tällaisia henkilöitä kiinnostavat mm. piirtäminen, maalaaminen, videopelien pelaaminen, karttojen lukeminen, erilaisten mallien tekeminen </li>
           </ul>
           <p>Tällaista on arkkitehtien, lentäjien, purjehtijoiden, shakinpelaajien, kirurgien ja taiteilijoiden älykkyys. Tätä älykkyyttä on myös taidemaalareilla, graafisilla suunnittelijoilla ja kuvanveistäjillä.</p>
 
@@ -116,24 +118,28 @@ const Assignment: React.FC<Props> = ({ state = {}, done, close }) => {
           <h2> Luonnon ymmärtämisen kyky </h2>
           <ul>
             <li>Herkkyyttä luonnossa esiintyviä muotoja ja maapallon geologisia ominaisuuksia kohtaan.</li>
-            <li>Retkeily, lemmikkieläinten hoitaminen, ihmisten, eläinten, kasvien ja esineiden nimien opetteleminen ja luokitteleminen</li>
+            <li>Tällaisia henkilöitä kiinnostavat mm. retkeily, lemmikkieläinten hoitaminen, ihmisten, eläinten, kasvien ja esineiden nimien opetteleminen ja luokitteleminen</li>
           </ul>
           <p>
             Tätä älykkyyttä on mm. luonnontieteilijöillä ja yhteiskuntatieteilijöillä, runoilijoilla ja taiteilijoilla.
             He osaavat poimia yksityiskohtia ja hyödyntää sekä kehittää havainnointikykyjään työssään
           </p>
-
-          <p>
-            Hienoa! Nyt olet tutustunut omiin lahjakkuuksiisi ja tehnyt itsellesi lahjakkuusprofiilin. Pidä nämä lahjakkuutesi lajit mielessä, kun etenet urasuunnittelun polulla.
-          </p>
-
         </Collapsible>
       </AssignmentInstructions>
 
-      <Sliders options={preDefinedOptions} result={result} onChange={setResult} />
+      <Sliders options={preDefinedOptions} result={result} onChange={setResult} allowCustom={false} />
 
       <AssignmentProgress required={selectionsRequired} selected={selectedCount} />
-      <AssignmentFooter done={() => done(result)} close={close} isDone={isDone} />
+      <AssignmentFooter done={() => done(result)} close={close} isDone={isDone}>
+        <IonCard>
+          <IonItem>
+            <IonLabel>Hienoa!</IonLabel>
+          </IonItem>
+          <IonCardContent>
+            <p> Nyt olet tutustunut omiin lahjakkuuksiisi ja tehnyt itsellesi lahjakkuusprofiilin. Pidä nämä lahjakkuutesi lajit mielessä, kun etenet urasuunnittelun polulla. </p>
+          </IonCardContent>
+        </IonCard>
+      </AssignmentFooter>
     </div>
   )
 }
