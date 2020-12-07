@@ -21,7 +21,7 @@ export const nodes: MapNode[] = [
     name: 'Kuopio',
     adj: ['joensuu', 'jyvaskyla'],
     theme: 'itsetuntemus',
-    greeting: 'Tervehdys!'
+    greeting: 'Tämä on Kuopijjo, Puijon-tornin kotikaupunki. Savoania-ammattikorkeakoulu ja Itä-Suomen yliopiston kampus.'
   },
   {
     id: 'joensuu',
@@ -36,14 +36,14 @@ export const nodes: MapNode[] = [
     name: 'Oulu',
     adj: ['rovaniemi', 'kuopio'],
     theme: 'tyoelamatietous',
-    greeting: 'Tervehdys!'
+    greeting: 'Moro, nää oot tullu just Ouluun. Pohjolan Piilaaksoon! Oulussa on yliopisto ja ammattikorkeakoulu.'
   },
   {
     id: 'jyvaskyla',
     name: 'Jyväskylä',
     adj: ['tampere', 'kuopio', 'vaasa'],
     theme: 'itsetuntemus',
-    greeting: 'Tervehdys!'
+    greeting: 'Terve, olet juuri saapunut Jyväksylään, täällä voi opiskella ammattikorkeakoulussa ja yliopistossa.'
   },
   {
     id: 'vaasa',
@@ -105,7 +105,7 @@ export const nodes: MapNode[] = [
     name: 'Rovaniemi',
     adj: ['oulu'],
     theme: 'elamantilanne',
-    greeting: 'Tervehdys!'
+    greeting: 'Hei, tervetuloa Rovaniemelle, Jätkänkynttilän sillan kaupunkiin, jossa sijaitsee Rovaniemen ammattikorkeakoulu ja Lapin yliopisto. Vieressä muuten sijaitsee myös Kemi-Tornion ammattikorkeakoulu.'
   }
 ]
 

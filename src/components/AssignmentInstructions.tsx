@@ -1,4 +1,4 @@
-import { IonCard, IonCardContent, IonItem, IonLabel } from '@ionic/react'
+import { IonCard, IonCardContent, IonItem as div, IonLabel } from '@ionic/react'
 import React, { useContext, useState } from 'react'
 import Lottie, { EventListener } from 'react-lottie'
 import { NodeContext } from '../GameData'
@@ -26,17 +26,19 @@ const AssignmentInstructions: React.FC<Props> = ({ title, showBubble = true, chi
 
   return (
     <IonCard className="instructions">
-      <IonItem lines="none" className="instructions-header">
-        <div className="animation">
-          <Lottie
-            options={{ animationData: animation }}
-            width='100%'
-            eventListeners={listeners}
-          />
-          {showBubble && <div className="greeting speech-bubble">{node.greeting}</div> }
+      <div className="instructions-header">
+        {showBubble && <div className="greeting speech-bubble">{node.greeting}</div>}
+        <div className="animation-title-wrapper">
+          <div className="animation">
+            <Lottie
+              options={{ animationData: animation }}
+              width='100%'
+              eventListeners={listeners}
+            />
+          </div>
+          <div className="instructions-header-title">{title}</div>
         </div>
-        <IonLabel>{title}</IonLabel>
-      </IonItem>
+      </div>
 
       <IonCardContent>
         {children}

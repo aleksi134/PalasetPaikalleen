@@ -12,53 +12,63 @@
     font-size: 0.9rem;
   }
 
-  ion-label {
-    white-space: pre-wrap !important;
+  .animation-title-wrapper {
+    display: flex;
+    align-items: center;
+    margin-top: 1rem;
+
+    .animation {
+      flex: 0 0 40%;
+      max-width: 250px;
+    }
+
+    .instructions-header-title {
+      flex: 1;
+
+      white-space: pre-wrap !important;
+      font-weight: 500;
+      font-size: 1.1rem;
+    }
   }
 
   // Make speech bouble visible
   overflow: visible;
   .instructions-header {
     overflow: visible;
+    text-align: left;
   }
 
-  .animation {
-    display: inline-block;
-    position: relative;
-    width: 40%;
-    padding: 0.5rem 5%;
-    padding-left: 0;
+  $bubble-color: #22b8be;
 
-    $bubble-color: #22b8be;
+  .speech-bubble {
+    display: block;
+    width: 90%;
+    max-width: 450px;
+    margin-left: 7%;
+    margin-right: 3%;
+    margin-top: -1.5rem;
+    text-align: center;
+    padding: 0.8rem;
+    font-size: 0.9rem;
+    background: $bubble-color;
+    color: #fff;
+    border-radius: 1em;
+    transform: rotateZ(6deg);
+    transform-origin: top left;
+  }
 
-    .speech-bubble {
-      min-width: 5rem;
-      text-align: center;
-      padding: 0.7rem;
-      position: absolute;
-      font-size: 0.9rem;
-      top: -30px;
-      left: 35%;
-      white-space: nowrap;
-      background: $bubble-color;
-      color: #fff;
-      border-radius: 1em;
-      transform: rotateZ(5deg);
-    }
-
-    .speech-bubble:after {
-      content: '';
-      position: absolute;
-      bottom: 0;
-      left: 40px;
-      width: 0;
-      height: 0;
-      border: 13px solid transparent;
-      border-top-color: $bubble-color;
-      border-bottom: 0;
-      border-left: 0;
-      margin-left: -6.5px;
-      margin-bottom: -12px;
-    }
+  .speech-bubble:after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 30%;
+    width: 0;
+    height: 0;
+    border: 13px solid transparent;
+    border-top-color: $bubble-color;
+    border-bottom: 0;
+    border-left: 0;
+    margin-left: -6.5px;
+    margin-bottom: -12px;
   }
 }
