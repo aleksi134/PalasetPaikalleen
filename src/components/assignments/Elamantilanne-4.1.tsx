@@ -48,7 +48,7 @@ const Assignment: React.FC<Props> = ({ state = [], done, close }) => {
     <div>
       <AssignmentInstructions title='Tuki ja voimavarat'>
         <p>Opiskelusta ja urapolun pohdinnoista ei tarvitse selviytyä yksin. Apua ja tukea on aina tarjolla esimerkiksi sopivien alojen ja opiskelupaikkojen pohdinnassa, korkeakouluun hakemisessa ja siellä opiskellessa. Aina omat voimavarat eivät riitä ja elämässä voi tulla erilaisia haasteita, jotka voivat hidastaa tai hankaloittaa opintoihin pääsyä tai opiskelua.</p>
-        <p>Videossa korkeakouluopiskelija Mari kertoo monimuoto-opiskelusta sekä siitä, kuinka hän on päässyt lukivaikeudesta huolimatta opiskelemaan korkeakouluun. Joensuun Nuorisoverstaan Jemina Markkanen ja Joensuun Erilaisten Oppijoiden Satu Niiranen kertovat videolla, miten he ohjaustoimijoina näkevät opintoihin ja tuen tarpeeseen liittyvät haasteet ja rohkaisevat tekemään oman näköisiä valintoja. </p>
+        <p>Videossa korkeakouluopiskelija Mari kertoo monimuoto-opiskelusta sekä siitä, kuinka hän on päässyt lukivaikeudesta huolimatta opiskelemaan korkeakouluun. Joensuun Nuorisoverstaan Jemina Markkanen ja Joensuun Seudun Erilaisten Oppijoiden Satu Niiranen kertovat videolla, miten he ohjaustoimijoina näkevät opintoihin ja tuen tarpeeseen liittyvät haasteet ja rohkaisevat tekemään oman näköisiä valintoja. </p>
         <p>Mitä tuen tarpeeseen liittyviä teemoja videoissa mainittiin?</p>
       </AssignmentInstructions>
 

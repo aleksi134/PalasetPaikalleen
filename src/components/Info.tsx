@@ -65,7 +65,7 @@ const Results: React.FC<Props> = () => {
         <a href="https://ohjaamot.fi/etusivu" target="_blank" rel="noopener noreferrer">https://ohjaamot.fi/etusivu</a>
       </p>
       <p>
-        Joensuun Erilaiset Oppijat:&nbsp;
+        Joensuun Seudun Erilaiset Oppijat:&nbsp;
         <a href="https://www.lukijose.fi/" target="_blank" rel="noopener noreferrer">https://www.lukijose.fi/</a>
       </p>
       <p>

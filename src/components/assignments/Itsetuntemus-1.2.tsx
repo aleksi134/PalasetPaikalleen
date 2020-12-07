@@ -50,7 +50,7 @@ const Assignment: React.FC<Props> = ({ state = {}, done, close }) => {
         result={result}
         onChange={setResult}
         customOptionTitle="Lisää oma arvosi listalle"
-        customOptionPlaceHolder="Luonnon hyvinvoinnin edistäminen"
+        customOptionPlaceHolder="Esim. Luonnon hyvinvoinnin edistäminen"
       />
 
       <AssignmentProgress required={selectionsRequired} selected={selectedCount} />

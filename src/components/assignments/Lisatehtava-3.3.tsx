@@ -17,7 +17,7 @@ interface Props {
 const options = [
   { title: 'Monimuoto-opiskelu korkeakoulussa', isCorrect: true },
   { title: 'Miten välivuoden voi hyödyntää tulevia opintoja tai korkeakouluhakua hyödyttävällä tavalla.', isCorrect: true },
-  { title: 'Avoimen ammattikorkeakoulun opinnot', isCorrect: true },
+  { title: 'Avoimen yliopiston opinnot', isCorrect: true },
   { title: 'Ilman korkeakoulupaikkaa jääminen', isCorrect: true },
   { title: 'Uuden koulutuspolun löytäminen', isCorrect: true },
   { title: 'Opintojen ja oman elämäntilanteen yhteensovittaminen', isCorrect: true },
@@ -59,7 +59,7 @@ const Assignment: React.FC<Props> = ({ state = [], done, close }) => {
 
         <p>Mitä näistä teemoista videoilla käsiteltiin? </p>
 
-        <p>Tiedätkö mitä nämä mahdollisuudet pitävät sisällään ja voisiko niistä joku sopia sinun elämäntilanteeseesi juuri nyt? Tästä saat lisätietoa erilaisista opiskeluun ja työhön liittyvistä vaihtoehdoista</p>
+        <p>Tiedätkö mitä nämä mahdollisuudet pitävät sisällään ja voisiko niistä joku sopia sinun elämäntilanteeseesi juuri nyt?</p>
 
         <Collapsible trigger="Lisätietoa erilaisista opiskeluun ja työhön liittyvistä vaihtoehdoista">
           <h2> Kelan tai Te-palveluiden koulutuskokeilussa oleminen </h2>

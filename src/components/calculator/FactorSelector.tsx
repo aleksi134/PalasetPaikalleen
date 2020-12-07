@@ -24,7 +24,6 @@ const FactorSelector: React.FC<Props> = ({ factors = [], onChange }) => {
 
       <div className="calculator-instructions">
         <p>Seuraavaksi valitaan ne tekijät, joiden perusteella valinta tehdään. Tekijöiden tärkeys arvioidaan asteikolla 1-5 siten, että mitä tärkeämpi mielestäsi jokin tekijä on, sitä suuremman numeron (painokertoimen) se saa. </p>
-        <p>Päätökseen vaikuttavat tekijät voivat olla alojen yhteydessä esimerkiksi laskurissa valmiina olevat työn kiinnostavuus, hyvä palkkaus, hyvä työllisyystilanne, arvojesi mukainen työ tai joustavat työajat.  </p>
         <p>Voit myös lisätä laskuriin omat vaihtoehtosi ja laskea lopputuloksen näiden perusteella. </p>
       </div>
 
@@ -48,7 +47,7 @@ const FactorSelector: React.FC<Props> = ({ factors = [], onChange }) => {
         ))}
       </IonList>
 
-      <CustomOption placeholder="Esim. Työn kiinnostavuus" onAdd={addCustomFactor} />
+      <CustomOption placeholder="Esim. Mahdollisuus kansainväliseen työskentelyyn" onAdd={addCustomFactor} />
 
     </div>
   )

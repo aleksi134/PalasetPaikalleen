@@ -70,7 +70,7 @@ const Assignment: React.FC<Props> = ({ state = {}, done, close }) => {
 
       </AssignmentInstructions>
 
-      <Sliders options={preDefinedOptions} result={result} onChange={setResult} />
+      <Sliders options={preDefinedOptions} result={result} onChange={setResult} allowCustom={false} />
 
       <AssignmentProgress required={selectionsRequired} selected={selectedCount} />
       <AssignmentFooter done={() => done(result)} close={close} isDone={isDone}>

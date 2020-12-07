@@ -88,7 +88,7 @@ export const nodes: MapNode[] = [
     isBonus: true,
     greeting: 'Tervehdys!',
     icon: helpOutline,
-    customThemeName: 'Lisätehtävä: korkeakoulutietous'
+    customThemeName: 'Lisätehtävä: itsetuntemus'
   },
   {
     id: 'inari',
@@ -98,7 +98,7 @@ export const nodes: MapNode[] = [
     isBonus: true,
     greeting: 'Tervehdys!',
     icon: helpOutline,
-    customThemeName: 'Lisätehtävä: itsetuntemus'
+    customThemeName: 'Lisätehtävä: korkeakoulutietous'
   },
   {
     id: 'rovaniemi',

@@ -20,15 +20,15 @@ const options = [
   { title: 'työntekijän kyky itseohjautuvaan työskentelyyn', isCorrect: false },
   { title: 'harrastuksen kautta oman alan löytäminen', isCorrect: true },
   { title: 'uudenlaiset taidot kuten digitaalisuus-, viestintä- ja vastuullisuusosaaminen', isCorrect: true },
-  { title: 'luovuus', isCorrect: true },
+  { title: 'luovuus', isCorrect: false },
   { title: 'korkeakoulutuksen antama suunta työelämään', isCorrect: true },
   { title: 'verkostoitumisosaaminen', isCorrect: true },
   { title: 'johonkin tiettyyn osaamisalueeseen keskittyminen opintojen aikana', isCorrect: true },
-  { title: 'kriittinen ajattelu työssä', isCorrect: true },
+  { title: 'kriittinen ajattelu työssä', isCorrect: false },
   { title: 'työntekijöiden ja työnantajan arvojen yhteensopivuus', isCorrect: true },
   { title: 'innokkuus uuden oppimiseen keskeisen tärkeää', isCorrect: true },
   { title: 'uudelleenkouluttautumisen tarve', isCorrect: false },
-  { title: 'projektimainen työskentely', isCorrect: true },
+  { title: 'projektimainen työskentely', isCorrect: false },
   { title: 'rohkeus ryhtyä yrittäjäksi', isCorrect: true }
 ]
 

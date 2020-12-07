@@ -30,7 +30,7 @@ const Assignment: React.FC<Props> = ({ state = {}, done, close, history }) => {
 
   return (
     <div>
-      <AssignmentInstructions title='Laskuri → Unelmiesi opiskelupaikka'>
+      <AssignmentInstructions title='Unelmiesi opiskelupaikka'>
         <p>Urasuunnittelun polkusi on johtanut sinut valintojen äärelle. Itsetuntemus, opiskelu- ja työelämän tuntemus ja oman elämäntilanteesi huomioiminen ovat kaikki antaneet sinulle valintojen tekemiseen tarvittavaa tietoa. Nyt on aika pohtia sitä, mikä kiinnostavista aloista sopisi juuri sinulle parhaiten.  </p>
         <p>Tällä laskurilla voit kätevästi vertailla eri vaihtoehtoja painottaen eri vaikuttavien asioiden tärkeyttä. Laskuri on päätöksentekosi tukena toimiva laskentamalli. Voit käyttää laskuria apuna pohtiessasi valintaa eri koulutusalojen välillä, kun päätöksentekoon vaikuttaa yhtä aikaa monia tekijöitä. </p>
         <p>Laskurissa on valmiina aiemmin valitsemasi sinua kiinnostavat opiskelualat. Voit suorittaa laskelman näiden alojen välillä tai halutessasi voit vielä vaihtaa valitut alat. </p>

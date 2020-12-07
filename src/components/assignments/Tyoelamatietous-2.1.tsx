@@ -37,8 +37,8 @@ const Assignment: React.FC<Props> = ({ state = [], done, close }) => {
   return (
     <div>
       <AssignmentInstructions title='Tulevaisuuden työelämätaidot'>
-        <p> Työelämä on jatkuvassa muutoksessa ja samoin ovat myös ne taidot, joita työelämässä vaaditaan. Omaa urapolkua pohdittaessa olisi tärkeää suunnata katse tämän hetken lisäksi myös tulevaan ja ennakoida mitä tulevaisuuden työelämässä meiltä mahdollisesti vaaditaan. Tässä auttavat erinäiset ammattilaisten tekemät ennusteet. Vuoden 2017 Ilmarisen teettämän Future Score -testin tulosten perusteella tulevaisuuden työelämätaitojen kärkikymmenikkö on seuraavanlainen. </p>
-        <p> Valitse itsellesi näistä taidoista kolme sellaista, jotka koet tärkeimmäksi ja kolme sellaista joita haluaisit itsellesi kehittää, jos et vielä koe itselläsi olevan niitä. Nämä vaihtoehdot voivat olla myös samoja, eli tärkeiksi kokemasi taidot voivat myös olla kehityskohteitasi. </p>
+        <p>Työelämä on jatkuvassa muutoksessa ja samoin ovat myös ne taidot, joita työelämässä vaaditaan. Omaa urapolkua pohdittaessa olisi tärkeää suunnata katse tämän hetken lisäksi myös tulevaan ja ennakoida, mitä tulevaisuuden työelämässä mahdollisesti vaaditaan. Tässä auttavat erinäiset ammattilaisten tekemät ennusteet. Selvityksen mukaan tulevaisuuden keskeisten työelämätaitojen kärkikymmenikkö olisi seuraavanlainen. </p>
+        <p>Valitse itsellesi näistä taidoista kolme sellaista, jotka koet tärkeimmiksi ja joita haluaisit itsellesi kehittää.  </p>
 
         <Collapsible trigger="Mitä nämä työelämätaidot tarkoittavat?">
           <h2> 1. Vuorovaikutustaito </h2>

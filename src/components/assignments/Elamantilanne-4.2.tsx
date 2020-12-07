@@ -51,12 +51,11 @@ const Assignment: React.FC<Props> = ({ state = [], done, close }) => {
 
   return (
     <div>
-      {/* <AssignmentInstructions title='Hyvän mielen reppu (voimavarapankki)'> */}
       <AssignmentInstructions title='Hyvän mielen reppu'>
         <p>Monet sellaiset tekijät, joiden ei aluksi suoranaisesti hahmota vaikuttavan urasuunnitteluun kuitenkin kytkeytyvät yhteen sen kanssa. Omat voimavarat ja niiden tunnistaminen ovat yksi tällainen osa-alue. </p>
-        <p>Meillä kaikilla on erilaisia voimavaroja ja erilaiset asiat tuottavat meille hyvää mieltä. Ne voivat löytyä meidän ympäriltämme tai ihan meistä itsestämme. Voimavarojen tunnistaminen on tärkeää sillä ne auttavat meitä jaksamaan arjessa ja elämän haasteissa. Näitä voimavaroja voi olla aluksi hankala huomata, mutta kun niitä alkaa pohtimaan, huomaa pian, että niitähän on aivan valtavan suuri joukko. </p>
-        <p>Pohtiessasi sinulle miellyttäviä asioita, voi muistella kaikkia niitä asioita, jotka ovat tuoneet sinulle iloa ja hyvää mieltä. Voit miettiä niin pieniä kuin isompiakin asioita.</p>
-        <p>Valitse vähintään kolme vuomavaraa.</p>
+        <p>Meillä kaikilla on erilaisia voimavaroja ja erilaiset asiat tuottavat meille hyvää mieltä. Ne voivat löytyä meidän ympäriltämme tai ihan meistä itsestämme. Voimavarojen tunnistaminen on tärkeää sillä ne auttavat meitä jaksamaan arjessa ja elämän haasteissa. Näitä voimavaroja voi olla aluksi hankala huomata, mutta kun niitä alkaa pohtimaan, huomaa pian, että niitähän on aivan valtavan suuri joukko!</p>
+        <p>Pohtiessasi voimavarojasi voit muistella kaikkia niitä asioita, jotka tuottavat sinulle iloa ja hyvää mieltä. Voit miettiä niin pieniä, kuin isompiakin asioita. </p>
+        <p>Valitse listasta vähintään kolme voimavaraa. Jos vaihtoehdoista tuntuu puuttuvan jokin sinulle tärkeä voimavara, voit lisätä sen listaan.</p>
       </AssignmentInstructions>
 
       <MultiSelect options={options} selection={result} onChange={setResult} />

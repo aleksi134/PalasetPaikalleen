@@ -128,13 +128,21 @@ const Assignment: React.FC<Props> = ({ state = defaultState, done, close }) => {
   return (
     <div className="assignment tinder-cards">
       <AssignmentInstructions title="Korkeakoulukortit">
-        <p>Polut työelämään ja unelmien ammattiin voivat olla hyvin monenlaiset. Urasuunnittelua tehdessäsi on hyvä tietää ja tiedostaa, mitä kaikkea voit opiskella yliopistossa tai ammattikorkeakoulussa. Tiesitkö, että erilaisia koulutusaloja on yli 150? Kun perehdyt siihen, millaisia tutkinnot ja eri opiskelumuodot ovat, pääset lähemmäksi päätöstä siitä, millainen opiskelumuoto, -ala ja koulutus parhaiten soveltuu sinulle. </p>
+        <p>Polut työelämään ja unelmien ammattiin voivat olla hyvin monenlaiset. Urasuunnittelua
+          tehdessäsi on hyvä tietää ja tiedostaa, mitä kaikkea voit opiskella yliopistossa tai
+          ammattikorkeakoulussa. Tiesitkö, että erilaisia koulutusaloja on yli 150? Kun perehdyt siihen,
+          millaisia tutkinnot ja eri opiskelumuodot ovat, pääset lähemmäksi päätöstä siitä, millainen
+          opiskelumuoto, -ala ja koulutus parhaiten soveltuu sinulle.
+        </p>
         <p>
           Kuinka hyvin tunnet korkeakouluissa opiskeltavat alat? Mitä kaikkia sinua kiinnostavaan
           alaan liittyviä opiskeluvaihtoehtoja Suomesta löytyy? Tutustu Korkeakoulukorttien avulla
           eri aloihin, niihin liittyviin ammatteihin, työtehtäviin, vaatimuksiin sekä taitoihin.
           Valitse itsellesi korteista vähintään kolme tai enintään kuusi kiinnostavaa alaa ja
           tutustu niiden sisältöihin tarkemmin.
+        </p>
+        <p>
+          Valitse ensin sinua kiinnostavat kategoriat listasta. Tämän jälkeen saat näkyviin kaikki näihin kategorioihin liittyvät alat kortteina. Valitse itsellesi näistä korteista vähintään kolme tai enintään kuusi kiinnostavaa alaa ja tutustu niiden sisältöihin tarkemmin.
         </p>
       </AssignmentInstructions>
 
