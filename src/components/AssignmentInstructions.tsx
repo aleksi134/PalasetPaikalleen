@@ -10,9 +10,10 @@ import './AssignmentInstructions.scss'
 interface Props {
   title: string
   showBubble?: boolean
+  bubbleText?: string
 }
 
-const AssignmentInstructions: React.FC<Props> = ({ title, showBubble = true, children }) => {
+const AssignmentInstructions: React.FC<Props> = ({ title, showBubble = true, bubbleText, children }) => {
   const [animation, setAnimation] = useState<any>(animationJump)
 
 
@@ -27,7 +28,7 @@ const AssignmentInstructions: React.FC<Props> = ({ title, showBubble = true, chi
   return (
     <IonCard className="instructions">
       <div className="instructions-header">
-        {showBubble && <div className="greeting speech-bubble">{node.greeting}</div>}
+        {showBubble && <div className="greeting speech-bubble">{bubbleText || node.greeting}</div>}
         <div className="animation-title-wrapper">
           <div className="animation">
             <Lottie

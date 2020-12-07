@@ -41,8 +41,8 @@
   $bubble-color: #22b8be;
 
   .speech-bubble {
-    display: block;
-    width: 90%;
+    display: inline-block;
+    min-width: 150px;
     max-width: 450px;
     margin-left: 7%;
     margin-right: 3%;
@@ -53,7 +53,7 @@
     background: $bubble-color;
     color: #fff;
     border-radius: 1em;
-    transform: rotateZ(6deg);
+    transform: rotateZ(5deg);
     transform-origin: top left;
   }
 
@@ -61,7 +61,7 @@
     content: '';
     position: absolute;
     bottom: 0;
-    left: 30%;
+    left: 100px;
     width: 0;
     height: 0;
     border: 13px solid transparent;

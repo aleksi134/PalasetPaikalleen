@@ -15,7 +15,7 @@ const Onboarding: React.FC<Props> = ({ history}) => {
 
   return (
     <div className="container onboarding-container">
-      <AssignmentInstructions title="Tervetuloa pelaamaan Palaset Paikalleen -peliä!">
+      <AssignmentInstructions title="Tervetuloa pelaamaan Palaset Paikalleen -peliä!" bubbleText="Tervehdys!">
         <p>Palaset Paikalleen on helppo ja vuorovaikutteinen tapa tehdä urasuunnittelua.  </p>
         <p>Pelin tehtävät suorittamalla tutustut uraohjausmallin viiteen osa-alueeseen: Itsetuntemus, Työelämätietous, Korkeakoulutietous, Elämäntilanne ja Valintojen tekeminen. Pelin aikana vahvistat itsetuntemustasi, saat tietoa korkeakouluopinnoista ja työelämästä.  Lopputuloksena saat joukon sinua kiinnostavia opiskelualoja. Tämä tieto voi toimia pohjana tulevaisuutesi suunnittelulle ja auttaa sinua sopivan opiskelupaikan valinnassa. </p>
         <p>Pelin lopussa saat raportin, johon on koostettuna pelin aikana tehtävissä tekemäsi valinnat. </p>

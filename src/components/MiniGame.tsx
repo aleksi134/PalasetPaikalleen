@@ -18,7 +18,7 @@ import Valintojentekeminen52 from './assignments/Valintojentekeminen-5.2'
 import TinderModule from './assignments/TinderModule'
 import './Minigame.scss'
 
-const cityGameMap: CityRecord<FC<any>> = {
+const cityGameMap: CityRecord<any> = {
   kuopio: Itsetuntemus11,
   joensuu: Valintojentekeminen52,
   oulu: Tyoelamatietous21,

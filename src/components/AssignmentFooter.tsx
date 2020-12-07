@@ -2,7 +2,7 @@ import { IonButton, IonCard, IonCardContent, IonItem, IonLabel } from '@ionic/re
 import React, { CSSProperties, useContext, useEffect, useRef, useState } from 'react'
 import Lottie, { EventListener, Options } from 'react-lottie'
 import { NodeContext } from '../GameData'
-import animationJump from '../lottie/pipopaa_jump.json'
+// import animationJump from '../lottie/pipopaa_jump.json'
 import animationReaction from '../lottie/pipopaa_reaction.json'
 import animationHappy from '../lottie/pipopaa_happy.json'
 import { THEME_COLORS, THEME_NAMES } from '../Types'
@@ -11,9 +11,10 @@ import './AssignmentFooter.scss'
 import ProgressMeter from './ProgressMeter'
 
 interface Props {
-  done: any,
-  close: any,
+  done: any
+  close: any
   isDone: boolean
+  doneText?: string
 }
 
 const animationOpts: Partial<Options> = {
@@ -21,7 +22,13 @@ const animationOpts: Partial<Options> = {
   loop: true
 }
 
-const AssignmentFooter: React.FC<Props> = ({ done, close, isDone, children }) => {
+const AssignmentFooter: React.FC<Props> = ({
+  done,
+  close,
+  isDone,
+  children,
+  doneText,
+}) => {
   const [showSlider, setShowSlider] = useState(false)
 
   const setDone = () => {
@@ -86,7 +93,9 @@ const AssignmentFooter: React.FC<Props> = ({ done, close, isDone, children }) =>
           </IonCard>
         )}
 
-        <IonButton disabled={!isDone} className="done" expand="block" onClick={close}>Valmis</IonButton>
+        <IonButton disabled={!isDone} className="done" expand="block" onClick={close}>
+          {doneText || 'Valmis'}
+        </IonButton>
       </div>
 
     </div>

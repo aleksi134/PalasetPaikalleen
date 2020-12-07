@@ -1,5 +1,6 @@
 import { IonCard, IonCardContent, IonItem, IonLabel } from '@ionic/react'
 import React, { useMemo, useState } from 'react'
+import { RouteComponentProps, withRouter } from 'react-router'
 import { Occupation } from '../../data/alavaihtoehdot'
 import gameState from '../../GameState'
 import AssignmentFooter from '../AssignmentFooter'
@@ -10,17 +11,22 @@ export type Score = { occupation: string, score: number }
 
 type State = Partial<Record<string, number>>
 
-interface Props {
+interface Props extends RouteComponentProps<any> {
   state: State,
   done: (result: State) => void
   close: VoidFunction
 }
 
-const Assignment: React.FC<Props> = ({ state = {}, done, close }) => {
+const Assignment: React.FC<Props> = ({ state = {}, done, close, history }) => {
   const occupationResults: Occupation[] = useMemo(() => gameState.load('tampere')?.result || [], [])
   const [result, setResult] = useState<CalculatorResult>({ scores: [], factors: [] })
 
   const isDone = (result?.scores?.length || 0) > 0
+
+  const navigateToResults = () => {
+    close()
+    history.push('/page/Results')
+  }
 
   return (
     <div>
@@ -32,7 +38,7 @@ const Assignment: React.FC<Props> = ({ state = {}, done, close }) => {
 
       <Calculator occupations={occupationResults} onResult={setResult} />
 
-      <AssignmentFooter done={() => done(result as any)} close={close} isDone={isDone}>
+      <AssignmentFooter done={() => done(result as any)} close={navigateToResults} isDone={isDone} doneText="Siirry tuloksiin">
         <IonCard>
           <IonItem>
             <IonLabel>Mahtavaa!</IonLabel>
@@ -47,4 +53,4 @@ const Assignment: React.FC<Props> = ({ state = {}, done, close }) => {
   )
 }
 
-export default Assignment
+export default withRouter(Assignment)
