@@ -1,12 +1,23 @@
 .onboarding-container {
-
   ion-card {
     margin-top: 2.5rem;
     padding-bottom: 0 !important;
   }
 
   ion-button.start {
-    // margin-bottom: 1rem;
     font-weight: bolder;
   }
+
+  .progression-colors {
+    padding: 1rem 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    .progress-meter {
+      max-width: 300px;
+    }
+  }
 }
+
+// {"currentLocation":"helsinki","progress":{"kuopio":["innokas","kunnianhimoinen","luotettava","itsevarma","vastuuntuntoinen"],"jyvaskyla":{"asdfasdf":3},"tampere":{"result":[{"name":"terveystieteet","url":"assets/tinder-img/terveystieteet.png","institute":"Yliopisto","field":"Terveys- ja hyvinvointi"},{"name":"elektroniikka ja tietoliikennetekniikka","url":"assets/tinder-img/elektroniikka_jatietoliikennetekniikka.png","institute":"Yliopisto","field":"Tietojenkäsittely, tietotekniikka (ICT) ja informaatiotutkimus"},{"name":"informaatioverkostot","url":"assets/tinder-img/informaatioverkostot.png","institute":"Yliopisto","field":"Tietojenkäsittely, tietotekniikka (ICT) ja informaatiotutkimus"},{"name":"tietotekniikka","url":"assets/tinder-img/tietotekniikka.png","institute":"Yliopisto","field":"Tietojenkäsittely, tietotekniikka (ICT) ja informaatiotutkimus"},{"name":"tietojenkäsittelytiede","url":"assets/tinder-img/tietojenksittelytiede.png","institute":"Yliopisto","field":"Tietojenkäsittely, tietotekniikka (ICT) ja informaatiotutkimus"}],"swiped":[{"name":"terveystieteet","url":"assets/tinder-img/terveystieteet.png","institute":"Yliopisto","field":"Terveys- ja hyvinvointi"},{"name":"elektroniikka ja tietoliikennetekniikka","url":"assets/tinder-img/elektroniikka_jatietoliikennetekniikka.png","institute":"Yliopisto","field":"Tietojenkäsittely, tietotekniikka (ICT) ja informaatiotutkimus"},{"name":"informaatioverkostot","url":"assets/tinder-img/informaatioverkostot.png","institute":"Yliopisto","field":"Tietojenkäsittely, tietotekniikka (ICT) ja informaatiotutkimus"},{"name":"tietotekniikka","url":"assets/tinder-img/tietotekniikka.png","institute":"Yliopisto","field":"Tietojenkäsittely, tietotekniikka (ICT) ja informaatiotutkimus"},{"name":"tietojenkäsittelytiede","url":"assets/tinder-img/tietojenksittelytiede.png","institute":"Yliopisto","field":"Tietojenkäsittely, tietotekniikka (ICT) ja informaatiotutkimus"}],"fields":["Sosiaalitieteet, journalistiikka ja viestintä","Tietojenkäsittely, tietotekniikka (ICT) ja informaatiotutkimus","Terveys- ja hyvinvointi"]},"turku":[{"title":"Opintojen keskeyttäminen ja niiden jatkaminen myöhemmin","isCorrect":false},{"title":"Tuen hakeminen ja kyky ottaa vastaan apua","isCorrect":true},{"title":"Vaihtoehtoiset suoritustavat opinnoissa","isCorrect":true}],"oulu":["Resilienssi eli muutosjoustavuus","Kyky toimia erilaisissa ympäristöissä ja kulttuureissa","Yhteistyökyky"],"rovaniemi":["kaverit","perhe","oma koti","hyvä ruoka","sdfsdf","läheisyys"],"vaasa":[{"title":"rohkeus ryhtyä yrittäjäksi","isCorrect":true},{"title":"kriittinen ajattelu työssä","isCorrect":true},{"title":"johonkin tiettyyn osaamisalueeseen keskittyminen opintojen aikana","isCorrect":true}],"helsinki":{"Yliopisto-opiskelu sisältää pelkkää teoriaa eikä käytännön tekemistä ole":false,"Avoimessa suoritetut opinnot voivat nopeuttaa valmistumistasi päästessäsi opiskelemaan.":true,"Ammattikorkeassa sinun pitää aina olla kontaktiopetuksessa, yliopistossa voit itse päättää milloin opiskelet.":false,"Opiskelun lisäksi korkeakoulujen opiskelijaelämään kuuluu paljon muutakin toimintaa.":true,"Korkeakouluopinnoissa on sekä kontaktiopetusta, että itsenäistä työskentelyä.":true,"Korkeakouluopiskelusta täytyy selvitä täysin itsenäisesti. Opiskelija selvittää kaikki opintoihin kuuluvat asiat itse ja huolehtii kaikista opintojen etenemiseen liittyvistä asioistaan.":false,"Korkeakouluun ei ole muita reittejä kuin pääsykokeen läpäiseminen.":false,"Yksi tutkinto valmistaa sinut aina vain yhteen alaan.":false,"Ammattikorkeakoulututkinnon voi suorittaa myös töiden ohessa.":true,"Et voi itse vaikuttaa korkeakouluopintojesi kestoon tai sisältöön.":false,"Voit hakea lukiotodistuksellasi yliopistoon suorittamaan maisteriopintoja.":false},"lappeenranta":{"Tuttuus":3,"Arvot":3,"Kutsumus":4},"joensuu":{"scores":[{"occupation":"elektroniikka ja tietoliikennetekniikka","score":6},{"occupation":"informaatioverkostot","score":5},{"occupation":"terveystieteet","score":5}],"factors":[{"name":"Työn kiinnostavuus","score":1,"isChecked":true},{"name":"Hyvä palkkaus","score":4,"isChecked":true},{"name":"Hyvä työllisyystilanne","score":4,"isChecked":true},{"name":"Arvojesi mukainen työ","score":4,"isChecked":true},{"name":"Joustavat työajat","score":1,"isChecked":true}]}}}

@@ -7,10 +7,10 @@ import './ProgressMeter.scss'
 type ProgressTheme = Exclude<Theme, 'bonus'>
 
 interface Props extends RouteComponentProps<any> {
-  // onClick: Function
+  showAllColors?: boolean
 }
 
-const ProgressMeter: React.FC<Props> = ({ history }) => {
+const ProgressMeter: React.FC<Props> = ({ history, showAllColors = false }) => {
   // const { progress } = useGameState()
 
   const svgRef = useRef<SVGSVGElement>(null)
@@ -23,8 +23,7 @@ const ProgressMeter: React.FC<Props> = ({ history }) => {
     valintojentekeminen: [useRef(null), useRef(null)]
   }
 
-  // TODO: optimization
-  useEffect(() => {
+  const fillProgressColors = () => {
     const { bonus, ...progress } = gameState.themeProgress
 
     for (const key in refs) {
@@ -45,7 +44,24 @@ const ProgressMeter: React.FC<Props> = ({ history }) => {
       if (themeProgress >= 2)
         outerSector.style.fill = color
     }
+  }
 
+  const fillAllColors = () => {
+    for (const key in refs) {
+      const [innerSector, outerSector] = refs[key as ProgressTheme].map(r => r.current)
+      const color = THEME_COLORS[key as ProgressTheme]
+
+      if (!innerSector || !outerSector) return
+
+      innerSector.style.fill = color
+      outerSector.style.fill = color
+    }
+  }
+
+  // TODO: optimization
+  useEffect(() => {
+    if (showAllColors) fillAllColors()
+    else fillProgressColors()
   })
 
   // useEffect(() => {

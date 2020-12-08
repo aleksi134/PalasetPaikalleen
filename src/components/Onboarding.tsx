@@ -4,6 +4,7 @@ import { RouteComponentProps, withRouter } from 'react-router'
 import AssignmentInstructions from './AssignmentInstructions'
 import ColorInstructions from './ColorInstructions'
 import './Onboarding.scss'
+import ProgressMeter from './ProgressMeter'
 
 interface Props extends RouteComponentProps<any> {}
 
@@ -21,7 +22,10 @@ const Onboarding: React.FC<Props> = ({ history}) => {
         <p>Pelin lopussa saat raportin, johon on koostettuna pelin aikana tehtävissä tekemäsi valinnat. </p>
         <p>Etenet pelissä suorittamalla tehtäviä eri puolella Suomea. Tehtävät jakautuvat uraohjausmallin mukaisiin viiteen osa-alueeseen, jotka tunnistat tehtävien värin perusteella. Palkinnoksi suoritetusta tehtävästä saat teeman värisen kuvion palasen.  </p>
 
-        <ColorInstructions />
+        <div className="progression-colors">
+          <ProgressMeter showAllColors={true} />
+          <ColorInstructions />
+        </div>
 
         <p>Etenet pelissä kaupungista toiseen ja kun olet saanut riittävästi palasia paikalleen, saat avattua viimeisen tehtävän, jossa voit laskurin avulla saada selville mikä voisi olla sinun unelmiesi opiskelupaikka.</p>
         <p>Kysymysmerkkiruudut sisältävät lisätehtäviä, joiden suorittaminen ei ole pakollista pelin läpipelaamisen kannalta. Ne sisältävät lisätietoa valintojesi tueksi, joten käy rohkeasti katsomassa mikä kysymysmerkkien takana odottaa!</p>

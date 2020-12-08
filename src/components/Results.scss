@@ -20,5 +20,24 @@
     }
   }
 
-  // .results { }
+  ion-card-content p {
+    margin-bottom: 1rem;
+  }
+
+  .social-share {
+    margin: 1rem;
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    img {
+      max-width: 15%;
+      margin: 1.5%;
+      transform: scaleX(0.8);
+    }
+    p {
+      font-size: 1.2rem;
+      font-weight: 500;
+    }
+  }
 }

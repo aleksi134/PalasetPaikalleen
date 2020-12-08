@@ -71,9 +71,11 @@ const Results: React.FC = () => {
 
       <IonCard>
         <IonCardContent>
-          Tästä raportista näet mitä uraohjausmallin osioita olet suorittanut ja millaisia valintoja olet tehnyt.
-          Pelattuasi pelin loppuun saat itsellesi ladattavan raportin pelikertasi tuloksista.
-          Muistathan, että mikäli tehdyt valinnat eivät tunnut oikeilta tai muutit mielesi, voit aina palata takaisin tehtävään ja valita toisin!
+          <p>
+            Tästä raportista näet mitä uraohjausmallin osioita olet suorittanut ja millaisia valintoja olet tehnyt.
+            Pelattuasi pelin loppuun saat itsellesi ladattavan raportin pelikertasi tuloksista.
+            Muistathan, että mikäli tehdyt valinnat eivät tunnut oikeilta tai muutit mielesi, voit aina palata takaisin tehtävään ja valita toisin!
+          </p>
         </IonCardContent>
 
         <IonCardContent className="progress-wrapper">
@@ -104,7 +106,15 @@ const Results: React.FC = () => {
       }} />
 
       { !isGameCompleted &&
-        <div>Suorita peli ennen tulosten lataamista</div>
+        <p>Suorita peli ennen tulosten lataamista</p>
+      }
+
+      {
+        isGameCompleted &&
+        <div className="social-share">
+          <img src="/assets/kuunteleva.png" alt="kuunteleva" />
+          <p>Muistathan jakaa tulokset muillekin nähtäväksi!</p>
+        </div>
       }
 
       <IonButton

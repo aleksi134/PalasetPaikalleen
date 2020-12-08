@@ -9,8 +9,9 @@ const capitalize = (s: string) => {
   return s.charAt(0).toUpperCase() + s.slice(1)
 }
 
-const mapSpans = (input: string[]) =>
-  isArray(input) ? input.map((s, i) => <span key={i}>{i === 0 ? capitalize(s) : s}</span>) : []
+const mapSpans = (input: string[], capitalizeAll = false) =>
+  isArray(input) ? input.map((s, i) =>
+    <span key={i}>{(capitalizeAll || i === 0) ? capitalize(s) : s}</span>) : []
 
 const mapScores = (input: Record<string, number> = {}, take: number) =>
   orderBy(Object.entries(input || {}), ([key, value]) => value)
@@ -45,24 +46,23 @@ const ResultsCard: React.FC = () => {
 
   const vahvuudet = mapSpans(gameState.load('kuopio'))
   const voimavarapankki = mapSpans(gameState.load('rovaniemi'))
-  const tyoelamataidot = mapSpans(gameState.load('oulu'))
+  const tyoelamataidot = mapSpans(gameState.load('oulu')).slice(0, 5)
 
-  const arvot = mapScores(gameState.load('jyvaskyla'), 3)
+  const arvot = mapScores(gameState.load('jyvaskyla'), 5)
   const valintojenTaustalla = mapScores(gameState.load('lappeenranta'), 5)
 
   const _calculatorResult: CalculatorResult = gameState.load('joensuu') || { scores: [], factors: [] }
 
-  const koulutusalat = mapSpans(_calculatorResult.scores.map(r => r.occupation).slice(0, 5))
-  const score = _calculatorResult.scores[0]?.score || 0
+  const koulutusalat = mapSpans(_calculatorResult.scores.map(r => r.occupation).slice(0, 5), true)
 
   const vaihtoehtolaskuri = <React.Fragment>
     <span className="occupation">{capitalize(_calculatorResult.scores[0]?.occupation)}</span>
-    {_calculatorResult.factors.map((f, i) => <span key={i} className="factor">{f.name}</span>)}
+    {_calculatorResult.factors.slice(0, 5).map((f, i) => <span key={i} className="factor">{f.name}</span>)}
   </React.Fragment>
 
   return (
     <div className="results-card" style={containerStyle}>
-      <img ref={imgRef} className="card-background" src="/assets/loppukortti2.png" alt="loppukortti" />
+      <img ref={imgRef} className="card-background" src="/assets/loppukortti3.png" alt="loppukortti" />
 
       <div className="overlay-texts" style={{ fontSize, opacity }}>
         <div className="img-overlay vahvuudet"> {vahvuudet} </div>
@@ -72,7 +72,6 @@ const ResultsCard: React.FC = () => {
         <div className="img-overlay koulutusalat list"> {koulutusalat} </div>
         <div className="img-overlay vaihtoehtolaskuri list"> {vaihtoehtolaskuri} </div>
         <div className="img-overlay tyoelamataidot list"> {tyoelamataidot} </div>
-        <div className="img-overlay score"> {score} </div>
       </div>
 
     </div>

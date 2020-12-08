@@ -21,7 +21,7 @@ export const nodes: MapNode[] = [
     name: 'Kuopio',
     adj: ['joensuu', 'jyvaskyla'],
     theme: 'itsetuntemus',
-    greeting: 'Tämä on Kuopijjo, Puijon-tornin kotikaupunki. Savoania-ammattikorkeakoulu ja Itä-Suomen yliopiston kampus.'
+    greeting: 'Tämä on Kuopijjo, Puijon tornin kotikaupunki. Savonia-ammattikorkeakoulu ja Itä-Suomen yliopiston kampus ovat täällä. Lähellä sijaitsee myös Kajaanin ammattikorkeakoulu.'
   },
   {
     id: 'joensuu',
@@ -36,49 +36,49 @@ export const nodes: MapNode[] = [
     name: 'Oulu',
     adj: ['rovaniemi', 'kuopio'],
     theme: 'tyoelamatietous',
-    greeting: 'Moro, nää oot tullu just Ouluun. Pohjolan Piilaaksoon! Oulussa on yliopisto ja ammattikorkeakoulu.'
+    greeting: 'Moro, nää oot tullu just Ouluun. Pohjolan Piilaaksoon, jossa sijaitsee Oulun Ammattikorkeakoulu ja Oulun yliopisto.'
   },
   {
     id: 'jyvaskyla',
     name: 'Jyväskylä',
     adj: ['tampere', 'kuopio', 'vaasa'],
     theme: 'itsetuntemus',
-    greeting: 'Terve, olet juuri saapunut Jyväksylään, täällä voi opiskella ammattikorkeakoulussa ja yliopistossa.'
+    greeting: 'Terve, olet juuri saapunut Jyväskylään, täällä voi opiskella Jyväskylän ammattikorkeakoulussa ja Jyväskylän yliopistossa.'
   },
   {
     id: 'vaasa',
     name: 'Vaasa',
     adj: ['jyvaskyla'],
     theme: 'tyoelamatietous',
-    greeting: 'Hejssan ja hei, tervetuloa Vaasaan, välkommen till Vasa! Meillä on Vaasan yliopisto ja Vaasan ammattikorkeakoulu. Lähellä Seinäjoella on myös ammattikorkeakoulu.'
+    greeting: 'Hejssan ja hei, tervetuloa Vaasaan, välkommen till Vasa. Täällä sijaitsee Vaasan yliopisto ja Vaasan ammattikorkeakoulu. Lähellä on myös Seinäjoen ammattikorkeakoulu.'
   },
   {
     id: 'turku',
     name: 'Turku',
     adj: ['helsinki', 'tampere'],
     theme: 'elamantilanne',
-    greeting: 'Hei, tervetuloa Turkuun, linnan ja kirkkojen kaupunkiin! Turun yliopisto ja Turun ammattikorkeakoulu, men också finns det Åbo Akademin.'
+    greeting: 'Hei, tervetuloa Turkuun, linnan ja kirkkojen kaupunkiin, jossa on Turun ammattikorkeakoulu ja Turun yliopisto, men också finns det Åbo Akademin. Lähellä on myös Satakunnan ammattikorkeakoulu.'
   },
   {
     id: 'helsinki',
     name: 'Helsinki',
     adj: ['lappeenranta', 'turku'],
     theme: 'korkeakoulutietous',
-    greeting: 'Pääkaupunkiseudulla sijaitsee useita yliopistoja ja ammattikorkeakouluja. Yliopistot ovat Aalto, Helsingin Yliopisto, Taide yliopisto, Svenska Handelhögskolan, lisäksi myös Maanpuolutuskorkeakoulu. Ammattikorkeakouluja ovat Metropolia, Haaga-Helia, Laurea, Centria, Humanistinen Ammattikorkeakoulu, Diakonia-ammattikorkeakoulu, också finns det yrkeshögskolor Arcada och Novia.'
+    greeting: 'Pääkaupunkiseudulla sijaitsee useita yliopistoja ja ammattikorkeakouluja. Yliopistot ovat Aalto-yliopisto, Helsingin yliopisto, Taideyliopisto ja Svenska handelhögskolan, joiden lisäksi myös Maanpuolutuskorkeakoulu on täällä. Ammattikorkeakouluja ovat Diakonia-ammattikorkeakoulu, HAAGA-HELIA ammattikorkeakoulu, Humanistinen ammattikorkeakoulu, Laurea-ammattikorkeakoulu ja Metropolia Ammattikorkeakoulu. Också finns det Yrkeshögskolan Arcada och Yrkeshögskolan Novia.'
   },
   {
     id: 'lappeenranta',
     name: 'Lappeenranta',
     adj: ['helsinki'],
     theme: 'valintojentekeminen',
-    greeting: 'Tervetuloa Lappeenraantaan, täällä sijaitsee Lappeenrannan-Lahden tekninen yliopisto (LUT) ja Lab-ammattikorkeakoulu.'
+    greeting: 'Tervetuloa Lappeenrantaan, täällä sijaitsee Lappeenrannan-Lahden teknillinen yliopisto (LUT) ja Lab-ammattikorkeakoulu. Lähellä on myös Kaakkois-Suomen ammattikorkeakoulu.'
   },
   {
     id: 'tampere',
     name: 'Tampere',
     adj: ['jyvaskyla', 'turku'],
     theme: 'korkeakoulutietous',
-    greeting: 'Moronääs, Tampereella on Tuni eli Tampereen yliopiston ja ammatitkorkeakoulun yhteinen korkeakoulusäätiö.'
+    greeting: 'Moronääs, Tampereella on Tuni eli Tampereen yliopisto ja Tampereen ammatitkorkeakoulu sekä Poliisiammattikorkeakoulu. Lähellä sijaitsee myös Hämeen ammattikorkeakoulu.'
   },
   {
     id: 'maarianhamina',
@@ -86,7 +86,7 @@ export const nodes: MapNode[] = [
     adj: ['turku'],
     theme: 'itsetuntemus',
     isBonus: true,
-    greeting: 'Hej, och välkomna på Marienhamn, här har vi Högskolan på Åland.',
+    greeting: 'Hej, och välkommen till Marienhamn, här har vi Högskolan på Åland.',
     icon: helpOutline,
     customThemeName: 'Lisätehtävä: itsetuntemus'
   },
@@ -96,7 +96,7 @@ export const nodes: MapNode[] = [
     adj: ['rovaniemi'],
     theme: 'korkeakoulutietous',
     isBonus: true,
-    greeting: 'Inarissa pääsee nauttimaan Suomalaisen luonnon mystimisimmistä elämyksistä: pirunpellot, revontulet ja tundra.',
+    greeting: 'Inarissa pääsee nauttimaan Suomalaisen luonnon mystisimmistä elämyksistä: pirunpelloista, revontulista ja tundrasta. Tänne on hyvä tulla pohtimaan omaa tulevaisuuttaan, vaikka vain mielikuvamatkalle.',
     icon: helpOutline,
     customThemeName: 'Lisätehtävä: korkeakoulutietous'
   },
@@ -105,7 +105,7 @@ export const nodes: MapNode[] = [
     name: 'Rovaniemi',
     adj: ['oulu'],
     theme: 'elamantilanne',
-    greeting: 'Hei, tervetuloa Rovaniemelle, Jätkänkynttilän sillan kaupunkiin, jossa sijaitsee Rovaniemen ammattikorkeakoulu ja Lapin yliopisto. Vieressä muuten sijaitsee myös Kemi-Tornion ammattikorkeakoulu.'
+    greeting: 'Hei, tervetuloa Rovaniemelle, Jätkänkynttilän sillan kaupunkiin, jossa sijaitsee Lapin ammattikorkeakoulu ja Lapin yliopisto.'
   }
 ]
 
