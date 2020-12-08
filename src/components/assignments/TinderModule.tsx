@@ -5,13 +5,15 @@ import {
   IonChip,
   IonIcon,
   IonItem,
-  IonLabel
+  IonLabel,
+  IonSpinner
 } from '@ionic/react'
 import { closeCircle } from 'ionicons/icons'
 import { findIndex, last, uniqBy, without } from 'lodash'
-import React, { useLayoutEffect, useRef, useState } from 'react'
+import React, { useEffect, useLayoutEffect, useRef, useState } from 'react'
 import TinderCard from 'react-tinder-card'
 import { Occupation, occupations, uniqueFields } from '../../data/alavaihtoehdot'
+import { allImagesLoaded } from '../../utils'
 import AssignmentFooter from '../AssignmentFooter'
 import AssignmentInstructions from '../AssignmentInstructions'
 import AssignmentProgress from '../AssignmentProgress'
@@ -50,10 +52,11 @@ const Assignment: React.FC<Props> = ({ state = defaultState, done, close }) => {
   const [swipeableCards, setSwipeableCards] = useState<Occupation[]>([])
   const alreadySwipedCards = useRef<Occupation[]>([])
   const childRefs = useRef<Record<string, any>>({})
+  const [imagesLoaded, setImagesLoaded] = useState(false)
 
   const cardsContainerRef = useRef<HTMLDivElement>(null)
   const cardsLeft = swipeableCards.length > 0
-  const fieldsSelected = fieldSelection.length > 0
+  // const fieldsSelected = fieldSelection.length > 0
 
   const setChildRef = (occupation: Occupation) => (ref: any) =>
     childRefs.current[occupation.name] = ref
@@ -121,6 +124,17 @@ const Assignment: React.FC<Props> = ({ state = defaultState, done, close }) => {
     }
   })
 
+  useLayoutEffect(() => {
+    const imgs: HTMLImageElement[] = cardsContainerRef
+      .current?.querySelectorAll('img.card-img') as any
+
+    if (imgs) {
+      setImagesLoaded(false)
+      allImagesLoaded(imgs)
+        .then(() => setImagesLoaded(true))
+    }
+  }, [fieldSelection])
+
   const selectionsRequired = 3
   const selectedCount = result.length
   const isDone = selectedCount >= selectionsRequired
@@ -170,28 +184,19 @@ const Assignment: React.FC<Props> = ({ state = defaultState, done, close }) => {
                   /> */}
                 </TinderCard>
               ))}
+
+              <div className={`img-loading ${imagesLoaded ? 'hidden' : 'visible'}`}>
+                <IonSpinner color="light" />
+                Ladataan kortteja...
+              </div>
+
             </div>
             <div className='buttons'>
-              <IonButton className="left" onClick={() => swipe('left')}>Ei kiinnosta</IonButton>
-              <IonButton className="right" onClick={() => swipe('right')}>Kiinnostaa!</IonButton>
+              <IonButton disabled={!imagesLoaded} className="left" onClick={() => swipe('left')}>Ei kiinnosta</IonButton>
+              <IonButton disabled={!imagesLoaded} className="right" onClick={() => swipe('right')}>Kiinnostaa!</IonButton>
             </div>
           </div>
         }
-
-        {/* {!cardsLeft && fieldsSelected &&
-          <React.Fragment>
-            <IonItem>
-              <IonLabel>Loistavaa!</IonLabel>
-            </IonItem>
-            <IonCardContent>
-              <p>Löysit sinulle sopivat alavaihtoedot korttipakasta. Monipuolinen tieto sinua kiinnostavista koulutusaloista auttaa sinua oman näköisten valintojen tekemisessä sekä ottamaan seuraavan askeleen urasuunnittelun polulla.</p>
-
-              <p>Eikö tulokset miellytä? Valitse lisää aloja tai pelaa uudelleen!</p>
-              <IonButton onClick={reset}>Aloita alusta!</IonButton>
-
-            </IonCardContent>
-          </React.Fragment>
-        } */}
 
         {result.length > 0 &&
           <IonCardContent className="chips">

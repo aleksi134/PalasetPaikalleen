@@ -1,73 +1,74 @@
 @font-face {
   font-family: Kanit;
-	src: url(/assets/fonts/Kanit-Regular.ttf);
-	font-weight: normal;
+  src: url(/assets/fonts/Kanit-Regular.ttf);
+  font-weight: normal;
 }
 @font-face {
   font-family: Kanit;
-	src: url(/assets/fonts/Kanit-Medium.ttf);
-	font-weight: 500;
+  src: url(/assets/fonts/Kanit-Medium.ttf);
+  font-weight: 500;
 }
 @font-face {
   font-family: Kanit;
   src: url(/assets/fonts/Kanit-Bold.ttf);
-	font-weight: bold;
+  font-weight: bold;
 }
 
-
 body {
-	background-color:#2BA9C0;
+  background-color: #2ba9c0;
 }
 
 ion-app {
-	max-width: 1000px;
-	margin: 0 auto;
+  max-width: 1000px;
+  margin: 0 auto;
 }
 
 ion-title {
-	font-size: 1.5rem;
+  font-size: 1.5rem;
 }
 
 .Collapsible {
-	margin-top: 2rem;
+  margin-top: 2rem;
 
-	//The content within the collaspable area
-	.Collapsible__contentInner {
-		padding: 0.6rem;
-		border: 1px solid #1ec3ca;
-		border-radius: 0 0 5px 5px;
-		border-top: 0;
-		text-align: left;
+  //The content within the collaspable area
+  .Collapsible__contentInner {
+    padding: 0.6rem;
+    border: 1px solid #1ec3ca;
+    border-radius: 0 0 5px 5px;
+    border-top: 0;
+    text-align: left;
 
-		p, ul {
-			margin-bottom: 1rem;
-			font-size: 0.8rem;
-			line-height: 1.2rem;
+    p,
+    ul {
+      margin-bottom: 1rem;
+      font-size: 0.8rem;
+      line-height: 1.2rem;
 
-			&:last-child {
-				margin-bottom: 0;
-			}
-		}
-		ul {
-			padding-left: 1.5rem;
-		}
-	}
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+    ul {
+      padding-left: 1.5rem;
+    }
+  }
 
-	//The link which when clicked opens the collapsable area
-	.Collapsible__trigger {
-		border-radius: 5px;
-		display: block;
-		padding: 0.5rem;
-		background: #1ec3ca;
-		color: #fff;
+  //The link which when clicked opens the collapsable area
+  .Collapsible__trigger {
+    border-radius: 5px;
+    display: block;
+    padding: 0.5rem;
+    background: #1ec3ca;
+    color: #fff;
 
-		&.is-open {
-			border-radius: 5px 5px 0 0;
-		}
-	}
+    &.is-open {
+      border-radius: 5px 5px 0 0;
+    }
+  }
 }
 
 .modal-wrapper.ion-overlay-wrapper {
-	min-height: 80%;
-	min-width: 80%;
+  min-height: 80%;
+  min-width: 80%;
 }
+
