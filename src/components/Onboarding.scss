@@ -1,11 +1,42 @@
 .onboarding-container {
+  // .instructions-header {
+  //   background-color: #20ADBE;
+  //   color: #FFF;
+  //   .animation {
+  //     // filter: invert(1);
+  //   }
+  // }
+
   ion-card {
-    margin-top: 2.5rem;
+    ion-card-header {
+      ion-title {
+        font-family: Kanit;
+        font-weight: bold;
+      }
+
+      background-color: #20adbe;
+      color: #fff;
+    }
+
+    ion-card-content {
+      padding-top: 1rem;
+      p {
+        margin-bottom: 1rem;
+      }
+      // padding: 1rem;
+    }
     padding-bottom: 0 !important;
+    .bottom-border {
+      background-color: #9EDDE6;
+      height: 4rem;
+    }
   }
 
   ion-button.start {
     font-weight: bolder;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    height: 3rem;
   }
 
   .progression-colors {
@@ -16,6 +47,51 @@
     flex-wrap: wrap;
     .progress-meter {
       max-width: 300px;
+    }
+  }
+
+  .onboarding-animation {
+    max-width: 30%;
+    float: left;
+    padding-top: 1rem;
+    margin: 1rem;
+    margin-left: 0;
+    max-height: 250px;
+    max-width: 180px;
+
+    $bubble-color: #20adbe;
+
+    .speech-bubble {
+      font-weight: bold;
+      display: inline-block;
+      // min-width: 150px;
+      // max-width: 450px;
+      margin-left: 7%;
+      margin-right: 3%;
+      margin-top: -1.5rem;
+      text-align: center;
+      padding: 0.8rem;
+      font-size: 0.9rem;
+      background: $bubble-color;
+      color: #fff;
+      border-radius: 1em;
+      transform: rotateZ(5deg);
+      transform-origin: top left;
+    }
+
+    .speech-bubble:after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 65%;
+      width: 0;
+      height: 0;
+      border: 13px solid transparent;
+      border-top-color: $bubble-color;
+      border-bottom: 0;
+      border-left: 0;
+      margin-left: -6.5px;
+      margin-bottom: -12px;
     }
   }
 }
