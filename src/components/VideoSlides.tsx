@@ -1,6 +1,6 @@
 import { IonButton, IonIcon, IonSlide, IonSlides } from '@ionic/react'
 import { chevronBackOutline, chevronForwardOutline } from 'ionicons/icons'
-import React, { useCallback, useEffect, useLayoutEffect, useRef, useState } from 'react'
+import React, { useCallback, useRef, useState } from 'react'
 import Swiper from 'swiper'
 import './VideoSlides.scss'
 
@@ -18,11 +18,10 @@ const VideoSlides: React.FC<Props> = ({ urls }) => {
 
   const slidesRef = async (ref: HTMLIonSlidesElement) => {
     if (ref) {
-      const swpr = await ref.getSwiper()
+      const swpr: Swiper = await ref.getSwiper()
       setSwiper(swpr)
-
+      // Make sure swiper updates
       setTimeout(() => { swpr.update() })
-      // Sometimes pagination doesn't appear, this seems to fix it...
       setTimeout(() => { swpr.update() }, 2000)
     }
   }
@@ -43,10 +42,16 @@ const VideoSlides: React.FC<Props> = ({ urls }) => {
     vids[swiper?.activeIndex || 0].play()
   }
 
-  const onVideoClick = (url: string) => {
-    const vid = videoRefs.current[url]
+  const onVideoClick = (
+    event: React.MouseEvent<HTMLVideoElement, MouseEvent> | React.TouchEvent<HTMLVideoElement>
+  ) => {
+    event.preventDefault()
+    const vid: HTMLVideoElement = event.target as any
     vid.paused ? vid.play() : vid.pause()
   }
+
+  // Just in case
+  const onVideoPlay = () => swiper?.update()
 
   return (
     <div className="video-slides">
@@ -61,7 +66,13 @@ const VideoSlides: React.FC<Props> = ({ urls }) => {
 
         {urls.map((url) => (
           <IonSlide key={url} className="video-wrapper">
-            <video onTouchEnd={() => onVideoClick(url)} controls src={url} ref={videoRefCb(url)} />
+            <video controls
+              onTouchEnd={onVideoClick}
+              onClick={onVideoClick}
+              onPlay={onVideoPlay}
+              src={url}
+              ref={videoRefCb(url)}
+            />
           </IonSlide>
         ))}
 
