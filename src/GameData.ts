@@ -28,7 +28,7 @@ export const nodes: MapNode[] = [
     name: 'Joensuu',
     adj: [],
     theme: 'valintojentekeminen',
-    greeting: 'Tervehdys!',
+    greeting: 'Joensuussa on Itä-Suomen yliopiston kampus ja Karelia-ammattikorkeakoulu.',
     icon: flag
   },
   {
@@ -50,35 +50,35 @@ export const nodes: MapNode[] = [
     name: 'Vaasa',
     adj: ['jyvaskyla'],
     theme: 'tyoelamatietous',
-    greeting: 'Tervehdys!'
+    greeting: 'Hejssan ja hei, tervetuloa Vaasaan, välkommen till Vasa! Meillä on Vaasan yliopisto ja Vaasan ammattikorkeakoulu. Lähellä Seinäjoella on myös ammattikorkeakoulu.'
   },
   {
     id: 'turku',
     name: 'Turku',
     adj: ['helsinki', 'tampere'],
     theme: 'elamantilanne',
-    greeting: 'Tervehdys!'
+    greeting: 'Hei, tervetuloa Turkuun, linnan ja kirkkojen kaupunkiin! Turun yliopisto ja Turun ammattikorkeakoulu, men också finns det Åbo Akademin.'
   },
   {
     id: 'helsinki',
     name: 'Helsinki',
     adj: ['lappeenranta', 'turku'],
     theme: 'korkeakoulutietous',
-    greeting: 'Tervehdys!'
+    greeting: 'Pääkaupunkiseudulla sijaitsee useita yliopistoja ja ammattikorkeakouluja. Yliopistot ovat Aalto, Helsingin Yliopisto, Taide yliopisto, Svenska Handelhögskolan, lisäksi myös Maanpuolutuskorkeakoulu. Ammattikorkeakouluja ovat Metropolia, Haaga-Helia, Laurea, Centria, Humanistinen Ammattikorkeakoulu, Diakonia-ammattikorkeakoulu, också finns det yrkeshögskolor Arcada och Novia.'
   },
   {
     id: 'lappeenranta',
     name: 'Lappeenranta',
     adj: ['helsinki'],
     theme: 'valintojentekeminen',
-    greeting: 'Tervehdys!'
+    greeting: 'Tervetuloa Lappeenraantaan, täällä sijaitsee Lappeenrannan-Lahden tekninen yliopisto (LUT) ja Lab-ammattikorkeakoulu.'
   },
   {
     id: 'tampere',
     name: 'Tampere',
     adj: ['jyvaskyla', 'turku'],
     theme: 'korkeakoulutietous',
-    greeting: 'Tervehdys!'
+    greeting: 'Moronääs, Tampereella on Tuni eli Tampereen yliopiston ja ammatitkorkeakoulun yhteinen korkeakoulusäätiö.'
   },
   {
     id: 'maarianhamina',
@@ -86,7 +86,7 @@ export const nodes: MapNode[] = [
     adj: ['turku'],
     theme: 'itsetuntemus',
     isBonus: true,
-    greeting: 'Tervehdys!',
+    greeting: 'Hej, och välkomna på Marienhamn, här har vi Högskolan på Åland.',
     icon: helpOutline,
     customThemeName: 'Lisätehtävä: itsetuntemus'
   },
@@ -96,7 +96,7 @@ export const nodes: MapNode[] = [
     adj: ['rovaniemi'],
     theme: 'korkeakoulutietous',
     isBonus: true,
-    greeting: 'Tervehdys!',
+    greeting: 'Inarissa pääsee nauttimaan Suomalaisen luonnon mystimisimmistä elämyksistä: pirunpellot, revontulet ja tundra.',
     icon: helpOutline,
     customThemeName: 'Lisätehtävä: korkeakoulutietous'
   },
