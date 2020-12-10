@@ -91,11 +91,11 @@ const Results: React.FC<Props> = () => {
 
       <p>
         Lisätietoa Korkeakoulustartti-hankkeesta:&nbsp;
-        <a href="https://vanha.karelia.fi/korkeakoulustartti/korkeakoulustartti/" target="_blank" rel="noopener noreferrer">https://vanha.karelia.fi/korkeakoulustartti/korkeakoulustartti/</a>
+        <a href="https://karelia.fi/korkeakoulustartti/korkeakoulustartti/" target="_blank" rel="noopener noreferrer">https://karelia.fi/korkeakoulustartti/korkeakoulustartti/</a>
       </p>
       <p>
         Kokopitkät versiot pelissä käytetyistä videoista löydät täältä:&nbsp;
-        <a href="https://vanha.karelia.fi/korkeakoulustartti/materiaalit/" target="_blank" rel="noopener noreferrer">https://vanha.karelia.fi/korkeakoulustartti/materiaalit/</a>
+        <a href="https://karelia.fi/korkeakoulustartti/materiaalit/" target="_blank" rel="noopener noreferrer">https://karelia.fi/korkeakoulustartti/materiaalit/</a>
       </p>
 
 
