@@ -45,7 +45,7 @@ const App: React.FC = () => {
               <Route path="/page/Map" component={MapPage} exact />
               <Route path="/page/Results" component={ResultsPage} exact />
               <Route path="/page/Info" component={InfoPage} exact />
-              <Redirect from="/" to="/page/Map" exact />
+              <Redirect from="/" to="/page/Home" exact />
             </IonRouterOutlet>
           </IonSplitPane>
         </IonReactRouter>

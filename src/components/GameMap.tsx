@@ -38,8 +38,8 @@ const Home: React.FC<Props> = () => {
 
     if (gameState.canAdvance(node)) {
       pawnRef.current?.jump()
-      setCurrentNode(node)
       gameState.move(node)
+      setCurrentNode(node)
       const tms = isCurrentNode ? 0 : 1500
       timeout.current = setTimeout(() => setShowModal(true), tms)
     }

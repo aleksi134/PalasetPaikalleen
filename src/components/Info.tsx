@@ -1,10 +1,4 @@
-import { IonButton, IonCard, IonCardContent, IonIcon, IonItem, IonLabel, IonList } from '@ionic/react'
-import * as htmlToImage from 'html-to-image'
-import { ellipse } from 'ionicons/icons'
-import React, { CSSProperties, useRef } from 'react'
-import gameState from '../GameState'
-import { THEME_COLORS } from '../Types'
-import ProgressMeter from './ProgressMeter'
+import React from 'react'
 import './Info.scss'
 
 interface Props { }
@@ -16,7 +10,7 @@ const Results: React.FC<Props> = () => {
 
       <p>
         Pelin tehtävät perustuvat Korkeakoulustartti-hankkeen aikana kehitettyihin Palaset Paikalleen -uraohjausmallin tehtäviin. Lisätietoa uraohjausmallista sekä lisää tehtäviä löydät hankkeen Palaset Paikalleen –vaihtoehdoista valinnoiksi -julkaisusta:
-        <br/><a href="https://vanha.karelia.fi/korkeakoulustartti/materiaalit/" target="_blank" rel="noopener noreferrer">https://vanha.karelia.fi/korkeakoulustartti/materiaalit/</a>
+        <br/><a href="https://karelia.fi/korkeakoulustartti/materiaalit/" target="_blank" rel="noopener noreferrer">https://karelia.fi/korkeakoulustartti/materiaalit/</a>
       </p>
 
 

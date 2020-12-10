@@ -24,7 +24,7 @@ const options = [
   { title: 'Kelan tai Te-palveluiden työkokeilussa oleminen', isCorrect: false },
   { title: 'Päivä amk -opiskelijana tutustuminen opintoihin', isCorrect: false },
   { title: 'Yliopiston avoimille luennoille osanottaminen', isCorrect: false },
-  { title: 'Ilman lukiota yliopistoon opiskelemaan', isCorrect: true },
+  { title: 'Ilman lukiotodistusta yliopistoon hakeminen', isCorrect: true },
   { title: 'Vapaaehtoistoiminnassa työskentely', isCorrect: false },
   { title: 'Ulkomailla opiskelu ja työskentely', isCorrect: false },
   { title: 'Oman elämänpolku tukena opinnoissa ja tulevassa ammatissa', isCorrect: true },
@@ -52,7 +52,7 @@ const Assignment: React.FC<Props> = ({ state = [], done, close }) => {
 
   return (
     <div>
-      <AssignmentInstructions title="Mahdollisuuksien maailma" showBubble={false}>
+      <AssignmentInstructions title="Mahdollisuuksien maailma">
 
         <p>Onko elämäntilanteesi sellainen, että perinteinen opiskelu ei juuri nyt sovi sinulle? Tai jäitkö ilman opiskelupaikkaa ja pohdit, miten hyödyntää välivuotesi niin, että se edesauttaa sinua tulevalla urapolullasi? </p>
         <p>Tutustu korkeakouluopiskelijoiden Pinjan, Marin, Tyttilotan ja Inan erilaisiin tarinoihin korkeakouluun hakemisesta, alanvaihdosta, monimuoto-opiskelusta sekä välivuoden hyödyntämisestä. </p>

@@ -78,7 +78,7 @@ export const nodes: MapNode[] = [
     name: 'Tampere',
     adj: ['jyvaskyla', 'turku'],
     theme: 'korkeakoulutietous',
-    greeting: 'Moronääs, Tampereella on Tuni eli Tampereen yliopisto ja Tampereen ammatitkorkeakoulu sekä Poliisiammattikorkeakoulu. Lähellä sijaitsee myös Hämeen ammattikorkeakoulu.'
+    greeting: 'Moronääs, Tampereella on Tuni eli Tampereen yliopisto ja Tampereen ammattikorkeakoulu sekä Poliisiammattikorkeakoulu. Lähellä sijaitsee myös Hämeen ammattikorkeakoulu.'
   },
   {
     id: 'maarianhamina',
