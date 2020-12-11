@@ -1,4 +1,4 @@
-import { IonButton, IonCard, IonCardContent, IonItem, IonLabel } from '@ionic/react'
+import { IonCard, IonCardContent, IonItem, IonLabel } from '@ionic/react'
 import React, { useState } from 'react'
 import Collapsible from 'react-collapsible'
 import AssignmentFooter from '../AssignmentFooter'

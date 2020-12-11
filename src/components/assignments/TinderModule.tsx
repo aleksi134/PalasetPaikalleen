@@ -10,7 +10,7 @@ import {
 } from '@ionic/react'
 import { closeCircle } from 'ionicons/icons'
 import { findIndex, last, uniqBy, without } from 'lodash'
-import React, { useEffect, useLayoutEffect, useRef, useState } from 'react'
+import React, { useLayoutEffect, useRef, useState } from 'react'
 import TinderCard from 'react-tinder-card'
 import { Occupation, occupations, uniqueFields } from '../../data/alavaihtoehdot'
 import { allImagesLoaded } from '../../utils'

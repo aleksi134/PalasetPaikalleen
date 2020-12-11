@@ -1,6 +1,6 @@
 import { IonButton, IonCard, IonCardContent, IonCardHeader, IonTitle } from '@ionic/react'
 import React, { MouseEventHandler } from 'react'
-import { RouteComponentProps, withRouter } from 'react-router'
+import { RouteComponentProps, useHistory, withRouter } from 'react-router'
 import AssignmentInstructions from './AssignmentInstructions'
 import ColorInstructions from './ColorInstructions'
 import './Onboarding.scss'
@@ -9,7 +9,9 @@ import ProgressMeter from './ProgressMeter'
 
 interface Props extends RouteComponentProps<any> {}
 
-const Onboarding: React.FC<Props> = ({ history}) => {
+const Onboarding: React.FC<Props> = ({}) => {
+  const history = useHistory()
+
   const navigateToMap: MouseEventHandler = (e) => {
     e.preventDefault()
     history.push('/page/Map')

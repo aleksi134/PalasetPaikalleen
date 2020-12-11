@@ -1,5 +1,5 @@
-import { IonContent, IonModal, useIonViewDidEnter } from '@ionic/react'
-import React, { FC, useCallback, useRef, useState } from 'react'
+import { IonContent, IonModal } from '@ionic/react'
+import React, { useCallback, useEffect, useRef, useState } from 'react'
 import { MapNode, nodes } from '../GameData'
 import gameState from '../GameState'
 import { CITIES, CityRecord, Location } from '../Types'
@@ -22,6 +22,10 @@ const Home: React.FC<Props> = () => {
   const pawnLocation = circleLocations?.[currentNode.id] || null
   const pawnRef = useRef<{ jump: any }>(null)
 
+  const isMounted = useRef(true)
+  useEffect(() => () => { isMounted.current = false }, [])
+
+
   const timeout = useRef<NodeJS.Timeout>()
 
   const done = (result: any) => {
@@ -30,7 +34,9 @@ const Home: React.FC<Props> = () => {
     gameState.save(currentNode.id, result)
   }
 
-  const closeModal = () => setShowModal(false)
+  const closeModal = useCallback(() => {
+    if (isMounted.current) setShowModal(false)
+  }, [])
 
   const onClickNode = (node: MapNode) => {
     if (timeout.current) clearTimeout(timeout.current)
@@ -45,8 +51,9 @@ const Home: React.FC<Props> = () => {
     }
   }
 
-  const svgRefCallback = useCallback((node: SVGSVGElement) =>
-    setCircleLocations(findCircleLocations(CITIES, node)) , [])
+  const svgRefCallback = useCallback((node: SVGSVGElement) =>  {
+    if (node) setCircleLocations(findCircleLocations(CITIES, node))
+  }, [])
 
   // useIonViewDidEnter(() => setTimeout(() => setShowModal(true)))
 
